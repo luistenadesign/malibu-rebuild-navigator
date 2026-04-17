@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Malibu Rebuild Navigator</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
+:root{
+  --bg:#f7f7f5;
+  --white:#ffffff;
+  --card:#ffffff;
+  --border:#e5e5e0;
+  --text:#18181b;
+  --t2:#71717a;
+  --t3:#a1a1aa;
+  --blue:#2563eb;--blue-l:#eff6ff;--blue-d:#1d4ed8;
+  --orange:#ea580c;--orange-l:#fff7ed;--orange-d:#c2410c;
+  --green:#16a34a;--green-l:#f0fdf4;
+  --teal:#0891b2;--teal-l:#ecfeff;
+  --red:#dc2626;--red-l:#fef2f2;
+  --yellow:#d97706;--yellow-l:#fffbeb;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.06);
+  --r:14px;--rs:10px;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);}
+
+/* ── APP ── */
+.app{display:grid;grid-template-rows:52px 1fr;height:100vh;}
+
+/* ── HEADER ── */
+header{
+  display:flex;align-items:center;gap:12px;padding:0 18px;
+  background:var(--white);border-bottom:1px solid var(--border);
+  z-index:100;
+}
+.logo{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.logo-mark{
+  width:28px;height:28px;border-radius:8px;background:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Helvetica Neue',Helvetica,monospace;font-size:11px;font-weight:500;color:white;letter-spacing:-.5px;
+}
+.logo-text{font-size:14px;font-weight:400;letter-spacing:-.3px;white-space:nowrap;}
+.logo-text strong{font-weight:800;}
+.hdiv{width:1px;height:20px;background:var(--border);flex-shrink:0;}
+.htags{display:flex;gap:3px;align-items:center;flex:1;overflow:hidden;min-width:0;flex-wrap:nowrap;}
+.htag{
+  padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.3px;
+  white-space:nowrap;flex-shrink:0;animation:tagPop .3s cubic-bezier(.34,1.56,.64,1) both;
+}
+.htag.fire{background:var(--yellow-l);color:var(--yellow);}
+.htag.info{background:var(--blue-l);color:var(--blue);}
+.htag.warn{background:var(--red-l);color:var(--red);}
+.htag.ok{background:var(--green-l);color:var(--green);}
+.htag.rev{background:#fefce8;color:#a16207;}
+@keyframes tagPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+.hright{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.prog-wrap{display:flex;align-items:center;gap:6px;}
+.pbar{width:80px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.pfill{height:100%;background:var(--orange);border-radius:2px;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.plbl{font-size:10px;color:var(--t2);font-family:'Helvetica Neue',Helvetica,monospace;white-space:nowrap;}
+.hbtn{
+  padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;font-weight:500;color:var(--t2);
+  cursor:pointer;transition:all .15s;
+}
+.hbtn:hover{border-color:var(--text);color:var(--text);}
+
+/* ── COLUMNS ── */
+.cols{display:grid;grid-template-columns:280px 1fr 260px;height:100%;overflow:hidden;gap:0;}
+
+/* ── CARD base ── */
+.card{
+  background:var(--card);border-radius:var(--r);
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+
+/* ── LEFT PANEL ── */
+.left{
+  display:flex;flex-direction:column;gap:8px;
+  padding:10px;overflow-y:auto;overflow-x:hidden;
+  background:var(--bg);scrollbar-width:none;
+}
+.left::-webkit-scrollbar{display:none;}
+
+/* Address card */
+.addr-card{padding:12px;}
+.card-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);margin-bottom:8px;}
+.addr-row{display:flex;gap:6px;margin-bottom:6px;}
+.addr-in{
+  flex:1;padding:8px 10px;border-radius:var(--rs);
+  border:1.5px solid var(--border);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:12px;color:var(--text);outline:none;transition:all .2s;background:var(--bg);
+}
+.addr-in:focus{border-color:var(--blue);background:var(--white);box-shadow:0 0 0 3px rgba(37,99,235,.1);}
+.addr-in::placeholder{color:var(--t3);}
+.addr-btn{
+  padding:8px 12px;border-radius:var(--rs);border:none;background:var(--orange);
+  color:white;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:600;
+  cursor:pointer;white-space:nowrap;transition:all .15s;
+}
+.addr-btn:hover{background:var(--orange-d);}
+.addr-btn:disabled{background:var(--t3);cursor:default;}
+.addr-result{
+  padding:7px 9px;border-radius:var(--rs);background:var(--bg);
+  border:1px solid var(--border);font-size:10px;color:var(--t2);display:none;margin-bottom:6px;
+}
+.addr-result.show{display:block;}
+.addr-result strong{color:var(--text);font-size:11px;display:block;margin-bottom:2px;}
+
+/* Map card */
+.map-card{padding:10px;}
+.map-tabs{display:flex;gap:3px;margin-bottom:7px;}
+.mtab{
+  flex:1;padding:4px;border-radius:6px;border:none;background:var(--bg);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:9px;font-weight:600;color:var(--t2);
+  cursor:pointer;transition:all .15s;
+}
+.mtab.active{background:var(--text);color:white;}
+.map-wrap{
+  width:100%;height:120px;border-radius:8px;overflow:hidden;
+  border:1px solid var(--border);background:var(--bg);
+}
+.map-wrap iframe{width:100%;height:100%;border:none;}
+.map-ph{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;color:var(--t3);font-size:10px;text-align:center;gap:4px;
+}
+.map-ph .icon{font-size:22px;}
+.parcel-rows{margin-top:7px;display:flex;flex-direction:column;gap:0;}
+.pi-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:3px 0;border-bottom:1px solid var(--border);font-size:10px;
+}
+.pi-row:last-child{border-bottom:none;}
+.pi-l{color:var(--t2);}
+.pi-v{font-weight:600;color:var(--text);font-size:10px;text-align:right;max-width:140px;line-height:1.2;}
+.map-links{display:flex;flex-wrap:wrap;gap:3px;margin-top:7px;}
+.mlink{
+  display:inline-flex;align-items:center;gap:2px;padding:3px 7px;border-radius:5px;
+  background:var(--bg);color:var(--t2);font-size:8.5px;font-weight:600;text-decoration:none;
+  border:1px solid var(--border);transition:all .15s;white-space:nowrap;
+}
+.mlink:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-l);}
+
+/* Map overlays checkboxes */
+.overlay-checks{margin-top:7px;display:flex;flex-direction:column;gap:4px;}
+.ov-check{
+  display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:7px;
+  border:1.5px solid var(--border);cursor:pointer;transition:all .15s;background:var(--bg);
+}
+.ov-check.checked{border-color:var(--orange);background:var(--orange-l);}
+.ov-check input{display:none;}
+.ov-box{
+  width:14px;height:14px;border-radius:3px;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;
+}
+.ov-check.checked .ov-box{background:var(--orange);border-color:var(--orange);}
+.ov-box::after{content:'✓';color:white;font-size:9px;font-weight:800;display:none;}
+.ov-check.checked .ov-box::after{display:block;}
+.ov-label{font-size:10px;font-weight:500;color:var(--text);}
+.ov-sub{font-size:8px;color:var(--t2);margin-top:1px;}
+
+/* Trail card */
+.trail-card{padding:10px;flex-shrink:0;}
+.trail-inner{scrollbar-width:none;}
+.trail-inner::-webkit-scrollbar{display:none;}
+.tr-empty{font-size:9px;color:var(--t3);font-style:italic;}
+.tr-row{
+  display:flex;align-items:center;gap:5px;padding:3px 5px;border-radius:6px;
+  cursor:pointer;transition:all .12s;margin-bottom:1px;
+}
+.tr-row:hover{background:var(--orange-l);}
+.tr-id{font-size:8px;font-weight:700;color:var(--t3);width:32px;flex-shrink:0;font-family:'Helvetica Neue',Helvetica,monospace;}
+.tr-q{font-size:9px;color:var(--t2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tr-a{font-size:9px;font-weight:700;color:var(--orange);max-width:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
+.tr-e{font-size:8px;color:var(--t3);opacity:0;transition:opacity .1s;}
+.tr-row:hover .tr-e{opacity:1;color:var(--orange);}
+
+/* ── CENTER ── */
+.center{
+  display:flex;flex-direction:column;overflow:hidden;
+  background:var(--bg);padding:10px 8px;gap:8px;
+}
+
+/* Question card */
+.q-card{padding:16px 18px;flex-shrink:0;animation:cardIn .25s ease both;text-align:center;}
+@keyframes cardIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.qtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.qbadge{
+  font-size:8px;font-weight:700;color:var(--t3);letter-spacing:.6px;
+  text-transform:uppercase;font-family:'Helvetica Neue',Helvetica,monospace;
+}
+.qback{
+  padding:3px 9px;border-radius:10px;border:1px solid var(--border);background:transparent;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:9px;color:var(--t2);cursor:pointer;transition:all .12s;
+}
+.qback:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-l);}
+.qback:disabled{opacity:.3;cursor:default;}
+.qtext{font-size:18px;font-weight:700;letter-spacing:-.5px;line-height:1.25;color:var(--text);margin-bottom:12px;text-align:center;}
+.qnote{
+  font-size:10px;color:var(--t2);background:var(--blue-l);border-radius:6px;
+  padding:6px 9px;margin-bottom:10px;line-height:1.5;border-left:2px solid var(--blue);
+}
+.opts{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+.opt{
+  padding:9px 16px;border-radius:25px;border:1.5px solid var(--border);
+  background:var(--white);color:var(--text);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;line-height:1.3;
+}
+.opt:hover{border-color:var(--text);color:var(--white);background:var(--text);}
+.opt.sel{border-color:var(--text);background:var(--text);color:white;}
+.qin-row{display:flex;gap:6px;}
+.qin{
+  flex:1;padding:9px 12px;border-radius:var(--rs);border:1.5px solid var(--border);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;color:var(--text);outline:none;transition:all .2s;
+}
+.qin:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(234,88,12,.1);}
+.qin::placeholder{color:var(--t3);}
+.cbtn{
+  padding:9px 14px;border-radius:var(--rs);border:none;background:var(--orange);
+  color:white;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;
+}
+.cbtn:hover{background:var(--orange-d);}
+
+/* TDSF calc */
+.tdsf-calc{
+  background:var(--bg);border-radius:10px;padding:10px;margin-top:10px;
+  border:1px solid var(--border);
+}
+.tdsf-head{font-size:10px;font-weight:700;color:var(--t2);margin-bottom:7px;}
+.tdsf-tabs{display:flex;gap:3px;margin-bottom:8px;}
+.tdsf-tab{
+  flex:1;padding:5px;border-radius:6px;border:1px solid var(--border);background:var(--white);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:9px;font-weight:600;color:var(--t2);cursor:pointer;transition:all .15s;
+}
+.tdsf-tab.active{background:var(--text);color:white;border-color:var(--text);}
+.tdsf-fields{display:flex;flex-direction:column;gap:6px;}
+.tdsf-field label{font-size:8.5px;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;}
+.tdsf-in{
+  width:100%;padding:6px 9px;border-radius:7px;border:1.5px solid var(--border);
+  font-family:'Helvetica Neue',Helvetica,monospace;font-size:12px;color:var(--text);outline:none;transition:all .2s;
+}
+.tdsf-in:focus{border-color:var(--orange);box-shadow:0 0 0 2px rgba(234,88,12,.1);}
+.tdsf-result{
+  margin-top:8px;padding:9px 11px;border-radius:8px;background:var(--white);
+  border:1.5px solid var(--border);display:none;
+}
+.tdsf-result.show{display:block;}
+.tdsf-r-lbl{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--t3);}
+.tdsf-r-val{font-size:22px;font-weight:800;color:var(--orange);letter-spacing:-.8px;font-family:'Helvetica Neue',Helvetica,monospace;}
+.tdsf-r-sub{font-size:9px;color:var(--t2);margin-top:2px;line-height:1.4;}
+.tdsf-disc{font-size:8px;color:var(--t3);font-style:italic;margin-top:5px;line-height:1.4;display:none;}
+.tdsf-btns{display:flex;gap:5px;margin-top:8px;}
+.tdsf-calc-btn{
+  flex:1;padding:7px;border-radius:8px;border:none;background:var(--orange);
+  color:white;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;cursor:pointer;
+}
+.tdsf-calc-btn:hover{background:#3f3f46;}
+.tdsf-ok-btn{
+  padding:7px 14px;border-radius:8px;border:1.5px solid var(--green);color:var(--green);
+  background:var(--green-l);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;
+  cursor:pointer;display:none;transition:all .15s;
+}
+.tdsf-ok-btn:hover{background:var(--green);color:white;}
+.tdsf-ok-btn.show{display:block;}
+
+/* Terminal */
+.term{padding:18px;text-align:center;animation:cardIn .3s ease both;}
+.term.success{border-color:rgba(22,163,74,.2);}
+.term.error{border-color:rgba(220,38,38,.2);}
+.term-icon{font-size:30px;margin-bottom:8px;}
+.term-title{font-size:16px;font-weight:800;letter-spacing:-.4px;margin-bottom:6px;}
+.term-msg{font-size:11px;color:var(--t2);line-height:1.7;margin-bottom:12px;white-space:pre-line;text-align:left;}
+.email-row{display:flex;gap:5px;margin-bottom:6px;}
+.email-in{
+  flex:1;padding:9px 11px;border-radius:var(--rs);border:1.5px solid var(--border);
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:12px;color:var(--text);outline:none;transition:all .2s;
+}
+.email-in:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(234,88,12,.1);}
+.email-in::placeholder{color:var(--t3);}
+.sbtn{
+  padding:9px 13px;border-radius:var(--rs);border:none;background:var(--orange);
+  color:white;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:600;cursor:pointer;
+}
+.sbtn:hover{background:var(--orange-d);}
+.sok{font-size:10px;font-weight:600;display:none;margin-bottom:5px;}
+.rbtn{
+  padding:7px 14px;border-radius:var(--rs);border:1.5px solid var(--border);background:transparent;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;color:var(--t2);cursor:pointer;transition:all .15s;width:100%;
+}
+.rbtn:hover{border-color:var(--text);color:var(--text);}
+
+/* ── FLOWCHART (SVG organic circles) ── */
+.flow-area{flex:1;overflow:hidden;display:flex;flex-direction:column;min-height:0;}
+.flow-legend{
+  display:flex;gap:10px;align-items:center;padding:6px 10px;
+  background:var(--white);border-radius:10px;flex-wrap:wrap;
+  box-shadow:var(--shadow);border:1px solid var(--border);flex-shrink:0;
+}
+.lpill{display:flex;align-items:center;gap:4px;font-size:8.5px;font-weight:600;color:var(--t2);}
+.ldot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.flow-svg-wrap{flex:1;overflow:auto;padding:4px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;display:flex;align-items:center;justify-content:center;}
+.flow-svg-wrap::-webkit-scrollbar{height:4px;width:4px;}
+.flow-svg-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+#flowSvg{display:block;}
+
+/* ── RIGHT PANEL ── */
+.right{
+  display:flex;flex-direction:column;gap:8px;
+  padding:10px;overflow-y:auto;overflow-x:hidden;
+  background:var(--bg);scrollbar-width:none;
+}
+.right::-webkit-scrollbar{display:none;}
+.codes-card{padding:12px;}
+.docs-card{padding:12px;}
+.phase-group{margin-bottom:10px;}
+.phase-hdr{display:flex;align-items:center;gap:5px;margin-bottom:5px;}
+.ph-dot{width:7px;height:7px;border-radius:50%;}
+.ph-title{font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;}
+.code-row{
+  display:flex;gap:6px;align-items:flex-start;padding:5px 7px;border-radius:7px;
+  background:var(--bg);border:1px solid var(--border);margin-bottom:3px;
+}
+.cr-tag{
+  font-size:8px;font-weight:800;padding:2px 5px;border-radius:4px;flex-shrink:0;
+  align-self:flex-start;margin-top:1px;white-space:nowrap;font-family:'Helvetica Neue',Helvetica,monospace;
+}
+.cr-tag.plp{background:var(--yellow-l);color:var(--yellow);}
+.cr-tag.pcp{background:var(--teal-l);color:var(--teal);}
+.cr-info{flex:1;min-width:0;}
+.cr-name{font-size:9.5px;font-weight:700;color:var(--text);}
+.cr-link{font-size:8.5px;color:var(--blue);text-decoration:none;display:inline-block;margin-top:2px;}
+.cr-link:hover{text-decoration:underline;}
+.doc-row{
+  display:flex;gap:6px;align-items:flex-start;padding:5px 7px;border-radius:7px;
+  background:var(--bg);border:1px solid var(--border);margin-bottom:3px;
+}
+.doc-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+.doc-info{flex:1;min-width:0;}
+.doc-name{font-size:9.5px;font-weight:700;color:var(--text);}
+.doc-link{font-size:8.5px;color:var(--orange);text-decoration:none;display:inline-block;margin-top:2px;}
+.doc-link:hover{text-decoration:underline;}
+.right-empty{font-size:9.5px;color:var(--t3);font-style:italic;padding:2px 0;}
+
+/* ── SLIDE PANEL ── */
+.slide-ov{
+  position:fixed;inset:0;background:rgba(0,0,0,.25);backdrop-filter:blur(4px);
+  z-index:200;display:none;
+}
+.slide-ov.open{display:block;}
+.slide-pan{
+  position:absolute;right:0;top:0;bottom:0;width:360px;background:var(--white);
+  box-shadow:var(--shadow-md);display:flex;flex-direction:column;overflow:hidden;
+  animation:slideIn .28s cubic-bezier(.34,1.1,.64,1) both;
+}
+@keyframes slideIn{from{transform:translateX(100%);}to{transform:translateX(0);}}
+.sp-head{padding:18px 18px 12px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.sp-close{
+  float:right;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);
+  background:transparent;cursor:pointer;font-size:12px;color:var(--t2);
+  display:flex;align-items:center;justify-content:center;margin-left:8px;transition:all .12s;
+}
+.sp-close:hover{background:var(--bg);}
+.sp-phase{
+  display:inline-block;padding:2px 8px;border-radius:4px;font-size:8px;
+  font-weight:800;margin-bottom:5px;letter-spacing:.3px;
+}
+.sp-phase.plp{background:var(--yellow-l);color:var(--yellow);}
+.sp-phase.pcp{background:var(--teal-l);color:var(--teal);}
+.sp-phase.dept{background:var(--green-l);color:var(--green);}
+.sp-phase.dept-r{background:var(--red-l);color:var(--red);}
+.sp-title{font-size:16px;font-weight:800;letter-spacing:-.4px;line-height:1.3;}
+.sp-desc{font-size:10px;color:var(--t2);margin-top:5px;line-height:1.6;}
+.sp-body{flex:1;overflow-y:auto;padding:14px 18px;scrollbar-width:thin;}
+.sp-section{margin-bottom:14px;}
+.sp-s-title{
+  font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--t3);margin-bottom:6px;
+}
+.sp-items{display:flex;flex-direction:column;gap:2px;}
+.sp-item{
+  display:flex;gap:7px;padding:5px 7px;border-radius:6px;
+  background:var(--bg);font-size:10px;color:var(--text);line-height:1.4;
+}
+.sp-item::before{content:'·';color:var(--t3);font-size:16px;line-height:1;flex-shrink:0;}
+.sp-codes{display:flex;flex-direction:column;gap:4px;}
+.sp-code{padding:7px 9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);}
+.sp-code-name{font-size:10px;font-weight:700;color:var(--text);}
+.sp-code-desc{font-size:9px;color:var(--t2);line-height:1.4;margin-top:1px;}
+.sp-link{display:inline-flex;align-items:center;gap:2px;margin-top:3px;font-size:9px;color:var(--blue);text-decoration:none;}
+.sp-link:hover{text-decoration:underline;}
+.sp-profs{display:flex;flex-direction:column;gap:3px;}
+.sp-prof{padding:6px 8px;border-radius:7px;background:var(--bg);border:1px solid var(--border);}
+.sp-prof-name{font-size:10px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:5px;}
+.sp-prof-req{font-size:7.5px;font-weight:800;padding:1px 5px;border-radius:3px;letter-spacing:.3px;}
+.sp-prof-req.required{background:#fee2e2;color:#991b1b;}
+.sp-prof-req.recommended{background:var(--blue-l);color:var(--blue-d);}
+.sp-prof-role{font-size:9px;color:var(--t2);margin-top:2px;}
+.sp-docs{display:flex;flex-direction:column;gap:3px;}
+.sp-doc-link{
+  display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:7px;
+  background:var(--bg);border:1px solid var(--border);text-decoration:none;
+  color:var(--text);transition:all .15s;
+}
+.sp-doc-link:hover{border-color:var(--orange);background:var(--orange-l);}
+.sp-doc-link span{font-size:10px;font-weight:600;}
+.sp-doc-link small{font-size:8.5px;color:var(--t2);}
+
+/* ═══════════════════════════════════════
+   MOBILE LAYOUT (≤768px)
+   Desktop untouched above this point
+═══════════════════════════════════════ */
+@media (max-width:768px){
+
+  /* Hide desktop overflow lock, allow scroll */
+  html,body{overflow:auto;height:auto;}
+
+  /* Stack app rows: header + content + tab bar */
+  .app{
+    display:flex;flex-direction:column;
+    height:100dvh;min-height:100dvh;
+    overflow:hidden;
+  }
+
+  /* Collapse 3 columns into single panel system */
+  .cols{
+    display:block;
+    flex:1;overflow:hidden;position:relative;
+  }
+
+  /* All three panels fill the same space; show/hide via .mob-active */
+  .left, .center, .right{
+    position:absolute;inset:0;
+    overflow-y:auto;overflow-x:hidden;
+    display:none;
+    padding:10px 10px 0 10px;
+  }
+  .left.mob-active,
+  .center.mob-active,
+  .right.mob-active{ display:flex;flex-direction:column; }
+
+  /* Question card full width */
+  .q-card{font-size:16px;}
+
+  /* Flowchart: scale to fit, no clipping */
+  .flow-area{
+    flex-shrink:0;flex:none;
+    overflow:visible;height:auto;min-height:0;
+  }
+  .flow-svg-wrap{
+    overflow:visible !important;
+    justify-content:center;
+    padding:4px 0;
+    flex:none;height:auto;
+  }
+  #flowSvg{
+    width:100% !important;
+    height:auto !important;
+    max-width:100%;
+    display:block;
+  }
+  /* Center panel: normal scroll column, not clipped */
+  .center.mob-active{
+    position:absolute;inset:0;
+    overflow-y:auto !important;overflow-x:hidden;
+    display:flex !important;flex-direction:column;
+    gap:8px;padding:10px 10px 80px 10px;
+    height:100%;
+  }
+
+  /* Right panel: stack codes + docs */
+  .right{gap:8px;}
+  .codes-card,.docs-card{flex-shrink:0;}
+  /* mobDocsInline shown only at END via JS */
+  #mobDocsInline{display:none;}
+
+  /* Header: compact on mobile */
+  header{padding:0 12px;gap:8px;}
+  .hdiv{display:none;}
+  .htags{display:none;}  /* tags hidden on mobile — shown in progress bar area */
+  .hright .prog-wrap .pbar{width:60px;}
+
+  /* ── MOBILE TAB BAR ── */
+  .mob-tabs{
+    display:flex;
+    background:var(--white);
+    border-top:1px solid var(--border);
+    flex-shrink:0;
+    safe-area-inset-bottom:env(safe-area-inset-bottom);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .mob-tab{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:8px 4px 6px;gap:3px;border:none;background:transparent;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size:9px;font-weight:600;color:var(--t2);cursor:pointer;
+    transition:color .15s;letter-spacing:.2px;
+  }
+  .mob-tab .tab-icon{font-size:18px;line-height:1;}
+  .mob-tab.active{color:var(--orange);}
+  .mob-tab.active .tab-icon{transform:scale(1.1);}
+}
+
+/* Hide tab bar on desktop */
+.mob-tabs{display:none;}
+</style>
+</head>
+<body>
+<div class="app">
+
+<header>
+  <div class="logo">
+    <img src="data:image/png;base64,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" style="width:32px;height:32px;border-radius:7px;object-fit:cover;flex-shrink:0;" alt="LTD"/>
+    <span class="logo-text">rebuild navigator <strong>Malibu</strong></span>
+  </div>
+  <div class="hdiv"></div>
+  <div class="htags" id="hTags">
+    <span style="font-size:9px;color:var(--t3);font-style:italic;">Tags appear as you answer</span>
+  </div>
+  <div class="hright">
+    <div class="prog-wrap">
+      <div class="pbar"><div class="pfill" id="pFill" style="width:0%"></div></div>
+      <span class="plbl" id="pLbl">0 / 15</span>
+    </div>
+    <button class="hbtn" onclick="restart()">↺ Restart</button>
+  </div>
+</header>
+
+<div class="cols">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <!-- Map -->
+    <div class="card map-card">
+      <div class="map-tabs">
+        <button class="mtab" id="mt-sat" onclick="switchMap('satellite',this)">Satellite</button>
+        <button class="mtab active" id="mt-str" onclick="switchMap('street',this)">Street</button>
+      </div>
+      <div class="map-wrap" id="mapWrap">
+        <div class="map-ph"><div class="icon">📍</div>Enter address above</div>
+      </div>
+      <div class="parcel-rows" id="parcelInfo"></div>
+      <div class="map-links" id="mapLinks"></div>
+
+      <!-- Manual overlay checks (replaces Q4 + Q6) -->
+      <div class="overlay-checks" id="overlayChecks" style="display:none;">
+        <div class="card-lbl" style="margin-top:6px;">Confirm via maps above ↑</div>
+        <div class="ov-check" id="chk-hlp" onclick="toggleOverlay('HLP','chk-hlp')">
+          <div class="ov-box"></div>
+          <div>
+            <div class="ov-label">📍 Mapped Landslide Area</div>
+            <div class="ov-sub">Per CGS Landslide map</div>
+          </div>
+        </div>
+        <div class="ov-check" id="chk-esha" onclick="toggleOverlay('ESHA','chk-esha')">
+          <div class="ov-box"></div>
+          <div>
+            <div class="ov-label">🌿 ESHA Overlay</div>
+            <div class="ov-sub">Per Malibu ESHA map</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Answer trail -->
+    <div class="card trail-card">
+      <div class="card-lbl">📋 Answer Trail — click to edit</div>
+      <div class="trail-inner" id="trail">
+        <div class="tr-empty">Answers appear here as you go</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- Question -->
+    <div class="card q-card" id="centerQ">
+      <div id="welcomeInner">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--t3);margin-bottom:16px;text-align:center;">Malibu Rebuild Navigator</div>
+        <div style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;">Find your rebuild<br>permitting path.</div>
+        <div style="font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:22px;text-align:center;">Answer a short series of questions about your property and project scope. You'll receive a personalized flowchart showing your required permits, documents, code references, and professionals — before you hire anyone.</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;">
+          <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">⏱ ~5 minutes</div>
+          <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">❓ Up to 15 questions</div>
+          <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">📄 Custom permit roadmap</div>
+        </div>
+        <button onclick="showQ('Q1')" style="width:100%;padding:16px 20px;border-radius:12px;border:none;background:var(--text);color:white;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:-.3px;box-shadow:0 4px 14px rgba(0,0,0,.2);">
+          Begin 15-question questionnaire to find your rebuild permitting path →
+        </button>
+      </div>
+    </div>
+
+    <!-- Flowchart -->
+    <div class="flow-area">
+      <div class="flow-legend">
+        <span style="font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--t3);margin-right:4px;">Legend</span>
+        <div class="lpill"><div class="ldot" style="background:#ea580c"></div>Planning Docs</div>
+        <div class="lpill"><div class="ldot" style="background:#16a34a"></div>Planning Approvals</div>
+        <div class="lpill"><div class="ldot" style="background:#0891b2"></div>Plan Check Docs</div>
+        <div class="lpill"><div class="ldot" style="background:#dc2626"></div>Plan Check Approvals</div>
+        <div class="lpill"><div class="ldot" style="background:#18181b"></div>Milestones</div>
+      </div>
+      <div class="flow-svg-wrap">
+        <svg id="flowSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+    </div>
+
+    <!-- Mobile-only: inline codes + docs below flowchart -->
+    <div id="mobDocsInline" style="display:none;flex-direction:column;gap:8px;padding-bottom:80px;"></div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="card codes-card" id="codesCard">
+      <div class="card-lbl">📐 Code References</div>
+      <div class="right-empty">Appear as you answer</div>
+    </div>
+    <div class="card docs-card" id="docsCard">
+      <div class="card-lbl">📄 City Documents</div>
+      <div class="right-empty">Appear as you answer</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- MOBILE TAB BAR (hidden on desktop via CSS) -->
+<div class="mob-tabs" id="mobTabs">
+  <button class="mob-tab" id="mtab-map" onclick="mobSwitch('map')">
+    <span class="tab-icon">🗺️</span>Map
+  </button>
+  <button class="mob-tab active" id="mtab-q" onclick="mobSwitch('q')">
+    <span class="tab-icon">❓</span>Questions
+  </button>
+  <button class="mob-tab" id="mtab-docs" onclick="mobSwitch('docs')">
+    <span class="tab-icon">📋</span>Codes &amp; Docs
+  </button>
+</div>
+<div class="slide-ov" id="slideOv" onclick="if(event.target===this)closeSlide()">
+  <div class="slide-pan">
+    <div class="sp-head">
+      <button class="sp-close" onclick="closeSlide()">✕</button>
+      <div class="sp-phase" id="spPhase"></div>
+      <div class="sp-title" id="spTitle"></div>
+      <div class="sp-desc" id="spDesc"></div>
+    </div>
+    <div class="sp-body" id="spBody"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════
+const CFG = {
+  EJS_KEY:"PczPiPRa5GVOU13w0",
+  EJS_SVC:"service_90w55ar",
+  EJS_TPL:"template_y6pit7a",
+  SHEET_URL:"https://script.google.com/macros/s/AKfycbz6EIbcHVW1T2Rsx7Tnvq4jkWTvadz5ts7IQonVzI0TqkHbKZ_Dl_sATDAiL-2cOqe0-Q/exec",
+  CODE_SHEET_ID:"1UMtTiySTe6pttQP1MieXCQF9Y8xD71gFyCU48HDGIsc",
+  DOC_SHEET_ID:"1shGfP-9ThAxz4keXqm8BTjk5bv74oAgsXfuGiQpIiBA",
+  PARCEL_SHEET_ID:"1C0QcZRBgEWIM8qoFh3-t7cuG1vGq6a6VoxyZk6R1bbo",
+  ADDR_SHEET_ID:"19r1SFowLKacX95SLr0e6HnAGw6-qKQZL_V8ISKMksYU", // LTD_Web - Address request list
+};
+
+// ══════════════════════════════════════════════
+// LIVE DATA
+// ══════════════════════════════════════════════
+let SHEET_CODES = [
+  {tags:"PCP,BS,GRD",code:"CBC",year:"2022",url:"https://codes.iccsafe.org/content/CABC2022P1"},
+  {tags:"PCP,BS",code:"CRC",year:"2022",url:"https://codes.iccsafe.org/content/CARC2022P1"},
+  {tags:"PCP,BS",code:"CEC-T24",year:"2022",url:"https://codes.iccsafe.org/content/CAEC2022P1"},
+  {tags:"PCP,BS",code:"CALGreen",year:"2022",url:"https://codes.iccsafe.org/content/CAGC2022P1"},
+  {tags:"PCP,BS",code:"CAEC",year:"2022",url:"https://codes.iccsafe.org/content/CAEC2022P1"},
+  {tags:"PCP,BS",code:"CAMC",year:"2022",url:"https://codes.iccsafe.org/content/CAMC2022P1"},
+  {tags:"PCP,BS",code:"CAPC",year:"2022",url:"https://codes.iccsafe.org/content/CAPC2022P1"},
+  {tags:"HLP,PCP,BS",code:"LACBC",year:"2023",url:"https://up.codes/viewer/los-angeles-county/ca-building-code-2022/chapter/new_duped_1/administration#new_110"},
+  {tags:"BFP",code:"FEMA Flood Plain",year:"",url:"https://msc.fema.gov/portal/home"},
+  {tags:"PL,PLP",code:"MMC",year:"",url:"https://ecode360.com/MA5043"},
+  {tags:"PL,PLP",code:"LIP Zoning Rebuild Policies",year:"2025",url:"https://drive.google.com/file/d/1Iupq5HB_SqKjBENiYS0-CI-UbI7TUSg0/view"},
+  {tags:"HLP,BFP",code:"LACBC Title 26 §110/111",year:"2023",url:"https://drive.google.com/file/d/1NYym0Fgzou1kUH_3S16p1jEq4cKieAlZ/view"},
+  {tags:"SEP,HLP,BFP,EH,DFU,DRP-SEP",code:"LAMP with appendices",year:"2023",url:"https://drive.google.com/file/d/1FfhUSiw1o2FtDYPIE0p64z8Kd9O8dRyR/view"},
+  {tags:"PLP,PL,BFP,HLP",code:"MMC Ord. 524",year:"2025",url:"https://drive.google.com/file/d/1OXVA1TEib-dImD3CTLELPwGgjp8Tv0bE/view"},
+];
+
+let SHEET_DOCS = [
+  {tags:"BS,GRD",doc:"ESCP Standard Sheet",year:"2025",url:"https://drive.google.com/file/d/1IG9gS9QDuRRsohmPT0-yBLKjr-zLeyDA/view"},
+  {tags:"BS,GRD",doc:"Fine Grading Standard Sheet",year:"2025",url:"https://drive.google.com/file/d/16CFA8pRN8I_gKtz9LHkYt_JAw_UnA6ox/view"},
+  {tags:"FND,BS",doc:"Foundation Feasibility Report guideline",year:"2025",url:"https://drive.google.com/file/d/1bD-7q0-3cu-uJItxyNB-Koqawvs6efhU/view"},
+  {tags:"FND,BS",doc:"Foundation Reuse Flyer",year:"2025",url:"https://drive.google.com/file/d/1rf5vSCyDs7C6Epub5UFXnxpm86s23peR/view"},
+  {tags:"BS",doc:"LA County Green",year:"2023",url:"https://drive.google.com/file/d/1zTn5CFiTIAXCZ2oVOsW8efErlBj9Q3Hm/view"},
+  {tags:"BS,MEP",doc:"MEP Requirements",year:"2025",url:"https://drive.google.com/file/d/1MDLzr_Pn_EH9i5j-ZnoYF1sMZR33PRJe/view"},
+  {tags:"PCP,BS",doc:"Plan Check Checklist",year:"2025",url:"https://drive.google.com/file/d/1JlW6Zvf1lT8T8ZoDIGHEHVbsOEixLHhx/view"},
+  {tags:"BS",doc:"Residential Green Notes",year:"2023",url:"https://drive.google.com/file/d/1k2Rfhp_MAcKwo0X1H2KBdTGpeEblhNR0/view"},
+  {tags:"BS",doc:"Type-V Sheets",year:"2023",url:"https://drive.google.com/file/d/1Sbe6pQLKVDhMtohJlSJijN3U_njureLj/view"},
+  {tags:"OW",doc:"DRP Application & AOC Affidavit",year:"2025",url:"https://drive.google.com/file/d/19DfKxQl14kpIY8nGX7_g1I7AJIivZ4iQ/view"},
+  {tags:"EH",doc:"Fixture Unit Worksheet",year:"2025",url:"https://drive.google.com/file/d/1jVTd4MlpLWbWk0sED1i7TJsjHmH3TlLK/view"},
+  {tags:"EH,SEP",doc:"New OWTS Policy",year:"2025",url:"https://drive.google.com/file/d/1fcI6APB-npwqA_UKlrHqSMwl6gZUHQti/view"},
+  {tags:"EH,SEP",doc:"OWTS Fire Damage Assessment Form",year:"2025",url:"https://drive.google.com/file/d/1TjOT47kCuZP2gNWZ-WjU76PFOmxBssqR/view"},
+  {tags:"EH,SEP",doc:"OWTS Repairs Flyer",year:"2025",url:"https://drive.google.com/file/d/1ZTfYKXSN7xL2yQgwnq0RZfcZAcamBZ0b/view"},
+  {tags:"OW,FWQ",doc:"Fee Waiver Affidavit",year:"2025",url:"https://drive.google.com/file/d/1Tgsd3_kmBQW-2W1dhlM3i3NLFswWSCAq/view"},
+  {tags:"OW,FWQ",doc:"Fee Waiver Handout",year:"2025",url:"https://drive.google.com/file/d/17fC_crLVYUWrPtd3Z-SKOkXJaivRgoMv/view"},
+  {tags:"OW",doc:"PV Application & AOC Affidavit",year:"2025",url:"https://drive.google.com/file/d/1Kc7vARtynPOnzoaK77KidsIObwm13nEJ/view"},
+];
+
+let PARCEL_DATA = [];
+
+async function fetchCSV(sheetId, sheetName){
+  const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+  const url = sheetName ? `${base}&sheet=${encodeURIComponent(sheetName)}` : base;
+  const r = await fetch(url);
+  return r.text();
+}
+
+function parseCSVRows(text){
+  return text.trim().split("\n").map(row=>
+    row.match(/("(?:[^"]|"")*"|[^,]*),?/g)
+      .map(c=>c.replace(/,$/,"").replace(/^"|"$/g,"").replace(/""/g,'"').trim())
+  );
+}
+
+async function fetchSheetCodes(){
+  try{
+    const text = await fetchCSV(CFG.CODE_SHEET_ID);
+    const rows = parseCSVRows(text).slice(1);
+    const parsed = rows.filter(r=>r[1]).map(r=>({tags:r[0],code:r[1],year:r[2],url:r[3]}));
+    if(parsed.length) { SHEET_CODES=parsed; renderRight(); }
+  }catch(e){ console.warn("Code sheet fetch failed"); }
+}
+
+async function fetchSheetDocs(){
+  try{
+    const text = await fetchCSV(CFG.DOC_SHEET_ID);
+    const rows = parseCSVRows(text).slice(1);
+    const parsed = rows.filter(r=>r[1]).map(r=>({tags:r[0],doc:r[1],year:r[2],url:r[3]}));
+    if(parsed.length) { SHEET_DOCS=parsed; renderRight(); }
+  }catch(e){ console.warn("Doc sheet fetch failed"); }
+}
+
+async function fetchParcelData(){
+  try{
+    let text;
+    try{ text=await fetchCSV(CFG.PARCEL_SHEET_ID,"LTD_Malibu parcels - Navigator"); }
+    catch(e){ console.warn("Named sheet failed, trying default"); text=await fetchCSV(CFG.PARCEL_SHEET_ID); }
+    const rows=parseCSVRows(text);
+    if(!rows.length){ console.warn("❌ No rows from parcel sheet"); return; }
+    const headers=rows[0].map(h=>h.trim());
+    console.log("📊 Parcel headers:",headers.slice(0,20).join(" | "));
+    // Flexible finder: exact → case-insensitive → partial
+    const col=(...names)=>{
+      for(const n of names){
+        let i=headers.findIndex(h=>h===n); if(i>=0) return i;
+        i=headers.findIndex(h=>h.toLowerCase()===n.toLowerCase()); if(i>=0) return i;
+        i=headers.findIndex(h=>h.toLowerCase().includes(n.toLowerCase())); if(i>=0) return i;
+      }
+      return -1;
+    };
+    const ajIdx    =col("ShapeSTAre","ShapeSTAr","Shape_Area","LotSizeSqFt","SHAPE_AREA");
+    const houseIdx =col("SitusHouse","SitusHous","HouseNum","House_No","Situs_House");
+    const streetIdx=col("SitusStre","SitusStreet","StreetName","Street_Name","Situs_Street");
+    const cityIdx  =col("SitusCity","TaxRateCit","TaxRateCity","City","CITY","Situs_City");
+    const apnIdx   =col("APN","Apn","ParcelNo","PARCEL","Parcel_No");
+    const addrIdx  =col("SitusFullA","SitusFull","FullAddress","Full_Address","Situs_Full");
+    console.log(`📍 aj@${ajIdx} house@${houseIdx} street@${streetIdx} city@${cityIdx} apn@${apnIdx} full@${addrIdx}`);
+    let count=0;
+    rows.slice(1).forEach(cols=>{
+      if(cityIdx>=0){
+        const city=(cols[cityIdx]||"").toUpperCase().trim();
+        if(city&&city!=="MALIBU"&&!city.includes("MALIBU")) return;
+      }
+      const apn=(cols[apnIdx]||"").trim();
+      const sf=parseFloat(cols[ajIdx])||0;
+      let fullAddr="";
+      if(houseIdx>=0&&streetIdx>=0){
+        const h=(cols[houseIdx]||"").trim();
+        const st=(cols[streetIdx]||"").trim().toUpperCase();
+        if(h||st) fullAddr=(h+" "+st).trim();
+      }
+      if(!fullAddr&&addrIdx>=0) fullAddr=(cols[addrIdx]||"").toUpperCase().trim();
+      if(fullAddr.length>2||apn){
+        const parts=fullAddr.split(/\s+/);
+        PARCEL_DATA.push({fullAddress:fullAddr,houseNum:parts[0]||"",streetName:parts.slice(1).join(" ")||"",apn,grossSqFt:sf});
+        count++;
+      }
+    });
+    console.log(`✅ ${count} parcels. First 5:`,PARCEL_DATA.slice(0,5).map(p=>`${p.fullAddress}|${p.apn}|${p.grossSqFt}sf`).join(" // "));
+    if(!count) console.warn("⚠️ Zero parcels — check sheet name, sharing permissions, and column names");
+  }catch(e){ console.warn("❌ Parcel fetch error:",e); }
+}
+
+function lookupParcel(raw){
+  if(!PARCEL_DATA.length){ console.warn("⚠️ PARCEL_DATA empty"); return null; }
+  let s=(raw||"").toUpperCase().trim();
+  s=s.replace(/[,.]?\s*(MALIBU|CA|CALIFORNIA)\s*(90265|90263|90290)?\s*$/,"").trim();
+  // Expand common abbreviations to match sheet format
+  s=s.replace(/\bPCH\b/g,"PACIFIC COAST HWY");
+  s=s.replace(/\bPACIFIC COAST HIGHWAY\b/g,"PACIFIC COAST HWY");
+  s=s.replace(/\bHIGHWAY\b/g,"HWY");
+  s=s.replace(/\bBOULEVARD\b/g,"BLVD");
+  s=s.replace(/\bAVENUE\b/g,"AVE");
+  s=s.replace(/\bDRIVE\b/g,"DR");
+  s=s.replace(/\bROAD\b/g,"RD");
+  s=s.replace(/\bCOURT\b/g,"CT");
+  s=s.replace(/\bLANE\b/g,"LN");
+  s=s.replace(/\s+/g," ").trim();
+  const parts=s.split(/\s+/);
+  const num=parts[0], street1=parts[1]||"";
+  console.log(`🔍 Lookup: "${s}"  num="${num}" st1="${street1}"`);
+  console.log(`📋 Sample: ${PARCEL_DATA.slice(0,3).map(p=>p.fullAddress).join(" | ")}`);
+  const found=PARCEL_DATA.find(p=>{
+    const pa=p.fullAddress;
+    return (p.apn&&(p.apn===s||p.apn.replace(/-/g,"")===s.replace(/-/g,"")))||
+      pa===s||(s.length>5&&pa.includes(s))||(pa.length>5&&s.includes(pa))||
+      (num.length>2&&street1.length>1&&pa.startsWith(num+" ")&&pa.includes(street1));
+  });
+  console.log(found?`✅ ${found.apn}|${found.fullAddress}|${found.grossSqFt}sf`:`❌ No match for "${s}"`);
+  return found||null;
+}
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let S = {
+  cur:"Q1", answers:[], tags:new Set(),
+  bfp:false, hlp:false, address:"", apn:"",
+  lat:null, lng:null, mapMode:"street",
+  grossSqFt:0, netSqFt:0, maxTDSF:0,
+};
+
+function tag(t){
+  if(S.tags.has(t)) return;
+  S.tags.add(t);
+  if(t==="BFP") S.bfp=true;
+  if(t==="HLP") S.hlp=true;
+  renderHeader(); renderFlow(); renderRight();
+}
+
+function toggleOverlay(tagKey, chkId){
+  const el = document.getElementById(chkId);
+  const isOn = el.classList.contains("checked");
+  if(isOn){
+    el.classList.remove("checked");
+    S.tags.delete(tagKey);
+    if(tagKey==="HLP") S.hlp=false;
+    renderHeader(); renderFlow(); renderRight();
+  } else {
+    el.classList.add("checked");
+    tag(tagKey);
+  }
+}
+
+// ══════════════════════════════════════════════
+// TDSF CALC
+// ══════════════════════════════════════════════
+function calcTDSF(netSqFt){
+  const HALF=21780, ONE=43560, ONE_HALF=65340, FIVE=217800;
+  if(netSqFt>=FIVE) return{tdsf:11172,note:"≥5 acres — capped at 11,172 sf per MMC"};
+  let tdsf = Math.min(netSqFt,HALF)*0.177+1000;
+  if(netSqFt>HALF) tdsf+=Math.min(netSqFt-HALF,HALF)*0.10;
+  if(netSqFt>ONE) tdsf+=Math.min(netSqFt-ONE,ONE_HALF-ONE)*0.05;
+  if(netSqFt>ONE_HALF) tdsf+=(netSqFt-ONE_HALF)*0.02;
+  return{tdsf:Math.round(tdsf),note:null};
+}
+
+let tdsfMode="guided", tdsfResult=null;
+function switchTDSFMode(m){
+  tdsfMode=m;
+  ["guided","manual"].forEach(x=>{
+    document.getElementById(`tdsf-tab-${x}`).classList.toggle("active",x===m);
+    document.getElementById(`tdsf-${x}`).style.display=x===m?"flex":"none";
+  });
+  document.getElementById("tdsf-res").classList.remove("show");
+  document.getElementById("tdsf-ok-btn").classList.remove("show");
+  tdsfResult=null;
+}
+
+function runTDSFCalc(){
+  let net=0;
+  if(tdsfMode==="guided"){
+    const g=parseFloat(document.getElementById("tdsf-gross").value)||S.grossSqFt||0;
+    const sl=parseFloat(document.getElementById("tdsf-slopes").value)||0;
+    const ea=parseFloat(document.getElementById("tdsf-ease").value)||0;
+    net=g-sl-ea; if(net<=0){alert("Net lot area must be > 0."); return;}
+    S.grossSqFt=g;
+  } else {
+    net=parseFloat(document.getElementById("tdsf-net").value)||0;
+    if(net<=0){alert("Please enter a valid net lot area."); return;}
+    document.getElementById("tdsf-disc").style.display="block";
+  }
+  S.netSqFt=net;
+  tdsfResult=calcTDSF(net); S.maxTDSF=tdsfResult.tdsf;
+  const res=document.getElementById("tdsf-res");
+  res.querySelector(".tdsf-r-val").textContent=tdsfResult.tdsf.toLocaleString()+" sf";
+  res.querySelector(".tdsf-r-sub").textContent=`Net lot: ${net.toLocaleString()} sf (${(net/43560).toFixed(2)} ac)${tdsfResult.note?" — "+tdsfResult.note:""}`;
+  res.classList.add("show");
+  document.getElementById("tdsf-ok-btn").classList.add("show");
+}
+
+function confirmTDSF(){
+  if(!tdsfResult) return;
+  tag("TDSF_OK");
+  S.answers.push({qid:"Q4a",qtext:"Max TDSF confirmed",answer:`${S.maxTDSF.toLocaleString()} sf max`,tagsBefore:[...S.tags]});
+  renderTrail(); renderHeader();
+  showQ(QS["Q4a"].next("Yes — within TDSF"));
+}
+
+// ══════════════════════════════════════════════
+// DOCUMENTS
+// ══════════════════════════════════════════════
+const DOCS = [
+  {id:"OW",    stage:"plp", name:"Ownership Docs",
+   showIf:()=>true,
+   desc:"Proof of ownership required for all fire rebuild applications.",
+   items:["Current preliminary title report","Tax assessment records confirming ownership at time of fire","Grant deed or most recent recorded deed"],
+   codes:["MMC","EO"],
+   profs:[{t:"Title Company",req:false,r:"Prepare preliminary title report"}]},
+
+  {id:"FWA", stage:"plp", name:"Fee Waiver Docs",
+   showIf:(T)=>T.has("OHO"),
+   showPending:false,
+   desc:"Fee Waiver Affidavit and Handout. Available to original property owners to waive City permit fees for qualifying fire rebuild projects.",
+   items:["Completed Fee Waiver Affidavit","Fee Waiver Handout (for reference)","Proof of ownership at time of fire"],
+   codes:["MMC","EO"],
+   profs:[{t:"Title Company",req:false,r:"Confirm ownership status at time of fire"}]},
+
+  {id:"ARC-P", stage:"plp", name:"Architectural Plans (Planning)",
+   showIf:()=>true,
+   desc:"Preliminary architectural plans for Planning submission showing like-for-like rebuild compliance.",
+   items:["Cover sheet","Existing structure & OWTS justification docs","Archive permits","Tax assessor files","Adjuster diagrams","Owner photos","Aerial photos","Green building notes","Site plan","Floor plans","Roof plan"],
+   codes:["MMC"],
+   profs:[
+     {t:"Licensed Architect (Unlicensed Design Professional allowed if wood frame construction)",req:true,r:"Planning drawings set"},
+   ]},
+
+  {id:"TOP-P", stage:"plp", name:"Topographic Survey",
+   showIf:()=>true,
+   desc:"Survey showing gross lot area, all plotted easements, and slopes >1:1. Net Lot Area = Gross − (slopes >1:1 + public access easements) → determines max TDSF.",
+   items:["Gross lot area","All plotted easements including public access easements","Areas of slopes steeper than 1:1","Net Lot Area calculation","TDSF derivation from Net Lot Area"],
+   codes:["MMC"],
+   profs:[{t:"Licensed Land Surveyor",req:true,r:"ALTA/topographic survey with Net Lot Area & TDSF"}]},
+
+  {id:"SEP-I", stage:"plp", name:"Septic Inspection Report",
+   showIf:(T)=>T.has("HLP") && !T.has("DRP-SEP"),
+   showPending:true, pendingLabel:"if Landslide area + keeping septic",
+   desc:"Required for landslide-area properties when keeping the existing septic system. If replacing septic, a Septic Engineering Plans (Plan Check) is required instead. Certified inspector evaluates all system elements before Planning submission.",
+   items:["Tank element inspection","Leach field assessment","Distribution box inspection","Pass/fail determination per component"],
+   codes:["CPC","LAMP"],
+   profs:[{t:"Certified Septic Inspector",req:true,r:"Inspect and certify existing system"}]},
+
+  {id:"APR-SPR", stage:"plp", name:"APR-SPR Required",
+   showIf:(T)=>T.has("SPR-HTA"),
+   showPending:false,
+   desc:"Administrative Plan Review — Special Roof/Height. Required when the proposed rebuild exceeds 18 feet in height. Must be submitted with Planning documents.",
+   items:["Height exhibit showing proposed structure height","Roof plan with ridge elevations","Cross-sections at ridge","Neighbor notification (if required)"],
+   codes:["MMC","LIP Zoning Rebuild Policies"],
+   profs:[{t:"Licensed Architect",req:true,r:"Prepare height exhibit and roof plans"}]},
+
+  {id:"ARC-C", stage:"pcp", name:"Architectural Plans (Plan Check)",
+   showIf:()=>true,
+   desc:"Full permitted architectural plan set for Plan Check submission.",
+   items:["Cover sheet","Existing structure & OWTS justification","Archive permits","Tax assessor files","Adjuster diagrams","Owner & aerial photos","General building notes","Type V notes","Site plan","Site walls & gates","Floor plans","Roof plan","Power & signal plans","Elevations","Sections","Stair details","Wall & lintel types","Roof details","Details","Door & window schedules"],
+   codes:["CBC","CRC","MMC","LACBC"],
+   profs:[
+     {t:"Licensed Architect (Unlicensed Design Professional allowed if wood frame construction)",req:true,r:"Full plan check drawing set"},
+   ]},
+
+  {id:"TOP-C", stage:"pcp", name:"Topographic Survey (Plan Check)",
+   showIf:()=>true,
+   desc:"Updated survey for Plan Check reflecting any proposed grading or footprint changes.",
+   items:["Updated topographic survey","Proposed vs existing grades","All easements confirmed","Net lot area confirmation"],
+   codes:["MMC","CBC"],
+   profs:[{t:"Licensed Land Surveyor",req:true,r:"Update survey for plan check"}]},
+
+  {id:"T24",   stage:"pcp", name:"Title 24 Energy Report",
+   showIf:()=>true,
+   desc:"California Energy Code compliance calculations required for all new construction.",
+   items:["CF1R compliance form","Whole house energy model","HVAC specifications","Insulation schedule","Fenestration schedule"],
+   codes:["CEnC"],
+   profs:[{t:"Certified Energy Consultant (CEPE)",req:true,r:"Title 24 compliance documentation"}]},
+
+  {id:"SR",    stage:"pcp", name:"Soils Report",
+   showIf:()=>true,
+   desc:"Required for all Malibu fire rebuilds per LACBC 2023.",
+   items:["Site investigation boring logs","Soil classification & bearing capacity","Expansive soil analysis","Foundation recommendations","Grading recommendations"],
+   codes:["CBC","LACBC"],
+   profs:[{t:"Licensed Geotechnical Engineer",req:true,r:"Soils investigation report"}]},
+
+  {id:"STR",   stage:"pcp", name:"Structural Engineering Plans",
+   showIf:()=>true,
+   desc:"Structural engineer stamped plans per CBC/ASCE 7-22.",
+   items:["Cover sheet","General notes","Foundation plans","Floor plans","Roof plan","Site plan","Elevations","Typical framing details","Typical concrete details","Deck details","Steel details"],
+   codes:["CBC","ASCE","LACBC"],
+   profs:[{t:"Licensed Structural Engineer",req:true,r:"Full structural design & stamped plans"}]},
+
+  {id:"FMP",   stage:"pcp", name:"Fuel Modification Plan",
+   showIf:(T)=>!T.has("BFP"),
+   showPending:true, pendingLabel:"N/A if Beachfront",
+   desc:"LA County Fire Department fuel modification plan. Not applicable for beachfront properties.",
+   items:["Zone A (0–30ft): Irrigated zone plantings","Zone B (30–100ft): Reduced fuel zone","Irrigation plan","Approved plant palette","Maintenance program"],
+   codes:["FIRE"],
+   profs:[{t:"Licensed Landscape Architect",req:false,r:"Fuel modification plan"}]},
+
+  {id:"GEO",   stage:"pcp", name:"Geologic Report",
+   showIf:(T)=>T.has("HLP")||T.has("HO2")||T.has("HO3"),
+   showPending:true, pendingLabel:"if Landslide / Slope",
+   desc:"Detailed geologic investigation for landslide-mapped or slope-adjacent parcels.",
+   items:["Landslide hazard assessment","Slope stability analysis","Foundation setback from slope crest/toe","Mitigation recommendations","LA County Geotechnical Dept review"],
+   codes:["CBC","LACBC","MMC"],
+   profs:[
+     {t:"Licensed Engineering Geologist",req:true,r:"Geologic hazard investigation"},
+     {t:"Licensed Geotechnical Engineer",req:true,r:"Slope stability & foundation analysis"},
+   ]},
+
+  {id:"GRD",   stage:"pcp", name:"Grading & Drainage Plans",
+   showIf:(T)=>T.has("GRD")||T.has("DRP-DRW")||T.has("DRP-RTW"),
+   showPending:true, pendingLabel:"if Grading / Walls / Driveway",
+   desc:"Civil engineer grading and drainage plans.",
+   items:["Existing site plan","Grading & drainage plan","Sections","EC & SWPPP (if >1 acre disturbed)","Notes","Fire Department Access Plan"],
+   codes:["MMC","CBC","FIRE"],
+   profs:[{t:"Licensed Civil Engineer",req:true,r:"Grading & drainage design"}]},
+
+  {id:"MEP",   stage:"pcp", name:"MEP Engineering Plans",
+   showIf:(T)=>T.has("TDSF_OVER_5K")||T.has("ADU"),
+   showPending:true, pendingLabel:"if >5,000 sf or ADU",
+   desc:"Mechanical, Electrical & Plumbing engineering plans. Required when proposed structure exceeds 5,000 sf TDSF, or when adding any ADU. For structures under 5,000 sf without an ADU, MEP compliance may be handled by the Licensed Architect.",
+   items:["Mechanical plans & schedule","Electrical power plans","Lighting plans","Panel boards & load calcs","Grounding & volt drop","Plumbing site plan","Plumbing plans — sewer","Plumbing plans — water"],
+   codes:["CBC","CPC"],
+   profs:[{t:"Licensed MEP Engineer",req:true,r:"Required for structures over 5,000 sf TDSF only"}]},
+
+  {id:"SEP-E", stage:"pcp", name:"Septic Engineering Plans",
+   showIf:(T)=>T.has("DRP-SEP"),
+   showPending:true, pendingLabel:"if Replacing Septic",
+   desc:"Full OWTS engineering design. Required only when replacing the septic system.",
+   items:["Percolation test report","OWTS design calculations","System layout plan","Tank specifications","Leach field design","LAMP compliance certification"],
+   codes:["CPC","LAMP","OWTS"],
+   profs:[
+     {t:"Licensed Civil/Environmental Engineer",req:true,r:"OWTS system design"},
+     {t:"Malibu Registered Septic Practitioner",req:true,r:"OWTS permit review & approval"},
+   ]},
+
+  {id:"CE",    stage:"pcp", name:"Coastal Engineering Report",
+   showIf:(T)=>T.has("BFP"),
+   showPending:true, pendingLabel:"if Beachfront",
+   desc:"Required for all beachfront properties.",
+   items:["Shoreline conditions survey","Wave uprush & run-up analysis","Coastal hazard assessment","SPD evaluation (if applicable)","Rebuild design recommendations"],
+   codes:["MMC"],
+   profs:[{t:"Licensed Coastal Engineer",req:true,r:"Coastal hazard & SPD assessment"}]},
+];
+
+const PLA_DEPTS=[
+  {id:"PL",    n:"Planning",       showIf:()=>true,           cls:"pla",ph:"dept",
+   desc:"City of Malibu Planning Dept. Reviews all Planning Submission documents (orange) for zoning, TDSF, setbacks, and bulk compliance.",
+   note:"The documents listed in the Planning Submission phase (orange) are the required submittal package for this review."},
+  {id:"PW",    n:"Public Works",   showIf:(T)=>T.has("BFP"),  cls:"pla",ph:"dept",
+   desc:"City of Malibu Public Works — beachfront property review."},
+  {id:"EH",    n:"Environmental Health",showIf:(T)=>T.has("HLP")||T.has("DRP-SEP"),cls:"pla",ph:"dept",
+   desc:"LA County Environmental Health. Reviews OWTS/septic documentation from the Planning Submission package.",
+   note:"Required if landslide area or septic replacement. The septic documents in the Planning Submission phase are the required package for this review."},
+  {id:"GEO-A", n:"Geotechnical",   showIf:(T)=>T.has("HLP"),  cls:"pla",ph:"dept",
+   desc:"LA County Geotechnical Dept — landslide and hillside parcel review."},
+];
+
+const PCA_DEPTS=[
+  {id:"PL-C",  n:"Planning",       showIf:()=>true,            cls:"pca",ph:"dept-r", desc:"Final Planning sign-off on plan check drawings."},
+  {id:"BS",    n:"Building & Safety",showIf:()=>true,           cls:"pca",ph:"dept-r", desc:"City of Malibu Building & Safety plan check."},
+  {id:"PW-C",  n:"Public Works",   showIf:()=>true,            cls:"pca",ph:"dept-r", desc:"Public Works — site access, grading, drainage."},
+  {id:"EH-C",  n:"Environmental Health",showIf:(T)=>T.has("DRP-SEP")||T.has("DFU"),cls:"pca",ph:"dept-r",desc:"LA County Environmental Health plan check for OWTS engineering."},
+  {id:"GEO-C", n:"Geotechnical",   showIf:(T)=>T.has("HLP")||T.has("HO2")||T.has("HO3"),cls:"pca",ph:"dept-r",desc:"LA County Geotechnical review of soils and geologic reports."},
+  {id:"FIRE",  n:"LA County Fire", showIf:()=>true,            cls:"pca",ph:"dept-r", desc:"LA County Fire — fuel mod, fire flow, access."},
+  {id:"WD29",  n:"WD-29",          showIf:()=>true,            cls:"pca",ph:"dept-r", desc:"LA County Waterworks District 29 — water service connection."},
+  {id:"CE-A",  n:"Coastal Engineering",showIf:(T)=>T.has("BFP"),cls:"pca",ph:"dept-r",desc:"Coastal engineering review — wave uprush, SPD, shoreline."},
+];
+
+// ══════════════════════════════════════════════
+// QUESTIONS — display numbers Q1-Q15
+// ══════════════════════════════════════════════
+const Q_NUM={"Q1":"Q1","Q_BFP_CONFIRM":"Q2","Q_HLP":"Q3","Q2":"Q4","Q3":"Q5","Q4":"Q6","Q4a":"Q7",
+  "Q5":"Q8","Q_TDSF_SIZE":"Q9","Q6":"Q10","Q7":"Q11","Q8":"Q12","Q8b":"Q13",
+  "Q9":"Q14","Q10":"Q15","Q11":"Q16","Q12":"Q17","Q14":"Q18"};
+const QS={
+  Q1:{id:"Q1",text:"What is the property address?",
+    type:"address",placeholder:"e.g. 23901 Malibu Road, Malibu CA 90265",
+    skipIf:()=>S.address.length>3,
+    next:(v)=>{
+      S.address=v;
+      const addrUp=v.toUpperCase();
+      // Only ask BFP confirmation if address contains PCH/Pacific Coast
+      if(addrUp.includes("PCH")||addrUp.includes("PACIFIC COAST")) return "Q_BFP_CONFIRM";
+      // Otherwise definitely not beachfront
+      S.tags.delete("BFP"); S.bfp=false;
+      return "Q_HLP";
+    }},
+
+  Q2:{id:"Q2",text:"What is your ownership status?",
+    type:"choice",
+    options:["Original owner — primary residence","Original owner — secondary or investment","Not the original owner"],
+    next:(v)=>{
+      if(v.startsWith("Original owner")){tag("OHO");}else{tag("NOHO");}
+      if(v.includes("primary residence")){tag("FWQ");}
+      return "Q3";
+    }},
+
+  Q3:{id:"Q3",text:"Are you rebuilding like-for-like or up to +10%?",
+    type:"choice",options:["Like-for-like or up to +10%","Larger than +10%"],
+    note:"Governor's EO (Jan 2025) permits up to 10% increase in floor area and height for qualifying Palisades and Franklin fire rebuilds.",
+    next:(v)=>v.startsWith("Like")?"Q4":"TERM_CDP"},
+
+  Q4:{id:"Q4",text:"Are you expanding or shifting the footprint?",
+    type:"choice",
+    options:["Same area and same footprint","Same area but shifting outside original footprint","Adding up to 10% area within the same footprint","Adding up to 10% area and shifting the footprint"],
+    next:(v)=>{
+      if(v.includes("10%")){tag("BLK");tag("STB");}
+      if(v.includes("shifting")||v.includes("and shifting")){tag("STB");tag("FPC");}
+      const needTDSF=v.includes("10%");
+      return needTDSF?"Q4a":"Q5";
+    }},
+
+  Q_BFP_CONFIRM:{id:"Q_BFP_CONFIRM",
+    text:"Is this property beachfront (ocean-facing side of Pacific Coast Hwy)?",
+    type:"choice",options:["Yes — beachfront / ocean side","No — mountain side or inland"],
+    get note(){ const a=(S.address||"").toUpperCase(); return (a.includes("PCH")||a.includes("PACIFIC COAST"))?"📍 PCH address detected — please confirm. Some PCH properties face the mountain side and are NOT beachfront.":"Beachfront = ocean-facing properties on PCH only. Canyon, hillside and inland Malibu properties are NOT beachfront."; },
+    next:(v)=>{
+      if(v.startsWith("Yes")){ tag("BFP"); S.bfp=true; }
+      else { S.tags.delete("BFP"); S.bfp=false; }
+      return "Q_HLP";
+    }},
+
+  Q_HLP:{id:"Q_HLP",
+    text:"Is the property located within a mapped landslide area?",
+    type:"choice",options:["Yes — mapped landslide area","No — not in landslide area","Unknown — need to verify"],
+    hasHLP:true,
+    next:(v)=>{
+      if(v.startsWith("Yes")){ tag("HLP"); S.hlp=true; }
+      return "Q2";
+    }},
+
+  Q4a:{id:"Q4a",text:"Is the proposed area within max TDSF for this net lot area?",
+    type:"choice",options:["Yes — within TDSF","No — exceeds TDSF","Unknown — calculate below"],
+    hasTDSF:true,
+    next:(v)=>{
+      if(S.bfp) return "Q5";
+      if(v==="No — exceeds TDSF") return "TERM_TDSF";
+      if(v.startsWith("Yes")) tag("TDSF_OK");
+      return "Q5";
+    }},
+
+  Q5:{id:"Q5",text:"Are you adding up to 10% in height?",
+    type:"choice",options:["Yes — adding up to 10% height","No — keeping same height"],
+    next:(v)=>{
+      if(v.startsWith("Yes")){tag("BLK");tag("HTA");}
+      return "Q_TDSF_SIZE";
+    }},
+
+  Q_TDSF_SIZE:{id:"Q_TDSF_SIZE",text:"Is the proposed structure larger than 5,000 sf TDSF?",
+    type:"choice",options:["Yes — over 5,000 sf","No — 5,000 sf or less","Unknown"],
+    note:"Determines whether MEP Engineering Plans are required or optional.",
+    skipIf:()=>S.maxTDSF>0&&S.maxTDSF<=5000,
+    next:(v)=>{ if(v.startsWith("Yes")||S.maxTDSF>5000) tag("TDSF_OVER_5K"); return S.bfp?"Q7":"Q6"; }},
+
+  Q6:{id:"Q6",text:"Are you modifying the structure envelope above 18 feet?",
+    type:"choice",options:["Yes","No","Unknown"],
+    skipIf:()=>S.bfp,
+    next:(v)=>{ if(v==="Yes") tag("SPR-HTA"); return "Q7"; }},
+
+  Q7:{id:"Q7",text:"Adding bedrooms or increasing drainage fixture units?",
+    type:"choice",options:["Yes","No","Unknown"],
+    next:(v)=>{ if(v==="Yes"){ tag("DFU"); if(S.hlp) return "TERM_HLP_DFU"; } return "Q8"; }},
+
+  Q8:{id:"Q8",text:"Are you keeping or replacing the existing septic system?",
+    type:"choice",options:["Keeping existing","Replacing","Unknown"],
+    next:(v)=>{
+      if(v==="Replacing"){tag("DRP-SEP"); return S.bfp?"Q8b":"Q9";}
+      if(v==="Unknown") tag("DRP-SEP_REVIEW");
+      return S.bfp?"Q8b":"Q9";
+    }},
+
+  Q8b:{id:"Q8b",text:"Are you keeping or replacing the Shoreline Protective Device (seawall)?",
+    type:"choice",options:["Keeping existing SPD","Replacing SPD"],
+    next:(v)=>{ if(v==="Replacing SPD") tag("SPD"); return "Q9"; }},
+
+  Q9:{id:"Q9",text:"Are you planning to reuse the existing foundation or slab?",
+    type:"choice",options:["Yes — reusing foundation","No — new foundation","Unknown"],
+    next:(v)=>{ if(v!=="No — new foundation") tag("FND"); return "Q10"; }},
+
+  Q10:{id:"Q10",text:"Proposing major grading, retaining walls, or driveway changes?",
+    type:"choice",options:["Grading changes","Retaining walls","Driveway upgrade","Multiple of the above","None"],
+    next:(v)=>{
+      if(v.includes("Grading")||v.includes("Multiple")) tag("GRD");
+      if(v.includes("Retaining")||v.includes("Multiple")) tag("DRP-RTW");
+      if(v.includes("Driveway")||v.includes("Multiple")) tag("DRP-DRW");
+      return "Q11";
+    }},
+
+  Q11:{id:"Q11",text:"Is the footprint adjacent to ascending or descending slopes?",
+    type:"choice",options:["Ascending slope","Descending slope","Both","No","Unknown"],
+    next:(v)=>{ if(v.includes("Ascending")||v==="Both") tag("HO2"); if(v.includes("Descending")||v==="Both") tag("HO3"); return "Q12"; }},
+
+  Q12:{id:"Q12",text:"Does the parcel meet required fire flow, and are you adding a pool or water tank?",
+    type:"choice",
+    options:[
+      "Meets fire flow — no pool or tank",
+      "Meets fire flow — adding a pool",
+      "Does NOT meet fire flow — adding a pool to comply",
+      "Does NOT meet fire flow — adding a water tank to comply"
+    ],
+    note:"A water tank or pool can serve as the required fire flow source if the parcel does not meet minimum flow requirements.",
+    next:(v)=>{
+      if(v.includes("NOT")) tag("FLW");
+      if(v.includes("pool")) tag("DRP-POOL");
+      if(v.includes("tank")) tag("DRP-WTK");
+      if(v.includes("NOT")&&!v.includes("pool")&&!v.includes("tank")) return "TERM_FLW";
+      return "Q14";
+    }},
+
+  Q14:{id:"Q14",text:"Are you adding an Accessory Dwelling Unit (ADU)?",
+    type:"choice",options:["Yes — attached ADU","Yes — detached ADU","Yes — Junior ADU (JRADU)","No ADU"],
+    next:(v)=>{
+      if(v.includes("detached")) tag("DADU");
+      if(v.includes("attached")) tag("AADU");
+      if(v.includes("Junior")) tag("JRADU");
+      if(!v.startsWith("No")) tag("ADU");
+      return "END";
+    }},
+};
+
+const TERMS={
+  TERM_CDP:{icon:"📋",cls:"",title:"Full CDP Path Required",
+    msg:"Rebuilds larger than like-for-like +10% require a full Coastal Development Permit (CDP).\nPlease consult a Malibu planning consultant."},
+  TERM_TDSF:{icon:"🚫",cls:"error",title:"Exceeds Maximum TDSF",
+    msg:"Proposed area exceeds max Total Development Square Footage for this net lot area.\nReduce scope to proceed within the fire rebuild program."},
+  TERM_HLP_DFU:{icon:"⚠️",cls:"error",title:"Bedroom/DFU Increase Not Allowed",
+    msg:"Properties in mapped landslide areas cannot increase bedroom count or drainage fixture units beyond pre-existing conditions.\n\nIf this was entered in error, use the Back button below to change your answer.",hasBack:true},
+  TERM_FLW:{icon:"🔴",cls:"error",title:"Fire Flow Must Be Resolved",
+    msg:"Fire flow deficiency must be corrected before rebuilding is permitted.\nContact LA County Fire and a licensed civil engineer."},
+  END:{icon:"✅",cls:"success",title:"Your Rebuild Pathway Is Ready",isEnd:true,
+    msg:"Your personalized permitting flowchart is complete.\n\nEnter your email below to receive:\n• Your customized permitting flowchart\n• Required professionals per phase\n• All applicable code & document links"},
+};
+
+// ══════════════════════════════════════════════
+// HEADER
+// ══════════════════════════════════════════════
+const TL={
+  PF:"Palisades Fire",HLP:"Landslide",BFP:"Beachfront",ESHA:"ESHA",
+  BLK:"Bulk+10%",STB:"Setbacks",FPC:"Footprint",HTA:"Height+10%",
+  "SPR-HTA":"Height>18ft","DFU":"Fixture+","DRP-SEP":"Septic Repl.",SPD:"SPD",
+  "DRP-RTW":"Ret.Wall",GRD:"Grading",FND:"Foundation Reuse",
+  HO2:"Asc.Slope",HO3:"Desc.Slope",FLW:"Fire Flow","DRP-POOL":"Pool","DRP-WTK":"Tank",
+  OHO:"Orig.Owner",NOHO:"Non-Orig.",FWQ:"Fee Waiver ✓",TDSF_OK:"TDSF ✓",TDSF_OVER_5K:"TDSF>5K",
+  "DRP-DRW":"Driveway",DADU:"Det.ADU",AADU:"Att.ADU",JRADU:"Jr.ADU","SPR-HTA_REVIEW":"Height?",
+};
+const WARN_T=new Set(["SPR-HTA","FLW"]);
+const OK_T=new Set(["FWQ","OHO","TDSF_OK"]);
+const MAIN_Q=["Q1","Q2","Q3","Q4","Q4a","Q5","Q_TDSF_SIZE","Q6","Q7","Q8","Q9","Q10","Q11","Q12","Q13"];
+
+function renderHeader(){
+  const el=document.getElementById("hTags");
+  if(!S.tags.size){el.innerHTML='<span style="font-size:9px;color:var(--t3);font-style:italic;">Tags appear as you answer</span>';return;}
+  el.innerHTML=[...S.tags].map(t=>{
+    let c="htag ";
+    if(WARN_T.has(t)) c+="warn";
+    else if(OK_T.has(t)) c+="ok";
+    else if(t==="PF") c+="fire";
+    else c+="info";
+    return `<span class="${c}">${TL[t]||t}</span>`;
+  }).join("");
+  const isEnd=TERMS[S.cur]&&TERMS[S.cur].isEnd;
+  const isTerm=!!TERMS[S.cur];
+  const done = isEnd ? 15 : S.answers.filter(a=>MAIN_Q.includes(a.qid)).length;
+  const total = 15;
+  document.getElementById("pFill").style.width=(isEnd?100:(done/total*100))+"%";
+  document.getElementById("pLbl").textContent=`${done} / ${total}`;
+}
+
+// ══════════════════════════════════════════════
+// TRAIL
+// ══════════════════════════════════════════════
+function renderTrail(){
+  const el=document.getElementById("trail");
+  if(!S.answers.length){el.innerHTML='<div class="tr-empty">Answers appear here as you go</div>';return;}
+  el.innerHTML=S.answers.map((a,i)=>`
+    <div class="tr-row" onclick="jumpTo(${i})">
+      <span class="tr-id">${Q_NUM[a.qid]||a.qid}</span>
+      <span class="tr-q">${a.qtext}</span>
+      <span class="tr-a">${a.answer}</span>
+      <span class="tr-e">✎</span>
+    </div>`).join("");
+  el.scrollTop=el.scrollHeight;
+}
+
+// ══════════════════════════════════════════════
+// ORGANIC ZIGZAG FLOWCHART — molecule style
+// Spine zigzags at 60° so molecule flowers never overlap
+// ══════════════════════════════════════════════
+function renderFlow(){
+  const svg=document.getElementById("flowSvg");
+  svg.innerHTML="";
+  const ns="http://www.w3.org/2000/svg";
+
+  function mkEl(tag,attrs){
+    const e=document.createElementNS(ns,tag);
+    Object.entries(attrs).forEach(([k,v])=>e.setAttribute(k,String(v)));
+    return e;
+  }
+  function wrapLabel(name,maxChars){
+    const words=name.replace(/\(.*?\)/g,"").trim().split(" ");
+    const lines=[]; let cur="";
+    words.forEach(w=>{
+      const test=(cur?cur+" ":"")+w;
+      if(test.length>maxChars&&cur){lines.push(cur);cur=w;}
+      else cur=test;
+    });
+    if(cur) lines.push(cur);
+    return lines;
+  }
+
+  // ── Worst-case branch counts (all tags active) ──
+  const stages=[
+    {id:"start",  label:"START",   color:"#18181b", terminal:true,  docs:[],depts:[]},
+    {id:"plp",    label:"Planning\nSubmission",     color:"#ea580c", docs:DOCS.filter(d=>d.stage==="plp"),depts:[]},
+    {id:"pla",    label:"Planning\nApproval",       color:"#16a34a", docs:[],depts:PLA_DEPTS},
+    {id:"pcp",    label:"Plan Check\nSubmission",   color:"#0891b2", docs:DOCS.filter(d=>d.stage==="pcp"),depts:[]},
+    {id:"pca",    label:"Plan Check\nApproval",     color:"#dc2626", docs:[],depts:PCA_DEPTS},
+    {id:"finish", label:"FINISH",  color:"#18181b", terminal:true,  docs:[],depts:[]},
+  ];
+
+  function getBranches(stage){
+    const out=[];
+    stage.docs.forEach(d=>{
+      const active=d.showIf(S.tags);
+      if(active||d.showPending) out.push({type:"doc",data:d,active});
+    });
+    stage.depts.forEach(d=>{
+      if(d.showIf(S.tags)) out.push({type:"dept",data:d,active:true});
+    });
+    return out;
+  }
+
+  // ── Layout constants ──
+  // Branches fan on the OUTER side of each node (away from spine)
+  // so adjacent molecules never collide regardless of STEP_X
+  const R_MAIN = 46;
+  const R_BR   = 30;
+  const ORBIT  = 118; // stem gap = ORBIT - R_MAIN - R_BR = 42px clear space
+  const STEP_X = 168; // horizontal spacing between main nodes
+  const STEP_Y = 155; // vertical zigzag amplitude
+  const PAD_X  = 65;  // same padding applied to BOTH left and right edges
+  const PAD_Y  = 24;
+
+  // ROW: 0=top, 1=bottom, 0.5=midpoint
+  const ROW   = [0.5, 0, 1, 0, 1, 0.5];
+  const topY  = PAD_Y + ORBIT + R_BR + 18;
+  const botY  = topY + STEP_Y;
+  const midY  = (topY + botY) / 2;
+  const mainPos = stages.map((s,i)=>({
+    x: PAD_X + i * STEP_X,
+    y: ROW[i]===0.5 ? midY : ROW[i]===0 ? topY : botY
+  }));
+
+  // Canvas: equal PAD_X on both sides
+  const lastX = mainPos[mainPos.length-1].x;
+  const maxX  = lastX + PAD_X;           // same right pad as left pad → centered
+  const maxY  = botY + ORBIT + R_BR + PAD_Y;
+  svg.setAttribute("width",  maxX);
+  svg.setAttribute("height", maxY);
+  svg.setAttribute("viewBox", "0 0 "+maxX+" "+maxY);
+  // On mobile remove fixed minWidth so CSS can scale it
+  if(window.innerWidth<=768){
+    svg.style.width="100%";
+    svg.style.height="auto";
+    svg.style.minWidth="0";
+  } else {
+    svg.style.minWidth = maxX+"px";
+    svg.style.width="";
+    svg.style.height="";
+  }
+
+  // ── Layers ──
+  const lLines=mkEl("g",{}), lBranch=mkEl("g",{}), lMain=mkEl("g",{}), lText=mkEl("g",{});
+  svg.appendChild(lLines); svg.appendChild(lBranch); svg.appendChild(lMain); svg.appendChild(lText);
+
+  // ── Spine: curved path through zigzag centers ──
+  for(let i=0;i<stages.length-1;i++){
+    const a=mainPos[i], b=mainPos[i+1];
+    const dx=b.x-a.x, dy=b.y-a.y, dist=Math.sqrt(dx*dx+dy*dy);
+    const nx=dx/dist, ny=dy/dist;
+    const x1=a.x+nx*R_MAIN, y1=a.y+ny*R_MAIN;
+    const x2=b.x-nx*R_MAIN, y2=b.y-ny*R_MAIN;
+    // line
+    const ln=mkEl("line",{x1,y1,x2,y2,stroke:"#d4d4d4","stroke-width":"2"});
+    lLines.appendChild(ln);
+    // arrowhead near destination
+    const ax=x2, ay=y2;
+    const angle=Math.atan2(y2-y1,x2-x1);
+    const arr=mkEl("polygon",{
+      points:`${ax},${ay} ${ax-10*Math.cos(angle-0.35)},${ay-10*Math.sin(angle-0.35)} ${ax-10*Math.cos(angle+0.35)},${ay-10*Math.sin(angle+0.35)}`,
+      fill:"#d4d4d4"
+    });
+    lLines.appendChild(arr);
+  }
+
+  // ── Branch fans ──
+  stages.forEach((stage,si)=>{
+    const {x:cx, y:cy} = mainPos[si];
+    const items = getBranches(stage);
+    const n = items.length;
+    if(!n) return;
+
+    // Fan direction: avoid pointing toward adjacent spine nodes
+    // Determine the "spine direction" (average angle of connections)
+    // Then fan branches on the opposite side (180° away from spine center)
+    const spineAngles=[];
+    if(si>0){
+      const prev=mainPos[si-1];
+      spineAngles.push(Math.atan2(prev.y-cy, prev.x-cx));
+    }
+    if(si<stages.length-1){
+      const next=mainPos[si+1];
+      spineAngles.push(Math.atan2(next.y-cy, next.x-cx));
+    }
+    // Mean spine angle (in radians)
+    let spineAngle = spineAngles.length===2
+      ? Math.atan2(
+          (Math.sin(spineAngles[0])+Math.sin(spineAngles[1]))/2,
+          (Math.cos(spineAngles[0])+Math.cos(spineAngles[1]))/2
+        )
+      : (spineAngles[0] || 0);
+
+    // Fan center = opposite of spine
+    const fanCenter = spineAngle + Math.PI;
+    // Spread 200° around fanCenter, avoid spine direction
+    const ARC = n===1 ? 0 : Math.min(200, n*28);
+    const startA = fanCenter - (ARC/2) * Math.PI/180;
+    const stepA  = n===1 ? 0 : (ARC/(n-1)) * Math.PI/180;
+
+    items.forEach((item,ii)=>{
+      const angle = startA + stepA*ii;
+      // Plan check has most branches — give it extra orbit variation
+      const isPCP = stage.id==="pcp";
+      const orbitVariants = isPCP
+        ? [1.0, 1.32, 0.85, 1.45, 0.90, 1.22, 0.78, 1.38, 0.95, 1.18, 0.82, 1.28, 1.05, 1.42]
+        : [1.0, 1.15, 0.90, 1.22, 0.93, 1.10, 0.85, 1.18];
+      const orb = ORBIT * orbitVariants[ii % orbitVariants.length];
+      const bx = cx + Math.cos(angle)*orb;
+      const by = cy + Math.sin(angle)*orb;
+      const active = item.active;
+      const branchColor = item.type==="doc"
+        ? (stage.id==="plp" ? "#ea580c" : "#0891b2")
+        : (stage.id==="pla" ? "#16a34a" : "#dc2626");
+      const opacity = active ? 1 : 0.28;
+
+      // Stem: edge of main → edge of branch
+      const dx=bx-cx, dy=by-cy, dist=Math.sqrt(dx*dx+dy*dy);
+      const nx=dx/dist, ny=dy/dist;
+      const ln=mkEl("line",{
+        x1:cx+nx*R_MAIN,    y1:cy+ny*R_MAIN,
+        x2:bx-nx*R_BR,      y2:by-ny*R_BR,
+        stroke: active ? branchColor : "#d4d4d4",
+        "stroke-width": active?"1.5":"1",
+        "stroke-dasharray": active?"none":"4,3",
+        opacity
+      });
+      lLines.appendChild(ln);
+
+      // Branch circle
+      const circ=mkEl("circle",{cx:bx,cy:by,r:R_BR,
+        fill: active ? branchColor : "#f5f5f4",
+        stroke: active ? branchColor : "#d4d4d8",
+        "stroke-width":"1.5", opacity});
+      if(active){
+        circ.style.cursor="pointer";
+        circ.addEventListener("click",()=>openSlide(item.data, item.type==="doc"?stage.id:"dept"+(stage.id==="pla"?"":"-r")));
+      }
+      lBranch.appendChild(circ);
+
+      // Label
+      const rawName=(item.data.name||item.data.n||"").trim();
+      const lines=wrapLabel(rawName,11);
+      const lhPx=8.5;
+      const totalH=(lines.length-1)*lhPx;
+      lines.forEach((ln2,li)=>{
+        const t=mkEl("text",{
+          x:bx, y:by - totalH/2 + li*lhPx,
+          "text-anchor":"middle","dominant-baseline":"middle",
+          "font-size":"8.5","font-weight":"700",
+          "font-family":"Helvetica Neue,Helvetica,Arial,sans-serif",
+          fill: active?"#fff":"#b0b0b8","pointer-events":"none"
+        });
+        t.textContent=ln2;
+        lText.appendChild(t);
+      });
+
+      // Invisible hit area for easier tapping
+      if(active){
+        const hit=mkEl("circle",{cx:bx,cy:by,r:R_BR+4,fill:"transparent",stroke:"none"});
+        hit.style.cursor="pointer";
+        hit.addEventListener("click",()=>openSlide(item.data, item.type==="doc"?stage.id:"dept"+(stage.id==="pla"?"":"-r")));
+        lText.appendChild(hit);
+      }
+    });
+  });
+
+  // ── Main stage circles (drawn on top) ──
+  stages.forEach((stage,si)=>{
+    const {x:cx,y:cy}=mainPos[si];
+    const r=stage.terminal ? R_MAIN-8 : R_MAIN;
+    const circ=mkEl("circle",{cx,cy,r,fill:stage.color,
+      filter:"drop-shadow(0 3px 8px rgba(0,0,0,.2))"});
+    lMain.appendChild(circ);
+    const labelLines=stage.label.split("\n");
+    const lhPx=13, totalH=(labelLines.length-1)*lhPx;
+    labelLines.forEach((ln,li)=>{
+      const t=mkEl("text",{
+        x:cx, y:cy - totalH/2 + li*lhPx,
+        "text-anchor":"middle","dominant-baseline":"middle",
+        "font-size":stage.terminal?"12":"10","font-weight":"800",
+        "font-family":"Helvetica Neue,Helvetica,Arial,sans-serif",
+        fill:"#fff","pointer-events":"none"
+      });
+      t.textContent=ln;
+      lText.appendChild(t);
+    });
+  });
+}
+
+
+// ══════════════════════════════════════════════
+// RIGHT PANEL: codes + docs
+// ══════════════════════════════════════════════
+function renderRight(){
+  renderCodes(); renderDocs();
+}
+
+function showMobDocs(){
+  if(window.innerWidth>768) return;
+  const mob=document.getElementById("mobDocsInline");
+  if(!mob) return;
+  // Show inline below flowchart — user scrolls down to see
+  mob.style.display="flex";
+  mob.style.flexDirection="column";
+  mob.style.gap="8px";
+  mob.innerHTML=
+    '<div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--t3);padding:4px 2px;">Your Required Codes & Documents</div>'+
+    '<div class="card codes-card" style="flex-shrink:0;">'+document.getElementById("codesCard").innerHTML+'</div>'+
+    '<div class="card docs-card" style="flex-shrink:0;">'+document.getElementById("docsCard").innerHTML+'</div>';
+  // Scroll to show the email input at top
+  const centerEl=document.querySelector(".center");
+  if(centerEl) setTimeout(()=>{ centerEl.scrollTop=0; },50);
+}
+
+function renderCodes(){
+  const el=document.getElementById("codesCard");
+  const active=[...S.tags,"PL","PLP","PCP","BS"];
+  const plp=[], pcp=[];
+  const seenCodes=new Set();
+
+  SHEET_CODES.forEach(row=>{
+    const rowTags=row.tags.split(",").map(t=>t.trim());
+    const match=rowTags.some(rt=>active.includes(rt));
+    if(!match) return;
+    if(seenCodes.has(row.code)) return;
+    seenCodes.add(row.code);
+    const isPlp=rowTags.some(rt=>["PL","PLP","HLP","BFP"].includes(rt))&&!rowTags.some(rt=>["PCP","BS"].includes(rt));
+    if(isPlp) plp.push(row); else pcp.push(row);
+  });
+
+  let html=`<div class="card-lbl">📐 Code References</div>`;
+  if(!plp.length&&!pcp.length){html+=`<div class="right-empty">Appear as you answer</div>`;el.innerHTML=html;return;}
+
+  const grp=(arr,phase,label,color)=>{
+    if(!arr.length) return "";
+    let g=`<div class="phase-group"><div class="phase-hdr"><div class="ph-dot" style="background:${color}"></div><span class="ph-title" style="color:${color}">${label}</span></div>`;
+    arr.forEach(row=>{
+      g+=`<div class="code-row">
+        <span class="cr-tag ${phase}">${row.code}</span>
+        <div class="cr-info">
+          <div class="cr-name">${row.code}${row.year?" ("+row.year+")":""}</div>
+          ${row.url?`<a class="cr-link" href="${row.url}" target="_blank">Link to website ↗</a>`:`<span style="font-size:8px;color:var(--t3)">Link pending</span>`}
+        </div></div>`;
+    });
+    return g+"</div>";
+  };
+  html+=grp(plp,"plp","Planning Phase","#d97706");
+  html+=grp(pcp,"pcp","Plan Check Phase","#0891b2");
+  el.innerHTML=html;
+}
+
+function renderDocs(){
+  const el=document.getElementById("docsCard");
+  const activeTags=[...S.tags];
+
+  const matched=SHEET_DOCS.filter(row=>{
+    const rowTags=row.tags.split(",").map(t=>t.trim());
+    return rowTags.some(rt=>activeTags.includes(rt)||rt==="BS"||rt==="PCP"||rt==="OW");
+  });
+
+  const dedup=(arr)=>{const s=new Set(); return arr.filter(r=>{if(s.has(r.doc))return false;s.add(r.doc);return true;});};
+  const docs=dedup(matched);
+
+  let html=`<div class="card-lbl">📄 City Documents</div>`;
+  if(!docs.length){html+=`<div class="right-empty">Appear as you answer</div>`;el.innerHTML=html;return;}
+  docs.forEach(row=>{
+    html+=`<div class="doc-row">
+      <div class="doc-icon">📎</div>
+      <div class="doc-info">
+        <div class="doc-name">${row.doc}${row.year?" ("+row.year+")":""}</div>
+        ${row.url?`<a class="doc-link" href="${row.url}" target="_blank">Open document ↗</a>`:`<span style="font-size:8px;color:var(--t3)">Link pending</span>`}
+      </div></div>`;
+  });
+  el.innerHTML=html;
+}
+
+// ══════════════════════════════════════════════
+// SHOW QUESTION
+// ══════════════════════════════════════════════
+function showQ(qid){
+  S.cur=qid;
+  if(window.innerWidth<=768) mobSwitch('q');
+  const el=document.getElementById("centerQ");
+
+  if(TERMS[qid]){
+    const t=TERMS[qid];
+    if(t.isEnd) setTimeout(showMobDocs, 100);
+    el.innerHTML=`<div class="term ${t.cls}">
+      <div class="term-icon">${t.icon}</div>
+      <div class="term-title">${t.title}</div>
+      <div class="term-msg">${t.msg}</div>
+      ${t.isEnd?`
+        <div class="email-row">
+          <input class="email-in" id="eIn" type="email" placeholder="your@email.com"/>
+          <button class="sbtn" onclick="sendEmail()">Send summary →</button>
+        </div>
+        <div class="sok" id="sok"></div>`:""}
+      ${t.hasBack?`<button class="qback" onclick="goBack()" style="margin-bottom:8px;width:100%;">‹ Go Back &amp; Change Answer</button>`:""}
+      <button class="rbtn" onclick="restart()">↺ Start New</button>
+    </div>`;
+    return;
+  }
+
+  const q=QS[qid]; if(!q) return;
+
+  if(q.skipIf&&q.skipIf()){
+    const fakeVal=qid==="Q1"?S.address:"auto";
+    S.answers.push({qid:q.id,qtext:q.text,answer:fakeVal+" (auto)",tagsBefore:[...S.tags]});
+    renderTrail(); renderHeader();
+    if(qid==="Q6") return showQ("Q7");
+    return showQ(q.next(fakeVal));
+  }
+
+  const hasPrev=S.answers.length>0;
+  let inner="";
+  if(q.note) inner+=`<div class="qnote">ℹ️ ${q.note}</div>`;
+
+  if(q.hasHLP){
+    const cgsUrl = S.lat&&S.lng
+      ? `https://maps.conservation.ca.gov/cgs/lsi/#zoom=16&center=${S.lng},${S.lat}`
+      : `https://maps.conservation.ca.gov/cgs/lsi/`;
+    inner+=`<div class="tdsf-calc">
+      <div class="tdsf-head">🏔 CGS Landslide Inventory Map</div>
+      <div style="font-size:10px;color:var(--t2);line-height:1.6;margin-bottom:8px;">
+        Verify using the California Geological Survey (CGS) map. Look for the property boundary overlapping any landslide polygon.
+        ${S.lat?`The map will open centered on <strong>${S.address||"your address"}</strong>.`:"Enter the address in Q1 first for a pre-centered map."}
+      </div>
+      <a href="${cgsUrl}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:var(--text);color:white;font-size:11px;font-weight:700;text-decoration:none;margin-bottom:6px;">
+        🗺 Open CGS Landslide Map ↗
+      </a>
+      <div style="font-size:8px;color:var(--t3);margin-top:4px;line-height:1.4;">* If landslide area is confirmed, additional Geotechnical review, Geologic Report, and LACBC §110 compliance will be required.</div>
+    </div>`;
+  }
+
+  if(q.hasTDSF){
+    const pf=S.grossSqFt>0?S.grossSqFt:"";
+    const parcelInfoHtml = (S.apn||S.grossSqFt) ? `
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:7px 10px;margin-bottom:8px;text-align:left;font-size:10px;line-height:1.7;">
+        ${S.apn?`<div><span style="color:var(--t2);">APN:</span> <strong>${S.apn}</strong></div>`:""}
+        ${S.grossSqFt?`<div><span style="color:var(--t2);">LA County Tax Assessor Parcel Area:</span> <strong>${S.grossSqFt.toLocaleString()} sf</strong> <span style="color:var(--t3);font-size:9px;">(col AJ — ShapeSTAre)</span></div>`:""}
+      </div>` : `<div style="font-size:9px;color:var(--t3);margin-bottom:8px;text-align:left;">Enter address in Q1 to auto-fill lot area from parcel data.</div>`;
+    inner+=`<div class="tdsf-calc">
+      <div class="tdsf-head">📐 TDSF Calculator — MMC §17.40.040(13)</div>
+      ${S.bfp?'<div style="font-size:9px;color:var(--green);margin-bottom:4px;">ℹ️ Beachfront properties are exempt from TDSF limits</div>':''}
+      ${parcelInfoHtml}
+      <div class="tdsf-tabs">
+        <button class="tdsf-tab active" id="tdsf-tab-guided" onclick="switchTDSFMode('guided')">Guided</button>
+        <button class="tdsf-tab" id="tdsf-tab-manual" onclick="switchTDSFMode('manual')">Manual (net lot)</button>
+      </div>
+      <div id="tdsf-guided" class="tdsf-fields" style="display:flex;">
+        <div class="tdsf-field"><label>Gross Lot Area (sf)</label><input class="tdsf-in" id="tdsf-gross" type="number" placeholder="e.g. 43560" value="${pf}" min="0"/></div>
+        <div class="tdsf-field"><label>Slopes ≥1:1 Area (sf)</label><input class="tdsf-in" id="tdsf-slopes" type="number" placeholder="0" value="0" min="0"/></div>
+        <div class="tdsf-field"><label>Public Access Easements (sf)</label><input class="tdsf-in" id="tdsf-ease" type="number" placeholder="0" value="0" min="0"/></div>
+      </div>
+      <div id="tdsf-manual" class="tdsf-fields" style="display:none;">
+        <div class="tdsf-field"><label>Net Lot Area (sf)</label><input class="tdsf-in" id="tdsf-net" type="number" placeholder="e.g. 21780"/></div>
+      </div>
+      <div class="tdsf-result" id="tdsf-res"><div class="tdsf-r-lbl">Max Allowable TDSF</div><div class="tdsf-r-val"></div><div class="tdsf-r-sub"></div></div>
+      <div class="tdsf-disc" id="tdsf-disc">* Net lot area to be certified by a licensed surveyor with access to the preliminary title report.</div>
+      <div class="tdsf-btns">
+        <button class="tdsf-calc-btn" onclick="runTDSFCalc()">Calculate</button>
+        <button class="tdsf-ok-btn" id="tdsf-ok-btn" onclick="confirmTDSF()">✓ Confirm & Continue</button>
+      </div>
+      <div style="font-size:8px;color:var(--t3);margin-top:6px;">Or answer manually:</div>
+    </div>`;
+  }
+
+  if(q.type==="address"){
+    inner+=`<div class="qin-row">
+      <input class="qin" id="qIn" type="text" placeholder="${q.placeholder||''}" autocomplete="off"/>
+      <button class="cbtn" id="addrLookupBtn" onclick="submitAddress()">Look Up →</button>
+    </div>
+    <div id="addrFeedback" style="margin-top:8px;font-size:10px;color:var(--t2);padding:6px 8px;border-radius:7px;display:none;background:var(--bg);border:1px solid var(--border);line-height:1.5;"></div>
+    <button id="addrSkipBtn" style="display:none;margin-top:6px;padding:5px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;font-family:'Helvetica Neue',Helvetica,sans-serif;font-size:9px;color:var(--t2);cursor:pointer;" onclick="skipAddressToNext()">Skip geocoding → continue with address as entered</button>`;
+  } else if(q.type==="text"){
+    inner+=`<div class="qin-row"><input class="qin" id="qIn" type="text" placeholder="${q.placeholder||''}" autocomplete="off"/><button class="cbtn" onclick="submitText()">→</button></div>`;
+  } else {
+    inner+=`<div class="opts">${q.options.map(o=>`<button class="opt" onclick="submitChoice('${o.replace(/'/g,"\\'")}',this)">${o}</button>`).join("")}</div>`;
+  }
+
+  el.innerHTML=`<div class="qcard">
+    <div class="qtop">
+      <span class="qbadge">${q.id}</span>
+      <button class="qback" onclick="goBack()" ${!hasPrev?"disabled":""}>‹ Back</button>
+    </div>
+    <div class="qtext">${q.text}</div>${inner}
+  </div>`;
+
+  const inp=document.getElementById("qIn");
+  if(inp){
+    inp.focus();
+    if(q.type==="address") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitAddress();});
+    else if(q.type==="text") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitText();});
+  }
+}
+
+async function submitAddress(){
+  const v=document.getElementById("qIn").value.trim();
+  if(!v){document.getElementById("qIn").style.borderColor="var(--red)";return;}
+  const btn=document.getElementById("addrLookupBtn");
+  const fb=document.getElementById("addrFeedback");
+  btn.textContent="Looking up…"; btn.disabled=true;
+  fb.style.display="block"; fb.textContent="Searching for address…";
+  try{
+    const parcel=lookupParcel(v);
+    if(parcel&&parcel.grossSqFt>0){S.grossSqFt=parcel.grossSqFt;S.apn=parcel.apn||S.apn;}
+    const url=`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?SingleLine=${encodeURIComponent(v+", Malibu CA")}&outFields=*&f=json&maxLocations=1&sourceCountry=US`;
+    const d=await(await fetch(url)).json();
+    if(d.candidates&&d.candidates.length){
+      const c=d.candidates[0];
+      S.lat=c.location.y; S.lng=c.location.x;
+      S.address=c.attributes.Match_addr||c.address||v;
+      if(!S.apn) S.apn=c.attributes.Ref_ID||"";
+      tag("PF");
+      // BFP determined by Q_BFP_CONFIRM — no auto-tag here
+      fb.style.background="var(--green-l)"; fb.style.borderColor="rgba(22,163,74,.3)"; fb.style.color="var(--green)";
+      fb.innerHTML=`✓ <strong>${S.address}</strong><br><span style="color:var(--t2);font-size:9px;">${S.lat.toFixed(5)}, ${S.lng.toFixed(5)}${S.grossSqFt?" · Gross lot: "+S.grossSqFt.toLocaleString()+" sf":""}</span>`;
+      updateMap(S.lat,S.lng,S.mapMode);
+      renderParcelInfo();
+      renderMapLinks();
+      document.getElementById("overlayChecks").style.display="block";
+      logEntry(S.address);
+      setTimeout(()=>finishAddress(S.address), 600);
+    } else {
+      fb.style.color="var(--yellow)"; fb.style.background="var(--yellow-l)";
+      fb.innerHTML="Address not found via geocoding. You can continue anyway.";
+      document.getElementById("addrSkipBtn").style.display="inline-block";
+      btn.textContent="Look Up →"; btn.disabled=false;
+    }
+  }catch(e){
+    fb.style.color="var(--yellow)"; fb.style.background="var(--yellow-l)";
+    fb.innerHTML="Geocoding unavailable. You can continue anyway.";
+    document.getElementById("addrSkipBtn").style.display="inline-block";
+    btn.textContent="Look Up →"; btn.disabled=false;
+  }
+}
+
+function skipAddressToNext(){
+  const v=document.getElementById("qIn").value.trim()||"Address not found";
+  finishAddress(v);
+}
+
+function finishAddress(v){
+  const q=QS[S.cur];
+  S.answers.push({qid:q.id,qtext:q.text,answer:v,tagsBefore:[...S.tags]});
+  const next=q.next(v);
+  renderTrail();renderHeader();renderFlow();renderRight();showQ(next);
+}
+
+function submitText(){
+  const v=document.getElementById("qIn").value.trim();
+  if(!v){document.getElementById("qIn").style.borderColor="var(--red)";return;}
+  const q=QS[S.cur];
+  S.answers.push({qid:q.id,qtext:q.text,answer:v,tagsBefore:[...S.tags]});
+  const next=q.next(v);
+  renderTrail();renderHeader();renderFlow();renderRight();showQ(next);
+}
+
+function submitChoice(val,btn){
+  document.querySelectorAll(".opt").forEach(b=>b.classList.remove("sel"));
+  btn.classList.add("sel");
+  setTimeout(()=>{
+    const q=QS[S.cur];
+    S.answers.push({qid:q.id,qtext:q.text,answer:val,tagsBefore:[...S.tags]});
+    const next=q.next(val);
+    renderTrail();renderHeader();renderFlow();renderRight();showQ(next);
+  },130);
+}
+
+function goBack(){
+  if(!S.answers.length) return;
+  const last=S.answers.pop();
+  S.tags=new Set(last.tagsBefore);
+  S.bfp=S.tags.has("BFP"); S.hlp=S.tags.has("HLP");
+  renderTrail();renderHeader();renderFlow();renderRight();showQ(last.qid);
+}
+
+function jumpTo(idx){
+  const target=S.answers[idx];
+  S.answers=S.answers.slice(0,idx);
+  S.tags=new Set(target.tagsBefore);
+  S.bfp=S.tags.has("BFP"); S.hlp=S.tags.has("HLP");
+  renderTrail();renderHeader();renderFlow();renderRight();showQ(target.qid);
+}
+
+// ══════════════════════════════════════════════
+// GIS
+// ══════════════════════════════════════════════
+
+function updateMap(lat,lng,mode){
+  const bbox=`${lng-.0012},${lat-.0008},${lng+.0012},${lat+.0008}`;
+  document.getElementById("mapWrap").innerHTML=`<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=${mode==="satellite"?"hot":"mapnik"}&marker=${lat},${lng}" frameborder="0"></iframe>`;
+}
+
+function renderParcelInfo(){
+  if(!S.lat) return;
+  document.getElementById("parcelInfo").innerHTML=`
+    <div class="pi-row"><span class="pi-l">Address</span><span class="pi-v">${S.address}</span></div>
+    <div class="pi-row"><span class="pi-l">APN</span><span class="pi-v">${S.apn||"—"}</span></div>
+    ${S.grossSqFt?`<div class="pi-row"><span class="pi-l">Gross Lot</span><span class="pi-v">${S.grossSqFt.toLocaleString()} sf</span></div>`:""}`;
+}
+
+function renderMapLinks(){
+  if(!S.lat) return;
+  const apn=S.apn.replace(/-/g,"")||"";
+  document.getElementById("mapLinks").innerHTML=`
+    <a class="mlink" href="${apn?`https://portal.assessor.lacounty.gov/parceldetail/${apn}`:"https://portal.assessor.lacounty.gov/"}" target="_blank">📊 Assessor ↗</a>
+    <a class="mlink" href="https://maps.conservation.ca.gov/cgs/lsi/#zoom=15&center=${S.lng},${S.lat}" target="_blank">🏔 CGS Landslide ↗</a>
+    <a class="mlink" href="https://experience.arcgis.com/experience/47d2fe80405a4f0f9aa73a903b535962" target="_blank">🌿 ESHA Map ↗</a>`;
+}
+
+function switchMap(mode,btn){
+  document.querySelectorAll(".mtab").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active"); S.mapMode=mode;
+  if(S.lat) updateMap(S.lat,S.lng,mode);
+}
+
+// ══════════════════════════════════════════════
+// SLIDE PANEL
+// ══════════════════════════════════════════════
+function openSlide(item,phase){
+  const labels={plp:"Planning Doc",pcp:"Plan Check Doc",dept:"Planning Approval","dept-r":"Plan Check Approval"};
+  const phEl=document.getElementById("spPhase");
+  phEl.className=`sp-phase ${phase.replace("-r","-r")}`; 
+  phEl.textContent=labels[phase]||phase;
+  document.getElementById("spTitle").textContent=(item.name||item.n||"").replace(/\n/g," ");
+  document.getElementById("spDesc").textContent=item.desc||"";
+
+  let html="";
+
+  // Note for dept slides
+  if(item.note){
+    html+=`<div class="sp-section"><div style="background:var(--blue-l);border-radius:8px;padding:8px 10px;border-left:2px solid var(--blue);font-size:10px;color:#1e40af;line-height:1.5;">${item.note}</div></div>`;
+  }
+
+  if(item.items&&item.items.length){
+    html+=`<div class="sp-section"><div class="sp-s-title">Required Contents</div><div class="sp-items">${item.items.map(i=>`<div class="sp-item">${i}</div>`).join("")}</div></div>`;
+  }
+
+  if(item.codes&&item.codes.length){
+    const CMAP={
+      MMC:{n:"Malibu Municipal Code",d:"City of Malibu Municipal Code — zoning, setbacks, TDSF, bulk/height limits."},
+      CBC:{n:"CA Building Code 2022",d:"2022 CBC — structural, fire, accessibility for all new construction."},
+      CRC:{n:"CA Residential Code 2022",d:"2022 CRC — applies to single-family dwellings and ADUs."},
+      LACBC:{n:"LA County Building Code 2023",d:"2023 LACBC amendments. Sec 110: landslide areas. Sec 111: all others."},
+      CPC:{n:"CA Plumbing Code",d:"Governs septic/OWTS design and drainage fixture units."},
+      LAMP:{n:"Malibu LAMP",d:"Malibu Local Agency Management Program — OWTS/septic standards."},
+      FIRE:{n:"LA County Fire Code",d:"LA County Fire Code (2022 base + 2025 amendments)."},
+      CEnC:{n:"CA Energy Code (T24)",d:"Title 24 Part 6 — energy compliance for all new construction."},
+      ASCE:{n:"ASCE 7-22",d:"Minimum Design Loads — wind, seismic, snow loads."},
+      EO:{n:"Governor's Executive Order",d:"Jan 2025 EO — suspends CEQA/Coastal Act for qualifying fire rebuilds."},
+      OWTS:{n:"LA County OWTS Standards",d:"LA County Environmental Health OWTS standards for septic design."},
+    };
+    html+=`<div class="sp-section"><div class="sp-s-title">Applicable Codes</div><div class="sp-codes">${item.codes.map(c=>{
+      const cd=CMAP[c]; if(!cd) return "";
+      const sheetRow=SHEET_CODES.find(r=>r.code===c||r.code.startsWith(c));
+      return `<div class="sp-code"><div class="sp-code-name">${cd.n}</div><div class="sp-code-desc">${cd.d}</div>${sheetRow?.url?`<a class="sp-link" href="${sheetRow.url}" target="_blank">Link to website ↗</a>`:""}</div>`;
+    }).join("")}</div></div>`;
+  }
+
+  if(item.profs&&item.profs.length){
+    html+=`<div class="sp-section"><div class="sp-s-title">Professionals</div><div class="sp-profs">${item.profs.map(p=>`
+      <div class="sp-prof">
+        <div class="sp-prof-name">${p.t} <span class="sp-prof-req ${p.req?"required":"recommended"}">${p.req?"REQUIRED":"RECOMMENDED"}</span></div>
+        <div class="sp-prof-role">${p.r}</div>
+      </div>`).join("")}</div></div>`;
+  }
+
+  // Relevant city documents
+  const activeTags=[...S.tags];
+  const relDocs=SHEET_DOCS.filter(row=>{
+    const rt=row.tags.split(",").map(t=>t.trim());
+    return rt.some(t=>activeTags.includes(t)||t==="BS"||t==="OW");
+  }).slice(0,5);
+  if(relDocs.length){
+    html+=`<div class="sp-section"><div class="sp-s-title">City Documents</div><div class="sp-docs">${relDocs.map(d=>`
+      <a class="sp-doc-link" href="${d.url}" target="_blank">
+        <span>📎 ${d.doc}</span><small>${d.year}</small>
+      </a>`).join("")}</div></div>`;
+  }
+
+  document.getElementById("spBody").innerHTML=html||`<div style="color:var(--t3);font-size:11px;font-style:italic;padding:16px 0;text-align:center;">Tap document bubbles in the flowchart for details.</div>`;
+  document.getElementById("slideOv").classList.add("open");
+}
+
+function closeSlide(){ document.getElementById("slideOv").classList.remove("open"); }
+
+// ══════════════════════════════════════════════
+// EMAIL
+// ══════════════════════════════════════════════
+function logEntry(addr, email){
+  if(!CFG.SHEET_URL) return;
+  fetch(CFG.SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      address: addr,
+      apn: S.apn||"",
+      date: new Date().toISOString(),
+      tags: [...S.tags].join(", "),
+      email: email||"",
+      gross_sqft: S.grossSqFt||"",
+      max_tdsf: S.maxTDSF||"",
+      type: email ? "email_sent" : "address_lookup"
+    })
+  }).catch(()=>{});
+}
+
+function sendEmail(){
+  const email=document.getElementById("eIn")?.value?.trim();
+  if(!email){document.getElementById("eIn").style.borderColor="var(--red)";return;}
+  const ok=document.getElementById("sok");
+  if(!CFG.EJS_TPL){ok.style.display="block";ok.style.color="var(--yellow)";ok.textContent="⚙️ Add EmailJS Template ID to CFG.EJS_TPL";return;}
+  if(!window.emailjs){
+    const s=document.createElement("script");
+    s.src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+    s.onload=()=>{window.emailjs.init(CFG.EJS_KEY);doSend(email);};
+    document.head.appendChild(s);
+  } else doSend(email);
+}
+function svgToPngDataUrl(svgEl, callback){
+  try {
+    const svgData = new XMLSerializer().serializeToString(svgEl);
+    const svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+    const url = URL.createObjectURL(svgBlob);
+    const img = new Image();
+    const w = parseInt(svgEl.getAttribute("width"))||900;
+    const h = parseInt(svgEl.getAttribute("height"))||400;
+    img.onload = ()=>{
+      const canvas = document.createElement("canvas");
+      canvas.width = w*2; canvas.height = h*2;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      callback(canvas.toDataURL("image/png"));
+    };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); callback(null); };
+    img.src = url;
+  } catch(e){ callback(null); }
+}
+
+function doSend(email){
+  const ok=document.getElementById("sok");
+  ok.style.display="block"; ok.style.color="var(--t2)"; ok.textContent="⏳ Preparing summary…";
+
+  const plpDocs=DOCS.filter(d=>d.stage==="plp"&&d.showIf(S.tags));
+  const pcpDocs=DOCS.filter(d=>d.stage==="pcp"&&d.showIf(S.tags));
+
+  function sheetDocUrl(name){
+    const n=name.toLowerCase().replace(/\(.*?\)/g,"").trim();
+    const m=SHEET_DOCS.find(r=>r.doc&&n.includes(r.doc.toLowerCase().slice(0,10)));
+    return m?.url||null;
+  }
+  function sheetCodeUrl(code){
+    const m=SHEET_CODES.find(r=>r.code===code||r.code.startsWith(code));
+    return m?.url||null;
+  }
+
+  const activeTags=[...S.tags,"PL","PLP","PCP","BS"];
+  const codes=SHEET_CODES.filter(r=>r.tags.split(",").map(t=>t.trim()).some(t=>activeTags.includes(t)));
+  const pros=[
+    ...plpDocs.flatMap(d=>(d.profs||[]).map(p=>({t:p.t||"",req:p.req}))),
+    ...pcpDocs.flatMap(d=>(d.profs||[]).map(p=>({t:p.t||"",req:p.req})))
+  ].filter((p,i,a)=>p.t.length>3&&a.findIndex(x=>x.t===p.t)===i);
+
+  const plpTxt = plpDocs.map(d=>{
+    const u=sheetDocUrl(d.name); const n=d.name.replace(/\n/g," ");
+    return u ? `• ${n}\n  ${u}` : `• ${n}`;
+  }).join("\n");
+  const pcpTxt = pcpDocs.map(d=>{
+    const u=sheetDocUrl(d.name); const n=d.name.replace(/\n/g," ");
+    return u ? `• ${n}\n  ${u}` : `• ${n}`;
+  }).join("\n");
+  const codesTxt = codes.map(r=>{
+    const u=sheetCodeUrl(r.code); const n=r.code+(r.year?" ("+r.year+")":"");
+    return u ? `• ${n}: ${u}` : `• ${n}`;
+  }).join("\n");
+  const prosTxt = pros.map(p=>`• [${p.req?"Required":"Recommended"}] ${p.t}`).join("\n");
+
+  const msgTxt =
+`MALIBU REBUILD NAVIGATOR — PERMITTING SUMMARY
+Property: ${S.address||"N/A"}
+APN: ${S.apn||"N/A"}${S.grossSqFt>0?"\nGross Lot Area: "+S.grossSqFt.toLocaleString()+" sf":""}${S.maxTDSF>0?"\nMax TDSF: "+S.maxTDSF.toLocaleString()+" sf (to be certified by licensed Surveyor)":""}
+
+PLANNING SUBMISSION DOCUMENTS:
+${plpTxt||"None"}
+
+PLAN CHECK DOCUMENTS:
+${pcpTxt||"None"}
+
+APPLICABLE CODES:
+${codesTxt||"None"}
+
+REQUIRED PROFESSIONALS:
+${prosTxt||"See navigator"}
+
+Generated by rebuild navigator Malibu | luistenadesign.com`;
+
+  window.emailjs.send(CFG.EJS_SVC, CFG.EJS_TPL, {
+    email,
+    title: S.address||"Malibu Property",
+    address: S.address||"N/A",
+    apn: S.apn||"N/A",
+    max_tdsf: S.maxTDSF>0 ? S.maxTDSF.toLocaleString()+" sf" : "N/A",
+    planning_docs: plpTxt||"None",
+    plancheck_docs: pcpTxt||"None",
+    applicable_codes: codesTxt||"None",
+    professionals: prosTxt||"See navigator",
+    tags: [...S.tags].join(", ")||"None",
+    message: msgTxt,
+  })
+  .then(()=>{
+    ok.style.color="var(--green)"; ok.textContent="✓ Sent to "+email;
+    logEntry(S.address, email);
+  })
+  .catch((e)=>{
+    console.error("EmailJS error:",e);
+    ok.style.color="var(--red)"; ok.textContent="⚠️ Send failed — check EmailJS config.";
+  });
+}
+
+
+// ══════════════════════════════════════════════
+// MOBILE TAB SWITCHING
+// ══════════════════════════════════════════════
+const MOB_MAP = {
+  map:  {panel:'.left',  tab:'mtab-map'},
+  q:    {panel:'.center',tab:'mtab-q'},
+  docs: {panel:'.right', tab:'mtab-docs'},
+};
+let mobCur = 'q';
+
+function mobSwitch(tab){
+  if(window.innerWidth > 768) return;
+  mobCur = tab;
+  // Hide all panels
+  document.querySelectorAll('.left,.center,.right').forEach(p=>p.classList.remove('mob-active'));
+  // Show target
+  const target = MOB_MAP[tab].panel;
+  document.querySelector(target).classList.add('mob-active');
+  // Update tab bar
+  document.querySelectorAll('.mob-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(MOB_MAP[tab].tab).classList.add('active');
+  // Re-render flowchart when switching to it (SVG may have rendered at zero size)
+
+}
+
+function mobInit(){
+  if(window.innerWidth <= 768){
+    mobSwitch('q');
+  }
+}
+
+window.addEventListener('resize', ()=>{
+  if(window.innerWidth <= 768) mobSwitch(mobCur);
+  else {
+    document.querySelectorAll('.left,.center,.right').forEach(p=>p.classList.remove('mob-active'));
+  }
+});
+function showWelcome(){
+  document.getElementById("centerQ").innerHTML=`
+    <div>
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--t3);margin-bottom:16px;text-align:center;">Malibu Rebuild Navigator</div>
+      <div style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;">Find your rebuild<br>permitting path.</div>
+      <div style="font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:22px;text-align:center;">Answer a short series of questions about your property and project scope. You'll receive a personalized flowchart showing your required permits, documents, code references, and professionals — before you hire anyone.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;">
+        <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">⏱ ~5 minutes</div>
+        <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">❓ Up to 15 questions</div>
+        <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">📄 Custom permit roadmap</div>
+      </div>
+      <button onclick="showQ('Q1')" style="width:100%;padding:16px 20px;border-radius:12px;border:none;background:var(--text);color:white;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:-.3px;box-shadow:0 4px 14px rgba(0,0,0,.2);">
+        Begin 15-question questionnaire to find your rebuild permitting path →
+      </button>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════
+// RESTART
+// ══════════════════════════════════════════════
+function restart(){
+  S={cur:"Q1",answers:[],tags:new Set(),bfp:false,hlp:false,address:"",apn:"",lat:null,lng:null,mapMode:"satellite",grossSqFt:0,netSqFt:0,maxTDSF:0};
+
+  document.getElementById("mapWrap").innerHTML=`<div class="map-ph"><div class="icon">📍</div>Enter address above</div>`;
+  document.getElementById("parcelInfo").innerHTML="";
+  document.getElementById("mapLinks").innerHTML="";
+  document.getElementById("overlayChecks").style.display="none";
+  document.querySelectorAll(".ov-check").forEach(el=>el.classList.remove("checked"));
+  renderTrail();renderHeader();renderFlow();renderRight();showWelcome();
+}
+
+// ── INIT ──
+fetchSheetCodes();
+fetchSheetDocs();
+fetchParcelData();
+renderFlow();
+renderRight();
+mobInit();
+</script>
+</body>
+</html>
