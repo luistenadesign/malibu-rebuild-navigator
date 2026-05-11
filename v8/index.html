@@ -1455,6 +1455,92 @@ header{
 .qcard-header .qback:hover:not(:disabled) { background: var(--bg-subtle); color: var(--text); }
 .qcard-header .qback:disabled { opacity: 0.4; cursor: not-allowed; }
 
+/* ============================================================
+   FIX PASS 1: tighter typography + Q_HLP side-by-side layout
+   Goal — fit the QHLP card into the bounded centerQ without scroll,
+   and match the rest of the site's tighter Helvetica scale.
+   ============================================================ */
+
+/* Match site typography on diagram cards (Helvetica, not oversized Inter) */
+#centerQ .qcard-new,
+#centerQ .qcard-new h2,
+#centerQ .qcard-new p.lede,
+#centerQ .qcard-new .opt-label,
+#centerQ .qcard-new .opt-desc,
+#centerQ .qcard-new .opt-tag,
+#centerQ .qcard-new .options-label,
+#centerQ .qcard-new .card-meta,
+#centerQ .qcard-new .info-state-label,
+#centerQ .qcard-new .info-state-status,
+#centerQ .qcard-new .info-state-detail,
+#centerQ .qcard-new .info-state-tag,
+#centerQ .qcard-new .cgs-reference-label,
+#centerQ .qcard-new .cgs-reference-caption,
+#centerQ .qcard-new .info-states-label,
+#centerQ .qcard-new .card-footer-hint {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Shrink everything to match the rest of the navigator */
+#centerQ .qcard-new { padding: 8px 6px 8px; }
+#centerQ .qcard-new .card-meta { font-size: 8.5px; margin-bottom: 8px; }
+#centerQ .qcard-new .card-meta-progress span { width: 12px; height: 2px; }
+#centerQ .qcard-new h2 { font-size: 14px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; letter-spacing: 0; }
+#centerQ .qcard-new p.lede { font-size: 10.5px; line-height: 1.5; margin-bottom: 10px; max-width: none; }
+#centerQ .qcard-new .options-label, #centerQ .qcard-new .info-states-label { font-size: 9px; margin-bottom: 6px; }
+
+/* Option card scale */
+#centerQ .qcard-new .opt-label { font-size: 11px; }
+#centerQ .qcard-new .opt-desc { font-size: 10px; line-height: 1.4; }
+#centerQ .qcard-new .opt-tag { font-size: 9px; }
+#centerQ .qcard-new .opt { padding: 8px 10px 10px; }
+#centerQ .qcard-new .opt svg { max-height: 70px; margin-bottom: 4px; }
+
+/* Q_HLP grid: lede on the left, CGS reference on the right (saves vertical space) */
+#centerQ .qcard-new:has(.cgs-reference) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "meta meta"
+    "h2 h2"
+    "lede cgs"
+    "info-label info-label"
+    "info info"
+    "footer footer";
+  column-gap: 14px;
+  row-gap: 0;
+}
+#centerQ .qcard-new:has(.cgs-reference) > .card-meta { grid-area: meta; }
+#centerQ .qcard-new:has(.cgs-reference) > h2 { grid-area: h2; }
+#centerQ .qcard-new:has(.cgs-reference) > p.lede { grid-area: lede; margin-bottom: 0; align-self: start; }
+#centerQ .qcard-new:has(.cgs-reference) > .cgs-reference { grid-area: cgs; margin-bottom: 0; padding: 6px 8px 8px; }
+#centerQ .qcard-new:has(.cgs-reference) > .info-states-label { grid-area: info-label; margin-top: 12px; }
+#centerQ .qcard-new:has(.cgs-reference) > .info-states { grid-area: info; margin-bottom: 10px; }
+#centerQ .qcard-new:has(.cgs-reference) > .card-footer { grid-area: footer; padding-top: 8px; }
+
+/* Shrink the CGS reference image */
+#centerQ .qcard-new .cgs-reference-label { font-size: 8.5px; margin-bottom: 4px; }
+#centerQ .qcard-new .cgs-reference-img-wrap { margin-bottom: 4px; }
+#centerQ .qcard-new .cgs-reference-img-wrap img { max-height: 130px; object-fit: cover; object-position: center; }
+#centerQ .qcard-new .cgs-reference-caption { font-size: 9px; line-height: 1.4; }
+
+/* Force 2-column info-states even in the narrower centerQ column */
+#centerQ .qcard-new .info-states { grid-template-columns: 1fr 1fr !important; gap: 8px; }
+#centerQ .qcard-new .info-state { padding: 6px 10px 10px; }
+#centerQ .qcard-new .info-state-label { font-size: 8.5px; margin-bottom: 3px; }
+#centerQ .qcard-new .info-state svg { max-height: 60px; margin-bottom: 4px; }
+#centerQ .qcard-new .info-state-status { font-size: 11px; margin-bottom: 2px; }
+#centerQ .qcard-new .info-state-detail { font-size: 9.5px; line-height: 1.4; margin-bottom: 3px; }
+#centerQ .qcard-new .info-state-tag { font-size: 9px; line-height: 1.3; }
+
+/* Card footer & continue button — smaller */
+#centerQ .qcard-new .card-footer { margin-top: 8px; padding-top: 10px; }
+#centerQ .qcard-new .card-footer-hint { font-size: 9.5px; }
+#centerQ .qcard-new .btn-next { padding: 7px 14px; font-size: 11px; }
+
+/* Make the bounded centerQ taller for diagram cards so they fit without scroll on most laptops */
+#centerQ:has(.qcard-new) { max-height: 72vh; }
+
 </style>
 </head>
 <body>
@@ -2111,7 +2197,7 @@ const PCA_DEPTS=[
 // Auto-generated diagram bundles. Each entry: { body: HTML string, script: JS source string }
 window.Q_DIAGRAMS = {
   "Q_HLP": {
-    body: "<div class=\"card\">\n  <div class=\"card-meta\">\n    <span>question 13 of 15</span>\n    <span class=\"card-meta-progress\" aria-hidden=\"true\">\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"current\"></span><span></span><span></span>\n    </span>\n  </div>\n\n  <h2>is your parcel in a known landslide zone?</h2>\n  <p class=\"lede\">\n    this one is auto-detected, no input needed. the city checks every parcel against the california geological survey landslide inventory before the PV path proceeds. parcels inside a known zone need to submit a geotechnical report per the LA County Building Code. parcels outside continue without it.\n  </p>\n\n  <section class=\"cgs-reference\" aria-label=\"CGS landslide inventory reference\">\n    <div class=\"cgs-reference-label\">what the auto-detect checks against</div>\n    <div class=\"cgs-reference-img-wrap\">\n      <img src=\"assets/qhlp_landslide_map.jpeg\" alt=\"California Geological Survey landslide inventory map of the Malibu coast \u2014 colored polygons mark mapped landslide areas across the hillsides between Carbon Beach and Tuna Canyon.\" />\n    </div>\n    <p class=\"cgs-reference-caption\">\n      a section of the california geological survey landslide inventory along the malibu coast. each colored polygon is a mapped landslide. your parcel is checked against this dataset automatically. explore the full inventory at <a href=\"https://maps.conservation.ca.gov/cgs/lsi/#zoom=16&center=-118.619373505292,34.042160512899\" target=\"_blank\" rel=\"noopener noreferrer\">maps.conservation.ca.gov/cgs/lsi</a>.\n    </p>\n  </section>\n\n  <div class=\"info-states-label\">two possible outcomes, your parcel will match one</div>\n  <div class=\"info-states\">\n    <article class=\"info-state info-state--affected\">\n      <div class=\"info-state-label\">if hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-affected\" aria-label=\"Parcel intersects a landslide zone\"></svg>\n      <span class=\"info-state-status\">landslide hazard zone</span>\n      <span class=\"info-state-detail\">your parcel intersects a CGS-mapped landslide area. you'll need to submit a geotechnical report per the LA County Building Code.</span>\n      <span class=\"info-state-tag warn\">PV continues \u00b7 geotechnical report per LA County Building Code</span>\n    </article>\n\n    <article class=\"info-state info-state--clear\">\n      <div class=\"info-state-label\">if no hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-clear\" aria-label=\"Parcel is outside known landslide zones\"></svg>\n      <span class=\"info-state-status\">no landslide hazard</span>\n      <span class=\"info-state-detail\">your parcel is not within a CGS-mapped landslide area. no geotechnical report needed on this basis.</span>\n      <span class=\"info-state-tag fast\">PV fast-track continues</span>\n    </article>\n  </div>\n\n  <div class=\"card-footer\">\n    <span class=\"card-footer-hint\" id=\"footer-hint\">auto-detected from your address, no selection needed</span>\n    <button class=\"btn-next active\" id=\"btn-next\">continue \u2192</button>\n  </div>\n</div>",
+    body: "<div class=\"card\">\n  <div class=\"card-meta\">\n    <span>question 13 of 15</span>\n    <span class=\"card-meta-progress\" aria-hidden=\"true\">\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"done\"></span><span class=\"done\"></span><span class=\"done\"></span>\n      <span class=\"current\"></span><span></span><span></span>\n    </span>\n  </div>\n\n  <h2>is your parcel in a known landslide zone?</h2>\n  <p class=\"lede\">\n    this one is auto-detected, no input needed. the city checks every parcel against the california geological survey landslide inventory before the PV path proceeds. parcels inside a known zone need to submit a geotechnical report per the LA County Building Code. parcels outside continue without it.\n  </p>\n\n  <section class=\"cgs-reference\" aria-label=\"CGS landslide inventory reference\">\n    <div class=\"cgs-reference-label\">what the auto-detect checks against</div>\n    <div class=\"cgs-reference-img-wrap\">\n      <img src=\"qhlp_landslide_map.jpeg\" alt=\"California Geological Survey landslide inventory map of the Malibu coast \u2014 colored polygons mark mapped landslide areas across the hillsides between Carbon Beach and Tuna Canyon.\" />\n    </div>\n    <p class=\"cgs-reference-caption\">\n      a section of the california geological survey landslide inventory along the malibu coast. each colored polygon is a mapped landslide. your parcel is checked against this dataset automatically. explore the full inventory at <a href=\"https://maps.conservation.ca.gov/cgs/lsi/#zoom=16&center=-118.619373505292,34.042160512899\" target=\"_blank\" rel=\"noopener noreferrer\">maps.conservation.ca.gov/cgs/lsi</a>.\n    </p>\n  </section>\n\n  <div class=\"info-states-label\">two possible outcomes, your parcel will match one</div>\n  <div class=\"info-states\">\n    <article class=\"info-state info-state--affected\">\n      <div class=\"info-state-label\">if hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-affected\" aria-label=\"Parcel intersects a landslide zone\"></svg>\n      <span class=\"info-state-status\">landslide hazard zone</span>\n      <span class=\"info-state-detail\">your parcel intersects a CGS-mapped landslide area. you'll need to submit a geotechnical report per the LA County Building Code.</span>\n      <span class=\"info-state-tag warn\">PV continues \u00b7 geotechnical report per LA County Building Code</span>\n    </article>\n\n    <article class=\"info-state info-state--clear\">\n      <div class=\"info-state-label\">if no hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-clear\" aria-label=\"Parcel is outside known landslide zones\"></svg>\n      <span class=\"info-state-status\">no landslide hazard</span>\n      <span class=\"info-state-detail\">your parcel is not within a CGS-mapped landslide area. no geotechnical report needed on this basis.</span>\n      <span class=\"info-state-tag fast\">PV fast-track continues</span>\n    </article>\n  </div>\n\n  <div class=\"card-footer\">\n    <span class=\"card-footer-hint\" id=\"footer-hint\">auto-detected from your address, no selection needed</span>\n    <button class=\"btn-next active\" id=\"btn-next\">continue \u2192</button>\n  </div>\n</div>",
     script: "/* =========================================================\n   AXONOMETRIC PROJECTION\n   ========================================================= */\nconst COS30 = Math.cos(Math.PI / 6);\nconst SIN30 = 0.5;\nfunction axo(x, y, z = 0) { return [(x - y) * COS30, (x + y) * SIN30 - z]; }\nfunction fmt([x, y]) { return `${x.toFixed(2)},${y.toFixed(2)}`; }\n\n/* =========================================================\n   STANDARD LOT\n   Top polygon \u2014 slope from front (V2/V3, road, z=0) to back (V1/V5, z=8).\n   Bottom polygon \u2014 z=0 at V2 and V3 so terrain meets the road as a single\n   line (no earth thickness shows under the road dashed lines). Bottoms at\n   z=-2 elsewhere produce a \"ramp\" wedge that grows from the road inward.\n   ========================================================= */\nconst LOT_VERTS = [\n  [-32, -22, 8],\n  [ 38, -28, 0],\n  [ 42,  18, 0],\n  [ 10,  38, 4],\n  [-38,  24, 8]\n];\n\nconst LOT_BOTTOM_VERTS = [\n  [-32, -22, -2],\n  [ 38, -28,  0],   // matches top \u2014 zero thickness at the road\n  [ 42,  18,  0],   // matches top \u2014 zero thickness at the road\n  [ 10,  38, -2],\n  [-38,  24, -2]\n];\n\nconst SETBACK_VERTS = [\n  [-26, -16, 7],\n  [ 28, -22, 0.3],\n  [ 30,  10, 0.5],\n  [  8,  30, 3.5],\n  [-30,  18, 7]\n];\n\nconst VISIBLE_LOT_EDGES = [[1, 2], [2, 3], [3, 4]];\n\n/* Road as two long parallel dashed lines, clipped by viewBox */\nconst ROAD_DIR = [4 / 46.17, 46 / 46.17];\nconst RD = 80;\nconst ROAD_INNER = [\n  [38 - RD * ROAD_DIR[0], -28 - RD * ROAD_DIR[1], 0],\n  [42 + RD * ROAD_DIR[0],  18 + RD * ROAD_DIR[1], 0]\n];\nconst ROAD_OUTER = [\n  [46 - RD * ROAD_DIR[0], -28 - RD * ROAD_DIR[1], 0],\n  [50 + RD * ROAD_DIR[0],  16 + RD * ROAD_DIR[1], 0]\n];\n\n/* =========================================================\n   PATH BUILDERS\n   ========================================================= */\nfunction polyPath(verts) {\n  return 'M ' + verts.map(v => fmt(axo(...v))).join(' L ') + ' Z';\n}\nfunction lotTop()  { return polyPath(LOT_VERTS); }\nfunction setback() { return polyPath(SETBACK_VERTS); }\n\nfunction lotSideWalls() {\n  return VISIBLE_LOT_EDGES.map(([i, j]) => {\n    const t1 = LOT_VERTS[i];\n    const t2 = LOT_VERTS[j];\n    const b1 = LOT_BOTTOM_VERTS[i];\n    const b2 = LOT_BOTTOM_VERTS[j];\n    // Skip degenerate walls (zero thickness on both ends \u2014 road interface)\n    if (t1[2] === b1[2] && t2[2] === b2[2]) return '';\n    const path = 'M ' + [t1, t2, b2, b1].map(v => fmt(axo(...v))).join(' L ') + ' Z';\n    return `<path d=\"${path}\" fill=\"var(--lot-side)\" stroke=\"var(--lot-stroke)\" stroke-width=\"0.5\" stroke-linejoin=\"round\"/>`;\n  }).join('');\n}\n\nfunction roadLines() {\n  const ia = axo(...ROAD_INNER[0]);\n  const ib = axo(...ROAD_INNER[1]);\n  const oa = axo(...ROAD_OUTER[0]);\n  const ob = axo(...ROAD_OUTER[1]);\n  return `\n    <line x1=\"${ia[0].toFixed(2)}\" y1=\"${ia[1].toFixed(2)}\" x2=\"${ib[0].toFixed(2)}\" y2=\"${ib[1].toFixed(2)}\" stroke=\"var(--road-line)\" stroke-width=\"0.7\" stroke-dasharray=\"3,2\" stroke-linecap=\"round\"/>\n    <line x1=\"${oa[0].toFixed(2)}\" y1=\"${oa[1].toFixed(2)}\" x2=\"${ob[0].toFixed(2)}\" y2=\"${ob[1].toFixed(2)}\" stroke=\"var(--road-line)\" stroke-width=\"0.7\" stroke-dasharray=\"3,2\" stroke-linecap=\"round\"/>\n  `;\n}\n\n/* =========================================================\n   AXO BUILDING \u2014 sloped base, flat roof (PROPOSED only)\n   ========================================================= */\nfunction axoBuilding(x, y, w, d, opts) {\n  const stroke = opts.stroke || 'var(--face-stroke)';\n  const sw = opts.strokeWidth ?? 0.6;\n  const top   = opts.top   || 'var(--face-top)';\n  const right = opts.right || 'var(--face-right)';\n  const back  = opts.back  || 'var(--face-back)';\n  const zFR = opts.zFR ?? 0;\n  const zBR = opts.zBR ?? 0;\n  const zBL = opts.zBL ?? 0;\n  const zRoof = opts.zRoof ?? 8;\n\n  const bFR = axo(x + w, y,     zFR);\n  const bBR = axo(x + w, y + d, zBR);\n  const bBL = axo(x,     y + d, zBL);\n  const tFL = axo(x,     y,     zRoof);\n  const tFR = axo(x + w, y,     zRoof);\n  const tBR = axo(x + w, y + d, zRoof);\n  const tBL = axo(x,     y + d, zRoof);\n\n  const rightFace = `M ${fmt(bFR)} L ${fmt(bBR)} L ${fmt(tBR)} L ${fmt(tFR)} Z`;\n  const backFace  = `M ${fmt(bBL)} L ${fmt(bBR)} L ${fmt(tBR)} L ${fmt(tBL)} Z`;\n  const topFace   = `M ${fmt(tFL)} L ${fmt(tFR)} L ${fmt(tBR)} L ${fmt(tBL)} Z`;\n\n  return `\n    <path d=\"${rightFace}\" fill=\"${right}\" stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n    <path d=\"${backFace}\"  fill=\"${back}\"  stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n    <path d=\"${topFace}\"   fill=\"${top}\"   stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n  `;\n}\n\n/* =========================================================\n   SCENE BUILDER \u2014 Q_HLP\n   - hazard: true \u2192 red dashed landslide overlay across lot top\n   - callout: optional Q3-style label + line pointing at the lot\n   ========================================================= */\nfunction buildScene({ proposed, hazard, callout } = {}) {\n  const proposedDefault = {\n    x: -10, y: -8, w: 24, d: 18,\n    zFR: 0.5, zBR: 1.5, zBL: 4.5, zRoof: 12.5\n  };\n  const ph = proposed || proposedDefault;\n\n  /* Landslide overlay \u2014 same polygon as lotTop, drawn after the green base\n     lot but before setback + house. Light red fill + dashed red stroke\n     communicates \"this whole parcel sits in a CGS hazard zone.\" Auto-detected;\n     spatial detail (where on the lot) isn't carried by parcel-level CGS data. */\n  const hazardOverlay = hazard\n    ? `<path d=\"${lotTop()}\" fill=\"var(--hazard-fill)\" stroke=\"var(--hazard-stroke)\" stroke-width=\"0.6\" stroke-dasharray=\"2,1.4\" stroke-linejoin=\"round\"/>`\n    : '';\n\n  /* Optional callout \u2014 text + line \u00e0 la Q3. */\n  const calloutSvg = callout ? `\n    <g font-family=\"Inter\" font-size=\"3.8\">\n      <text x=\"${callout.tx}\" y=\"${callout.ty}\" font-weight=\"500\" fill=\"var(--text)\">${callout.text}</text>\n      <line x1=\"${callout.x1}\" y1=\"${callout.y1}\" x2=\"${callout.x2}\" y2=\"${callout.y2}\" stroke=\"var(--text-faint)\" stroke-width=\"0.4\"/>\n    </g>\n  ` : '';\n\n  return `\n    ${lotSideWalls()}\n    ${roadLines()}\n    <path d=\"${lotTop()}\" fill=\"var(--lot-top)\" stroke=\"var(--lot-stroke)\" stroke-width=\"0.7\" stroke-linejoin=\"round\"/>\n    ${hazardOverlay}\n    <path d=\"${setback()}\" fill=\"none\" stroke=\"var(--text-muted)\" stroke-width=\"0.4\" stroke-dasharray=\"1.6,1.1\" stroke-linejoin=\"round\" opacity=\"0.6\"/>\n    ${axoBuilding(ph.x, ph.y, ph.w, ph.d, ph)}\n    ${calloutSvg}\n  `;\n}\n\n/* =========================================================\n   MOUNT \u2014 two design states. Live tool renders only one,\n   matched to the user's parcel via CGS auto-detect.\n   ========================================================= */\ndocument.getElementById('svg-state-affected').innerHTML = buildScene({\n  hazard: true,\n  callout: { text: 'CGS landslide zone', tx: -72, ty: -36, x1: -42, y1: -34.5, x2: -22, y2: -10 }\n});\ndocument.getElementById('svg-state-clear').innerHTML = buildScene({\n  hazard: false\n});\n\n/* =========================================================\n   INTERACTION \u2014 Q_HLP is auto-detected; continue is always live.\n   ========================================================= */\nconst btnNext = document.getElementById('btn-next');\nbtnNext.addEventListener('click', () => {\n  btnNext.textContent = '\u2713 would advance to question 14';\n  setTimeout(() => { btnNext.textContent = 'continue \u2192'; }, 1800);\n});"
   },
   "Q3": {
