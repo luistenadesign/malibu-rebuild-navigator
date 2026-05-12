@@ -2094,6 +2094,33 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   padding: 14px 14px 16px !important;
 }
 
+
+
+/* ============================================================
+   ROUND 8
+   ============================================================ */
+
+/* A. Q2 + Q4 comp-pills stretch full width (like Q9's longer-text pills appear) */
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .comparison,
+#centerQ .qcard-new:has(.opt[data-q="own"]) .comparison {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 6px;
+}
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .comp-pill,
+#centerQ .qcard-new:has(.opt[data-q="own"]) .comp-pill {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+/* D. Q15 (Q12 fire flow) aspect 4/3 instead of 5/4 — shorter, less tall */
+#centerQ .qcard-new:has(.opt[data-q="12"]) .options .opt {
+  aspect-ratio: 4 / 3 !important;
+}
+
 </style>
 </head>
 <body>
@@ -3692,25 +3719,39 @@ function showQ(qid){
       }
     }
 
-    // Round 7: halve SVG text size on Q8 height question (data-q="6")
+    // Round 8: Q8 height question (internal Q5, data-q="6") — surgical DOM changes
     if (qid === "Q5") {
+      // 1. REMOVE the section-through-property elevation diagram from DOM
+      //    (CSS :has() hide wasn't sticking — direct removal is bulletproof)
+      const elevSvg = el.querySelector('#svg-q6-elev');
+      if (elevSvg) {
+        const primary = elevSvg.closest('.primary');
+        if (primary && primary.parentNode) {
+          primary.parentNode.removeChild(primary);
+        }
+      }
+
+      // 2. Aggressively shrink SVG text — divide by 3, both attribute and inline style.
+      //    Whichever takes effect wins; the other becomes redundant but harmless.
       el.querySelectorAll('svg text').forEach(t => {
         const fs = t.getAttribute('font-size');
         if (fs) {
           const num = parseFloat(fs);
-          if (!isNaN(num)) t.setAttribute('font-size', String(num / 2));
-        }
-        // Also halve inline style font-size
-        if (t.style && t.style.fontSize) {
+          if (!isNaN(num)) {
+            const newSize = num / 3;
+            t.setAttribute('font-size', String(newSize));
+            t.style.fontSize = newSize + 'px';
+          }
+        } else if (t.style && t.style.fontSize) {
           const num = parseFloat(t.style.fontSize);
-          if (!isNaN(num)) t.style.fontSize = (num / 2) + 'px';
+          if (!isNaN(num)) t.style.fontSize = (num / 3) + 'px';
         }
       });
-      // Also handle text inside foreignObject (HTML labels in SVG)
+      // foreignObject text (HTML inside SVG) — also shrink
       el.querySelectorAll('svg foreignObject *').forEach(fo => {
         if (fo.style && fo.style.fontSize) {
           const num = parseFloat(fo.style.fontSize);
-          if (!isNaN(num)) fo.style.fontSize = (num / 2) + 'px';
+          if (!isNaN(num)) fo.style.fontSize = (num / 3) + 'px';
         }
       });
     }
