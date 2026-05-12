@@ -2121,6 +2121,34 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   aspect-ratio: 4 / 3 !important;
 }
 
+
+
+/* ============================================================
+   ROUND 9
+   ============================================================ */
+
+/* A. Q2 + Q4 pills: natural-width, centered (match a single Q9 pill) */
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .comparison,
+#centerQ .qcard-new:has(.opt[data-q="own"]) .comparison {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  flex-direction: row !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .comp-pill,
+#centerQ .qcard-new:has(.opt[data-q="own"]) .comp-pill {
+  display: inline-block !important;
+  width: auto !important;
+  white-space: nowrap !important;
+  padding: 6px 14px !important;
+}
+
+/* C. Q8 response boxes (data-q="6"): aspect 4/3 instead of 5/4 */
+#centerQ .qcard-new:has(.opt[data-q="6"]) .options .opt {
+  aspect-ratio: 4 / 3 !important;
+}
+
 </style>
 </head>
 <body>
@@ -3719,41 +3747,58 @@ function showQ(qid){
       }
     }
 
-    // Round 8: Q8 height question (internal Q5, data-q="6") — surgical DOM changes
+    // Round 9: Q8 height question (internal Q5, data-q="6") — JS-driven layout & text-shrink
     if (qid === "Q5") {
-      // 1. REMOVE the section-through-property elevation diagram from DOM
-      //    (CSS :has() hide wasn't sticking — direct removal is bulletproof)
+      // 1. Remove the section-through-property elevation diagram
       const elevSvg = el.querySelector('#svg-q6-elev');
       if (elevSvg) {
-        const primary = elevSvg.closest('.primary');
-        if (primary && primary.parentNode) {
-          primary.parentNode.removeChild(primary);
+        const elevPrimary = elevSvg.closest('.primary');
+        if (elevPrimary && elevPrimary.parentNode) {
+          elevPrimary.parentNode.removeChild(elevPrimary);
         }
       }
 
-      // 2. Aggressively shrink SVG text — divide by 3, both attribute and inline style.
-      //    Whichever takes effect wins; the other becomes redundant but harmless.
-      el.querySelectorAll('svg text').forEach(t => {
+      // 2. Force the explainer-grid + remaining axo .primary into a single-column 7/3 layout
+      //    using INLINE STYLES (always wins over CSS).
+      const grid = el.querySelector('.explainer-grid');
+      if (grid) {
+        grid.style.display = 'block';
+        grid.style.maxWidth = '760px';
+        grid.style.margin = '0 auto 14px';
+      }
+      const axoSvg = el.querySelector('#svg-q6-axo');
+      if (axoSvg) {
+        const axoPrimary = axoSvg.closest('.primary');
+        if (axoPrimary) {
+          axoPrimary.style.aspectRatio = '7 / 3';
+          axoPrimary.style.maxWidth = '760px';
+          axoPrimary.style.margin = '0 auto';
+          axoPrimary.style.display = 'flex';
+          axoPrimary.style.flexDirection = 'column';
+        }
+        axoSvg.style.width = '100%';
+        axoSvg.style.height = '100%';
+        axoSvg.style.flex = '1';
+        axoSvg.style.minHeight = '0';
+        axoSvg.style.maxHeight = 'none';
+      }
+
+      // 3. Text shrink — primary (main axo) halve (/2), option SVGs quarter (/4)
+      el.querySelectorAll('.primary svg text').forEach(t => {
         const fs = t.getAttribute('font-size');
         if (fs) {
           const num = parseFloat(fs);
-          if (!isNaN(num)) {
-            const newSize = num / 3;
-            t.setAttribute('font-size', String(newSize));
-            t.style.fontSize = newSize + 'px';
-          }
-        } else if (t.style && t.style.fontSize) {
-          const num = parseFloat(t.style.fontSize);
-          if (!isNaN(num)) t.style.fontSize = (num / 3) + 'px';
+          if (!isNaN(num)) t.setAttribute('font-size', String(num / 2));
         }
       });
-      // foreignObject text (HTML inside SVG) — also shrink
-      el.querySelectorAll('svg foreignObject *').forEach(fo => {
-        if (fo.style && fo.style.fontSize) {
-          const num = parseFloat(fo.style.fontSize);
-          if (!isNaN(num)) fo.style.fontSize = (num / 3) + 'px';
+      el.querySelectorAll('.opt svg text').forEach(t => {
+        const fs = t.getAttribute('font-size');
+        if (fs) {
+          const num = parseFloat(fs);
+          if (!isNaN(num)) t.setAttribute('font-size', String(num / 4));
         }
       });
+      // pill rects in callouts are sized off font-size, so this halves the pill too
     }
   })();
 }
