@@ -2486,6 +2486,61 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   }
 }
 
+
+
+/* ============================================================
+   ROUND 18 — Q4 pill containment, Q10 dynamic cols, Q14 pill nowrap
+   ============================================================ */
+@media (max-width: 700px) {
+  /* === Q4 ownership: pill grows to fit text (no max-width cap), text centered === */
+  body #centerQ .qcard-new:has(.opt[data-q="own"]) .comparison {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 12px !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="own"]) .comp-pill {
+    width: max-content !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    font-size: 10px !important;
+    padding: 5px 12px !important;
+    text-align: center !important;
+    display: inline-block !important;
+  }
+
+  /* === Q10 (sitework, data-q="10"): use auto-flow so visible options fill the width
+        regardless of count (2 or 3 depending on prior selections) === */
+  body #centerQ .qcard-new:has(.opt[data-q="10"]) .options {
+    grid-template-columns: none !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: 1fr !important;
+    --cols: unset;
+  }
+
+  /* === Q14 (slopes, data-q="11"): pill text never breaks mid-word, smaller font
+        because "flat adjacent to slope" is the longest one === */
+  body #centerQ .qcard-new:has(.opt[data-q="11"]) .comp-pill {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    font-size: 8.5px !important;
+    padding: 4px 8px !important;
+    width: max-content !important;
+    max-width: none !important;
+    text-align: center !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="11"]) .comparison {
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+  }
+}
+
 </style>
 </head>
 <body>
