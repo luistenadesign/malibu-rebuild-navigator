@@ -2541,6 +2541,63 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   }
 }
 
+
+
+/* ============================================================
+   ROUND 19 — brute-force specificity for stubborn mobile rules
+   ============================================================ */
+@media (max-width: 760px) {
+  /* === Q5/Q6/Q15 (data-q "3"/"4"/"12") force single-column with html body prefix === */
+  html body #centerQ .qcard-new:has(.opt[data-q="3"]) .options,
+  html body #centerQ .qcard-new:has(.opt[data-q="4"]) .options,
+  html body #centerQ .qcard-new:has(.opt[data-q="12"]) .options {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: unset !important;
+    --cols: 1 !important;
+    gap: 12px !important;
+  }
+  html body #centerQ .qcard-new:has(.opt[data-q="3"]) .options .opt,
+  html body #centerQ .qcard-new:has(.opt[data-q="4"]) .options .opt,
+  html body #centerQ .qcard-new:has(.opt[data-q="12"]) .options .opt {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* === Q10 (data-q="10"): use flexbox so 2 OR 3 visible items always split equally === */
+  html body #centerQ .qcard-new:has(.opt[data-q="10"]) .options {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    grid-template-columns: unset !important;
+    grid-auto-flow: unset !important;
+  }
+  html body #centerQ .qcard-new:has(.opt[data-q="10"]) .options .opt {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  /* === Q14 (data-q="11") pill: allow wrap at spaces, never within words === */
+  body #centerQ .qcard-new:has(.opt[data-q="11"]) .comp-pill {
+    white-space: normal !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    font-size: 9px !important;
+    padding: 4px 9px !important;
+    width: max-content !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    line-height: 1.25 !important;
+  }
+}
+
 </style>
 </head>
 <body>
