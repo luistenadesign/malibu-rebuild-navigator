@@ -1811,6 +1811,117 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   font-size: 9px; line-height: 1.35; color: var(--text-muted);
 }
 
+
+
+/* ============================================================
+   ROUND 5 — sizing & per-question polish
+   ============================================================ */
+
+/* F. Q_HLP info-states: remove max-height on SVG so diagram grows; smaller text */
+#centerQ .qcard-new .info-state {
+  display: flex; flex-direction: column;
+  padding: 8px 10px 10px;
+}
+#centerQ .qcard-new .info-state svg {
+  max-height: none !important;
+  width: 100%;
+  flex: 1; min-height: 0;
+  margin-bottom: 2px;
+}
+#centerQ .qcard-new .info-state-label { font-size: 8px; flex-shrink: 0; }
+#centerQ .qcard-new .info-state-status { font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+#centerQ .qcard-new .info-state-detail { font-size: 9px; line-height: 1.3; flex-shrink: 0; }
+#centerQ .qcard-new .info-state-tag { font-size: 8.5px; line-height: 1.2; flex-shrink: 0; }
+
+/* G. Q4a TDSF (data-q="5"): pill responses 7/3, main diagram 5/4 */
+#centerQ .qcard-new:has(.opt[data-q="5"]) .options {
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 720px;
+  margin-left: auto; margin-right: auto;
+}
+#centerQ .qcard-new:has(.opt[data-q="5"]) .options .opt {
+  aspect-ratio: 7 / 3 !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="5"]) .primary svg {
+  max-height: 200px !important;
+}
+
+/* Q_BFP_CONFIRM responses (data-q="bfp"): pill 7/3 */
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .options {
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 720px;
+  margin-left: auto; margin-right: auto;
+}
+#centerQ .qcard-new:has(.opt[data-q="bfp"]) .options .opt {
+  aspect-ratio: 7 / 3 !important;
+}
+/* Pre-selected state for Q_BFP_CONFIRM */
+#centerQ .qcard-new .opt.preselected {
+  border-width: 2px;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* H. Q11 slopes (data-q="11") — primary intro diagram bigger (2/1 box) */
+#centerQ .qcard-new:has(.opt[data-q="11"]) .primary {
+  aspect-ratio: 2 / 1;
+  max-width: 720px;
+  margin-left: auto; margin-right: auto;
+  margin-bottom: 12px;
+}
+#centerQ .qcard-new:has(.opt[data-q="11"]) .primary svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+}
+
+/* I. Q5 height (data-q="6") — smaller SVG text, lock max-width */
+#centerQ .qcard-new:has(.opt[data-q="6"]) .options {
+  max-width: 700px;
+  margin-left: auto; margin-right: auto;
+}
+#centerQ .qcard-new:has(.opt[data-q="6"]) .opt svg text {
+  font-size: 8px !important;
+}
+
+/* J. Cap options grid max-width on wide viewports to prevent giant boxes / scrollbars */
+#centerQ .qcard-new .options {
+  max-width: 760px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Mobile: vertical stack for all option grids */
+@media (max-width: 480px) {
+  #centerQ .qcard-new .options {
+    grid-template-columns: 1fr !important;
+  }
+  #centerQ .qcard-new .info-states {
+    grid-template-columns: 1fr !important;
+  }
+  #centerQ .qcard-new .qhlp-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Q_BFP_CONFIRM auto-detect note: appears like a small banner above options */
+#centerQ .qcard-new .qbfp-note .auto-detect {
+  margin: 0 auto 12px;
+  max-width: 520px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex; flex-direction: column;
+}
+#centerQ .qcard-new .qbfp-note .auto-detect .ad-title {
+  font-size: 11px; font-weight: 700;
+}
+#centerQ .qcard-new .qbfp-note .auto-detect.mapped .ad-title { color: #b91c1c; }
+#centerQ .qcard-new .qbfp-note .auto-detect.clear .ad-title { color: #15803d; }
+#centerQ .qcard-new .qbfp-note .auto-detect .ad-body {
+  font-size: 9.5px; line-height: 1.4; color: var(--text-muted);
+}
+#centerQ .qcard-new .qbfp-note .auto-detect.mapped { background: #fef2f2; border: 1px solid #fecaca; }
+#centerQ .qcard-new .qbfp-note .auto-detect.clear  { background: #f0fdf4; border: 1px solid #bbf7d0; }
+
 </style>
 </head>
 <body>
@@ -2466,6 +2577,7 @@ const PCA_DEPTS=[
 // ══════════════════════════════════════════════
 // Auto-generated diagram bundles. Each entry: { body: HTML string, script: JS source string }
 window.Q_DIAGRAMS = {
+  "Q_BFP_CONFIRM": { body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n  <h2>Is your property beachfront?</h2>\n  <p class=\"lede\">Beachfront = ocean-facing side of Pacific Coast Highway. Canyon, hillside, and inland properties are not beachfront.</p>\n  <div class=\"qbfp-note\" id=\"qbfp-detect-slot\"></div>\n  <div class=\"options-label\">Confirm or override the auto-detected answer</div>\n  <div class=\"options\">\n    <button class=\"opt\" data-q=\"bfp\" data-opt=\"1\">\n      <span class=\"opt-label\">Yes — ocean side of PCH</span>\n      <span class=\"opt-desc\">My property faces the ocean from Pacific Coast Highway.</span>\n    </button>\n    <button class=\"opt\" data-q=\"bfp\" data-opt=\"2\">\n      <span class=\"opt-label\">No — mountain side or inland</span>\n      <span class=\"opt-desc\">My property is on the inland side, in a canyon, or in the hills.</span>\n    </button>\n  </div>\n</div>", script: "" },
   "Q_HLP": {
     body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n\n  <h2>Is your parcel in a known landslide zone?</h2>\n  <p class=\"lede\">\n    This one is auto-detected, no input needed. The city checks every parcel against the california geological survey landslide inventory before the PV path proceeds. Parcels inside a known zone need to submit a geotechnical report per the LA County Building Code. Parcels outside continue without it.\n  </p>\n\n  <div class=\"qhlp-row\">\n  <div class=\"qhlp-cell qhlp-result\">\n    <div class=\"qhlp-cell-label\">Auto-detect result</div>\n    <div id=\"qhlp-result-slot\"></div>\n  </div>\n  <a class=\"qhlp-cell qhlp-thumb-link\" href=\"https://maps.conservation.ca.gov/cgs/lsi/\" target=\"_blank\" rel=\"noopener\">\n    <div class=\"qhlp-cell-label\">CGS Landslide Inventory · click to verify ↗</div>\n    <img src=\"qhlp_landslide_map.jpeg\" alt=\"CGS Landslide Inventory — Malibu coast section\" />\n  </a>\n</div>\n\n  <div class=\"info-states-label\">Two possible outcomes — click to confirm or override</div>\n  <div class=\"info-states\">\n    <article class=\"info-state info-state--affected\">\n      <div class=\"info-state-label\">If hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-affected\" aria-label=\"Parcel intersects a landslide zone\"></svg>\n      <span class=\"info-state-status\">Landslide hazard zone</span>\n      <span class=\"info-state-detail\">Your parcel intersects a CGS-mapped landslide area. You'll need to submit a geotechnical report per the LA County Building Code.</span>\n      <span class=\"info-state-tag warn\">PV continues \u00b7 geotechnical report per LA County Building Code</span>\n    </article>\n\n    <article class=\"info-state info-state--clear\">\n      <div class=\"info-state-label\">If no hazard detected</div>\n      <svg viewBox=\"-80 -45 160 90\" id=\"svg-state-clear\" aria-label=\"Parcel is outside known landslide zones\"></svg>\n      <span class=\"info-state-status\">No landslide hazard</span>\n      <span class=\"info-state-detail\">Your parcel is not within a CGS-mapped landslide area. No geotechnical report needed on this basis.</span>\n      <span class=\"info-state-tag fast\">PV fast-track continues</span>\n    </article>\n  </div>\n</div>",
     script: "/* =========================================================\n   AXONOMETRIC PROJECTION\n   ========================================================= */\nconst COS30 = Math.cos(Math.PI / 6);\nconst SIN30 = 0.5;\nfunction axo(x, y, z = 0) { return [(x - y) * COS30, (x + y) * SIN30 - z]; }\nfunction fmt([x, y]) { return `${x.toFixed(2)},${y.toFixed(2)}`; }\n\n/* =========================================================\n   STANDARD LOT\n   Top polygon \u2014 slope from front (V2/V3, road, z=0) to back (V1/V5, z=8).\n   Bottom polygon \u2014 z=0 at V2 and V3 so terrain meets the road as a single\n   line (no earth thickness shows under the road dashed lines). Bottoms at\n   z=-2 elsewhere produce a \"ramp\" wedge that grows from the road inward.\n   ========================================================= */\nconst LOT_VERTS = [\n  [-32, -22, 8],\n  [ 38, -28, 0],\n  [ 42,  18, 0],\n  [ 10,  38, 4],\n  [-38,  24, 8]\n];\n\nconst LOT_BOTTOM_VERTS = [\n  [-32, -22, -2],\n  [ 38, -28,  0],   // matches top \u2014 zero thickness at the road\n  [ 42,  18,  0],   // matches top \u2014 zero thickness at the road\n  [ 10,  38, -2],\n  [-38,  24, -2]\n];\n\nconst SETBACK_VERTS = [\n  [-26, -16, 7],\n  [ 28, -22, 0.3],\n  [ 30,  10, 0.5],\n  [  8,  30, 3.5],\n  [-30,  18, 7]\n];\n\nconst VISIBLE_LOT_EDGES = [[1, 2], [2, 3], [3, 4]];\n\n/* Road as two long parallel dashed lines, clipped by viewBox */\nconst ROAD_DIR = [4 / 46.17, 46 / 46.17];\nconst RD = 80;\nconst ROAD_INNER = [\n  [38 - RD * ROAD_DIR[0], -28 - RD * ROAD_DIR[1], 0],\n  [42 + RD * ROAD_DIR[0],  18 + RD * ROAD_DIR[1], 0]\n];\nconst ROAD_OUTER = [\n  [46 - RD * ROAD_DIR[0], -28 - RD * ROAD_DIR[1], 0],\n  [50 + RD * ROAD_DIR[0],  16 + RD * ROAD_DIR[1], 0]\n];\n\n/* =========================================================\n   PATH BUILDERS\n   ========================================================= */\nfunction polyPath(verts) {\n  return 'M ' + verts.map(v => fmt(axo(...v))).join(' L ') + ' Z';\n}\nfunction lotTop()  { return polyPath(LOT_VERTS); }\nfunction setback() { return polyPath(SETBACK_VERTS); }\n\nfunction lotSideWalls() {\n  return VISIBLE_LOT_EDGES.map(([i, j]) => {\n    const t1 = LOT_VERTS[i];\n    const t2 = LOT_VERTS[j];\n    const b1 = LOT_BOTTOM_VERTS[i];\n    const b2 = LOT_BOTTOM_VERTS[j];\n    // Skip degenerate walls (zero thickness on both ends \u2014 road interface)\n    if (t1[2] === b1[2] && t2[2] === b2[2]) return '';\n    const path = 'M ' + [t1, t2, b2, b1].map(v => fmt(axo(...v))).join(' L ') + ' Z';\n    return `<path d=\"${path}\" fill=\"var(--lot-side)\" stroke=\"var(--lot-stroke)\" stroke-width=\"0.5\" stroke-linejoin=\"round\"/>`;\n  }).join('');\n}\n\nfunction roadLines() {\n  const ia = axo(...ROAD_INNER[0]);\n  const ib = axo(...ROAD_INNER[1]);\n  const oa = axo(...ROAD_OUTER[0]);\n  const ob = axo(...ROAD_OUTER[1]);\n  return `\n    <line x1=\"${ia[0].toFixed(2)}\" y1=\"${ia[1].toFixed(2)}\" x2=\"${ib[0].toFixed(2)}\" y2=\"${ib[1].toFixed(2)}\" stroke=\"var(--road-line)\" stroke-width=\"0.7\" stroke-dasharray=\"3,2\" stroke-linecap=\"round\"/>\n    <line x1=\"${oa[0].toFixed(2)}\" y1=\"${oa[1].toFixed(2)}\" x2=\"${ob[0].toFixed(2)}\" y2=\"${ob[1].toFixed(2)}\" stroke=\"var(--road-line)\" stroke-width=\"0.7\" stroke-dasharray=\"3,2\" stroke-linecap=\"round\"/>\n  `;\n}\n\n/* =========================================================\n   AXO BUILDING \u2014 sloped base, flat roof (PROPOSED only)\n   ========================================================= */\nfunction axoBuilding(x, y, w, d, opts) {\n  const stroke = opts.stroke || 'var(--face-stroke)';\n  const sw = opts.strokeWidth ?? 0.6;\n  const top   = opts.top   || 'var(--face-top)';\n  const right = opts.right || 'var(--face-right)';\n  const back  = opts.back  || 'var(--face-back)';\n  const zFR = opts.zFR ?? 0;\n  const zBR = opts.zBR ?? 0;\n  const zBL = opts.zBL ?? 0;\n  const zRoof = opts.zRoof ?? 8;\n\n  const bFR = axo(x + w, y,     zFR);\n  const bBR = axo(x + w, y + d, zBR);\n  const bBL = axo(x,     y + d, zBL);\n  const tFL = axo(x,     y,     zRoof);\n  const tFR = axo(x + w, y,     zRoof);\n  const tBR = axo(x + w, y + d, zRoof);\n  const tBL = axo(x,     y + d, zRoof);\n\n  const rightFace = `M ${fmt(bFR)} L ${fmt(bBR)} L ${fmt(tBR)} L ${fmt(tFR)} Z`;\n  const backFace  = `M ${fmt(bBL)} L ${fmt(bBR)} L ${fmt(tBR)} L ${fmt(tBL)} Z`;\n  const topFace   = `M ${fmt(tFL)} L ${fmt(tFR)} L ${fmt(tBR)} L ${fmt(tBL)} Z`;\n\n  return `\n    <path d=\"${rightFace}\" fill=\"${right}\" stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n    <path d=\"${backFace}\"  fill=\"${back}\"  stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n    <path d=\"${topFace}\"   fill=\"${top}\"   stroke=\"${stroke}\" stroke-width=\"${sw}\" stroke-linejoin=\"round\"/>\n  `;\n}\n\n/* =========================================================\n   SCENE BUILDER \u2014 Q_HLP\n   - hazard: true \u2192 red dashed landslide overlay across lot top\n   - callout: optional Q3-style label + line pointing at the lot\n   ========================================================= */\nfunction buildScene({ proposed, hazard, callout } = {}) {\n  const proposedDefault = {\n    x: -10, y: -8, w: 24, d: 18,\n    zFR: 0.5, zBR: 1.5, zBL: 4.5, zRoof: 12.5\n  };\n  const ph = proposed || proposedDefault;\n\n  /* Landslide overlay \u2014 same polygon as lotTop, drawn after the green base\n     lot but before setback + house. Light red fill + dashed red stroke\n     communicates \"this whole parcel sits in a CGS hazard zone.\" Auto-detected;\n     spatial detail (where on the lot) isn't carried by parcel-level CGS data. */\n  const hazardOverlay = hazard\n    ? `<path d=\"${lotTop()}\" fill=\"var(--hazard-fill)\" stroke=\"var(--hazard-stroke)\" stroke-width=\"0.6\" stroke-dasharray=\"2,1.4\" stroke-linejoin=\"round\"/>`\n    : '';\n\n  /* Optional callout \u2014 text + line \u00e0 la Q3. */\n  const calloutSvg = callout ? `\n    <g font-family=\"Inter\" font-size=\"3.8\">\n      <text x=\"${callout.tx}\" y=\"${callout.ty}\" font-weight=\"500\" fill=\"var(--text)\">${callout.text}</text>\n      <line x1=\"${callout.x1}\" y1=\"${callout.y1}\" x2=\"${callout.x2}\" y2=\"${callout.y2}\" stroke=\"var(--text-faint)\" stroke-width=\"0.4\"/>\n    </g>\n  ` : '';\n\n  return `\n    ${lotSideWalls()}\n    ${roadLines()}\n    <path d=\"${lotTop()}\" fill=\"var(--lot-top)\" stroke=\"var(--lot-stroke)\" stroke-width=\"0.7\" stroke-linejoin=\"round\"/>\n    ${hazardOverlay}\n    <path d=\"${setback()}\" fill=\"none\" stroke=\"var(--text-muted)\" stroke-width=\"0.4\" stroke-dasharray=\"1.6,1.1\" stroke-linejoin=\"round\" opacity=\"0.6\"/>\n    ${axoBuilding(ph.x, ph.y, ph.w, ph.d, ph)}\n    ${calloutSvg}\n  `;\n}\n\n/* =========================================================\n   MOUNT \u2014 two design states. Live tool renders only one,\n   matched to the user's parcel via CGS auto-detect.\n   ========================================================= */\ndocument.getElementById('svg-state-affected').innerHTML = buildScene({\n  hazard: true,\n  callout: { text: 'CGS landslide zone', tx: -72, ty: -36, x1: -42, y1: -34.5, x2: -22, y2: -10 }\n});\ndocument.getElementById('svg-state-clear').innerHTML = buildScene({\n  hazard: false\n});\n\n/* =========================================================\n   INTERACTION \u2014 Q_HLP is auto-detected; continue is always live.\n   ========================================================= */\nconst btnNext = document.getElementById('btn-next');\nbtnNext.addEventListener('click', () => {\n  btnNext.textContent = '\u2713 would advance to question 14';\n  setTimeout(() => { btnNext.textContent = 'continue \u2192'; }, 1800);\n});"
@@ -2499,7 +2611,7 @@ window.Q_DIAGRAMS = {
     script: "/* Q7 v2 \u2014 diagrams replaced by comparison pills. The click handler is all\n   that remains; the previous floor-plan render code (HOUSE, EXISTING_BRS,\n   renderQ7Option, etc.) is no longer needed. */\ndocument.querySelectorAll('.opt').forEach(opt => {\n  opt.addEventListener('click', () => {\n    const q = opt.dataset.q;\n    document.querySelectorAll(`.opt[data-q=\"${q}\"]`).forEach(o => {\n      o.classList.remove('selected');\n      o.setAttribute('aria-checked', 'false');\n    });\n    opt.classList.add('selected');\n    opt.setAttribute('aria-checked', 'true');\n  });\n});"
   },
   "Q9": {
-    body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n\n  <h2>What's the plan for your foundation?</h2>\n  <p class=\"lede\">\n    Concrete foundations often survive a fire intact. a structural engineer's report can confirm the existing slab and footings are sound and code-compliant, letting you reuse them. a new foundation means demolishing the existing pour and starting over.\n  </p>\n\n  <div class=\"options-label\">How is the foundation changing?</div>\n  <div class=\"options\" style=\"--cols: 2;\">\n    <button class=\"opt viable\" data-q=\"9\" data-opt=\"2\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing foundation</span>\n        <span class=\"comp-op\">\u2192</span>\n        <span class=\"comp-pill\">New foundation</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Pour new foundation</span>\n          <span class=\"opt-desc\">New slab and footings designed to current code</span>\n          <span class=\"opt-tag warn\">PV continues \u00b7 new code-compliant foundation required</span>\n        </span>\n      </div>\n    </button>\n\n    <button class=\"opt viable\" data-q=\"9\" data-opt=\"1\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing foundation</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Reuse existing foundation</span>\n          <span class=\"opt-desc\">Structural engineer report verifies code compliance</span>\n          <span class=\"opt-tag fast\">PV fast-track continues \u00b7 structural inspection required</span>\n        </span>\n      </div>\n    </button>\n  </div>\n</div>",
+    body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n\n  <h2>What's the plan for your foundation?</h2>\n  <p class=\"lede\">\n    Concrete foundations often survive a fire intact. a structural engineer's report can confirm the existing slab and footings are sound and code-compliant, letting you reuse them. a new foundation means demolishing the existing pour and starting over.\n  </p>\n\n  <div class=\"options-label\">How is the foundation changing?</div>\n  <div class=\"options\" style=\"--cols: 2;\">\n    <button class=\"opt viable\" data-q=\"9\" data-opt=\"2\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing foundation</span>\n        <span class=\"comp-op\">\u2192</span>\n        <span class=\"comp-pill\">New foundation</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Pour new foundation</span>\n          <span class=\"opt-desc\">New slab and footings designed to current code</span>\n          <span class=\"opt-tag fast\">PV fast-track continues \u00b7 new code-compliant foundation required</span>\n        </span>\n      </div>\n    </button>\n\n    <button class=\"opt viable\" data-q=\"9\" data-opt=\"1\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing foundation</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Reuse existing foundation</span>\n          <span class=\"opt-desc\">Structural engineer report verifies code compliance</span>\n          <span class=\"opt-tag warn\">PV continues \u00b7 structural inspection required</span>\n        </span>\n      </div>\n    </button>\n  </div>\n</div>",
     script: "/* Q7 v2 \u2014 diagrams replaced by comparison pills. The click handler is all\n   that remains; the previous floor-plan render code (HOUSE, EXISTING_BRS,\n   renderQ7Option, etc.) is no longer needed. */\ndocument.querySelectorAll('.opt').forEach(opt => {\n  opt.addEventListener('click', () => {\n    const q = opt.dataset.q;\n    document.querySelectorAll(`.opt[data-q=\"${q}\"]`).forEach(o => {\n      o.classList.remove('selected');\n      o.setAttribute('aria-checked', 'false');\n    });\n    opt.classList.add('selected');\n    opt.setAttribute('aria-checked', 'true');\n  });\n});"
   },
   "Q10": {
@@ -2522,16 +2634,17 @@ const QS={
     type:"address",placeholder:"e.g. 23901 Malibu Road, Malibu CA 90265",
     next:(v)=>{
       S.address=v;
-      const addrUp=v.toUpperCase();
-      if(addrUp.includes("PCH")||addrUp.includes("PACIFIC COAST")) return "Q_BFP_CONFIRM";
-      S.tags.delete("BFP"); S.bfp=false;
-      return "Q_HLP";
+      // Q_BFP_CONFIRM is always shown — auto-detect from address, user can override
+      return "Q_BFP_CONFIRM";
     }},
 
   Q_BFP_CONFIRM:{id:"Q_BFP_CONFIRM",
-    text:"Is this property beachfront (ocean-facing side of Pacific Coast Hwy)?",
+    text:"Is your property beachfront?",
     type:"choice",options:["Yes — beachfront / ocean side","No — mountain side or inland"],
-    get note(){ const a=(S.address||"").toUpperCase(); return (a.includes("PCH")||a.includes("PACIFIC COAST"))?"PCH address detected — please confirm. Some PCH properties face the mountain side and are NOT beachfront.":"Beachfront = ocean-facing properties on PCH only. Canyon, hillside and inland Malibu properties are NOT beachfront."; },
+    preSelect:()=>{
+      const a=(S.address||"").toUpperCase();
+      return (a.includes("PCH")||a.includes("PACIFIC COAST")) ? "Yes — beachfront / ocean side" : "No — mountain side or inland";
+    },
     next:(v)=>{
       if(v.startsWith("Yes")){ tag("BFP"); S.bfp=true; }
       else { S.tags.delete("BFP"); S.bfp=false; }
@@ -3267,21 +3380,6 @@ function showQ(qid){
     if(tdsfSlot && tdsfCalcEl) {
       tdsfSlot.appendChild(tdsfCalcEl);
     }
-    // Round 3: populate dynamic card-meta in the diagram body
-    const metaSlot = el.querySelector('#card-meta-slot');
-    if(metaSlot) {
-      const pos = getQPosition(qid);
-      if(pos.idx >= 0) {
-        const dashes = pos.applicable.map((_, i) => {
-          if(i < pos.idx) return '<span class="done"></span>';
-          if(i === pos.idx) return '<span class="current"></span>';
-          return '<span></span>';
-        }).join('');
-        metaSlot.innerHTML = 
-          '<span>Question ' + (pos.idx + 1) + ' of ' + pos.total + '</span>' +
-          '<span class="card-meta-progress" aria-hidden="true">' + dashes + '</span>';
-      }
-    }
 
     // Round 2.5: synthesize the landslide auto-detect result directly into Q_HLP's slot
     const hlpResultSlot = el.querySelector('#qhlp-result-slot');
@@ -3353,8 +3451,8 @@ function showQ(qid){
     }
   } else {
     el.innerHTML=`<div class="qcard">
+ <div class="card-meta" id="card-meta-slot"></div>
  <div class="qtop">
- <span class="qbadge">${q.id}</span>
  <button class="qback" onclick="goBack()" ${!hasPrev?"disabled":""}>‹ Back</button>
  </div>
  <div class="qtext">${q.text}</div>${inner}
@@ -3377,6 +3475,50 @@ function showQ(qid){
     if(q.type==="address") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitAddress();});
     else if(q.type==="text") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitText();});
   }
+
+  // Round 5: populate card-meta + question-specific slots (runs for both diagram and non-diagram paths)
+  (function postRender(){
+    const metaSlot = el.querySelector('#card-meta-slot');
+    if(metaSlot) {
+      const pos = getQPosition(qid);
+      if(pos.idx >= 0) {
+        const dashes = pos.applicable.map((_, i) => {
+          if(i < pos.idx) return '<span class="done"></span>';
+          if(i === pos.idx) return '<span class="current"></span>';
+          return '<span></span>';
+        }).join('');
+        metaSlot.innerHTML =
+          '<span>Question ' + (pos.idx + 1) + ' of ' + pos.total + '</span>' +
+          '<span class="card-meta-progress" aria-hidden="true">' + dashes + '</span>';
+      }
+    }
+    // Q_BFP_CONFIRM: populate auto-detect note + pre-select matching option
+    if(qid === "Q_BFP_CONFIRM") {
+      const noteEl = el.querySelector('#qbfp-detect-slot');
+      const addrUp = (S.address || "").toUpperCase();
+      const isPCH = addrUp.includes("PCH") || addrUp.includes("PACIFIC COAST");
+      if(noteEl){
+        const kind = isPCH ? "mapped" : "clear";
+        const title = isPCH ? "PCH address detected" : "Not a PCH address";
+        const body = isPCH
+          ? "Your address looks like a PCH frontage. Most PCH properties on the ocean side are beachfront. Confirm below."
+          : "Your address doesn't match PCH frontage, so this property is unlikely to be beachfront. Confirm below.";
+        noteEl.innerHTML =
+          '<div class="auto-detect ' + kind + '">' +
+          '  <div class="ad-title">' + title + '</div>' +
+          '  <div class="ad-body">' + body + '</div>' +
+          '</div>';
+      }
+      // Pre-select the matching opt
+      const preVal = q.preSelect && q.preSelect();
+      if(preVal){
+        el.querySelectorAll('.opt').forEach(b=>{
+          const idx = parseInt(b.dataset.opt, 10);
+          if(q.options[idx-1] === preVal) b.classList.add('preselected');
+        });
+      }
+    }
+  })();
 }
 
 async function submitAddress(){
