@@ -2039,6 +2039,61 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   }
 }
 
+
+
+/* ============================================================
+   ROUND 7
+   ============================================================ */
+
+/* A. Q8 (height, data-q="6") — hide section-through-property, promote axo to 2:1 */
+#centerQ .qcard-new:has(.opt[data-q="6"]) .explainer-grid {
+  display: block !important;
+  max-width: 760px !important;
+  margin: 0 auto 14px !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="6"]) .primary:has(#svg-q6-elev) {
+  display: none !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="6"]) .primary:has(#svg-q6-axo) {
+  aspect-ratio: 2 / 1 !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column;
+}
+#centerQ .qcard-new:has(.opt[data-q="6"]) .primary:has(#svg-q6-axo) svg {
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1; min-height: 0;
+  max-height: none !important;
+}
+
+/* C. Q15 (Q12 fire flow) — force exact match with Q6 (Q4 footprint) */
+#centerQ .qcard-new:has(.opt[data-q="12"]) .options {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="12"]) .options .opt {
+  aspect-ratio: 5 / 4 !important;
+  padding: 14px 14px 16px !important;
+}
+
+/* Same explicit treatment for Q6 (Q4 footprint) — ensure both match */
+#centerQ .qcard-new:has(.opt[data-q="4"]) .options {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+}
+#centerQ .qcard-new:has(.opt[data-q="4"]) .options .opt {
+  aspect-ratio: 5 / 4 !important;
+  padding: 14px 14px 16px !important;
+}
+
 </style>
 </head>
 <body>
@@ -3635,6 +3690,29 @@ function showQ(qid){
           if(q.options[idx-1] === preVal) b.classList.add('preselected');
         });
       }
+    }
+
+    // Round 7: halve SVG text size on Q8 height question (data-q="6")
+    if (qid === "Q5") {
+      el.querySelectorAll('svg text').forEach(t => {
+        const fs = t.getAttribute('font-size');
+        if (fs) {
+          const num = parseFloat(fs);
+          if (!isNaN(num)) t.setAttribute('font-size', String(num / 2));
+        }
+        // Also halve inline style font-size
+        if (t.style && t.style.fontSize) {
+          const num = parseFloat(t.style.fontSize);
+          if (!isNaN(num)) t.style.fontSize = (num / 2) + 'px';
+        }
+      });
+      // Also handle text inside foreignObject (HTML labels in SVG)
+      el.querySelectorAll('svg foreignObject *').forEach(fo => {
+        if (fo.style && fo.style.fontSize) {
+          const num = parseFloat(fo.style.fontSize);
+          if (!isNaN(num)) fo.style.fontSize = (num / 2) + 'px';
+        }
+      });
     }
   })();
 }
