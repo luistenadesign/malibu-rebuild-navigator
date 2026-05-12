@@ -2374,6 +2374,118 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   }
 }
 
+
+
+/* ============================================================
+   ROUND 17 — per-Q mobile col exemptions + diagram aspects
+   ============================================================ */
+@media (max-width: 700px) {
+  /* === Q7/Q9/Q10/Q12 keep multi-column on mobile (override round 16 single-col) === */
+  body #centerQ .qcard-new:has(.opt[data-q="7"]) .options,
+  body #centerQ .qcard-new:has(.opt[data-q="9"]) .options {
+    --cols: 2 !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="8"]) .options,
+  body #centerQ .qcard-new:has(.opt[data-q="10"]) .options {
+    --cols: 3 !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  /* For these multi-col cases: comp-pills stack vertically inside the comparison,
+     so existing+op+proposed all show without overflowing the narrow column */
+  body #centerQ .qcard-new:has(.opt[data-q="7"]) .comparison,
+  body #centerQ .qcard-new:has(.opt[data-q="8"]) .comparison,
+  body #centerQ .qcard-new:has(.opt[data-q="9"]) .comparison {
+    flex-direction: column !important;
+    gap: 3px !important;
+    padding: 8px 5px !important;
+    align-items: center !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="7"]) .comp-pill,
+  body #centerQ .qcard-new:has(.opt[data-q="8"]) .comp-pill,
+  body #centerQ .qcard-new:has(.opt[data-q="9"]) .comp-pill {
+    font-size: 8.5px !important;
+    padding: 4px 7px !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    text-align: center !important;
+    width: auto !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="7"]) .comp-op,
+  body #centerQ .qcard-new:has(.opt[data-q="8"]) .comp-op,
+  body #centerQ .qcard-new:has(.opt[data-q="9"]) .comp-op {
+    font-size: 9px !important;
+    margin: 0 !important;
+    flex-basis: auto !important;
+  }
+
+  /* Q10 (sitework, 3-col) "+ grading" / "+ walls" — keep on one line, smaller */
+  body #centerQ .qcard-new:has(.opt[data-q="10"]) .comparison {
+    flex-direction: column !important;
+    gap: 3px !important;
+    padding: 8px 4px !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="10"]) .comp-pill {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    font-size: 7.5px !important;
+    padding: 3px 5px !important;
+  }
+
+  /* === Q4 (ownership) pill: don't split words across lines === */
+  body #centerQ .qcard-new:has(.opt[data-q="own"]) .comp-pill {
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    white-space: nowrap !important;
+    font-size: 10px !important;
+    padding: 5px 11px !important;
+    text-align: center !important;
+  }
+
+  /* === Q8 (height, data-q="6") axo wrapper: 7/3 → 5/4 on mobile for bigger SVG === */
+  body #centerQ .qcard-new:has(.opt[data-q="6"]) div[style*="aspect-ratio:7/3"],
+  body #centerQ .qcard-new:has(.opt[data-q="6"]) div[style*="aspect-ratio"] {
+    aspect-ratio: 5 / 4 !important;
+  }
+
+  /* === Q5 (rebuild scope, data-q="3") .primary fire-affected diagram:
+        flexible aspect, show all content === */
+  body #centerQ .qcard-new:has(.opt[data-q="3"]) .primary {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 220px;
+    max-height: none !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="3"]) .primary svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 200px;
+  }
+
+  /* === Q14 (slopes, data-q="11") hillside .primary: 5/4 box === */
+  body #centerQ .qcard-new:has(.opt[data-q="11"]) .primary {
+    aspect-ratio: 5 / 4 !important;
+    height: auto !important;
+    min-height: 240px;
+    max-height: none !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="11"]) .primary svg {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* General catch: any .primary on mobile that has a small max-height should grow */
+  body #centerQ .qcard-new .primary {
+    max-height: none !important;
+  }
+}
+
 </style>
 </head>
 <body>
