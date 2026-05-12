@@ -2021,11 +2021,7 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
 #centerQ .qcard-new:has(.opt[data-q="6"]) .opt svg {
   max-height: 140px !important;
 }
-#centerQ .qcard-new:has(.opt[data-q="6"]) .opt svg text,
-#centerQ .qcard-new:has(.opt[data-q="6"]) .opt svg foreignObject,
-#centerQ .qcard-new:has(.opt[data-q="6"]) .opt svg .label {
-  font-size: 5px !important;
-}
+/* Round 13: removed multi-selector 5px !important rule */
 #centerQ .qcard-new:has(.opt[data-q="6"]) .opt {
   overflow: hidden;
 }
@@ -3747,8 +3743,16 @@ function showQ(qid){
 
     // Round 10: Q8 height question — body already restructured, just shrink text
     if (qid === "Q5") {
-      // Round 11: main axo text stays at original size (no halving — Luis wants it doubled vs round 10)
-      // Round 12: option SVG text size handled by script source (fb=2). No post-process needed.
+      // Round 11: main axo text stays at original size
+      // Round 12: option SVG text handled by script source (fb=2)
+      // Round 13: halve stroke-width on all stroke-able elements in option SVGs
+      el.querySelectorAll('.opt svg path, .opt svg line, .opt svg polyline, .opt svg rect, .opt svg polygon').forEach(p => {
+        const sw = p.getAttribute('stroke-width');
+        if (sw) {
+          const num = parseFloat(sw);
+          if (!isNaN(num)) p.setAttribute('stroke-width', String(num / 2));
+        }
+      });
     }
   })();
 }
