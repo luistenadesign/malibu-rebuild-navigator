@@ -2288,6 +2288,92 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   }
 }
 
+
+
+/* ============================================================
+   ROUND 16 — mobile: force single-col by overriding --cols,
+   boost selector specificity to beat per-Q rules
+   ============================================================ */
+@media (max-width: 700px) {
+  /* The KEY fix: override the --cols CSS variable. Grids use
+     `grid-template-columns: repeat(var(--cols), 1fr)`, so setting
+     --cols to 1 forces single column without any specificity fight. */
+  #centerQ .qcard-new .options {
+    --cols: 1 !important;
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+    gap: 10px !important;
+  }
+
+  /* Option boxes: full width, content-driven height.
+     `body` prefix boosts specificity above the per-Q `:has()` rules. */
+  body #centerQ .qcard-new:has(.opt[data-q]) .options .opt,
+  body #centerQ .qcard-new .options .opt {
+    aspect-ratio: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* SVGs in option boxes — full-width responsive */
+  body #centerQ .qcard-new:has(.opt[data-q]) .options .opt svg,
+  body #centerQ .qcard-new .options .opt svg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 320px !important;
+    min-height: 100px !important;
+    display: block !important;
+  }
+  body #centerQ .qcard-new .opt-svg-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Q4 ownership + Q2 BFP — single-pill question, override the
+     desktop-tuned padding/font that was making text overflow on iPhone */
+  body #centerQ .qcard-new:has(.opt[data-q="own"]) .comp-pill,
+  body #centerQ .qcard-new:has(.opt[data-q="bfp"]) .comp-pill {
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    text-align: center !important;
+    width: auto !important;
+    display: inline-block !important;
+  }
+  body #centerQ .qcard-new:has(.opt[data-q="own"]) .comparison,
+  body #centerQ .qcard-new:has(.opt[data-q="bfp"]) .comparison {
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 10px !important;
+  }
+
+  /* All text inside an option must wrap, never overflow */
+  body #centerQ .qcard-new .opt .opt-label,
+  body #centerQ .qcard-new .opt .opt-desc,
+  body #centerQ .qcard-new .opt .opt-tag {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Ensure the .opt itself has padding so text isn't flush against the edge */
+  body #centerQ .qcard-new .opt {
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+  /* Comp-pills in general: contain text */
+  body #centerQ .qcard-new .comp-pill {
+    box-sizing: border-box !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+}
+
 </style>
 </head>
 <body>
