@@ -2708,6 +2708,65 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
 .qcard-bfp .opt-label { padding-top: 12px; }
 .qcard-bfp .opt-desc { padding-bottom: 14px; }
 
+
+
+/* ============================================================
+   ROUND 27 — compact ref pills, Q_HLP container max-width, Q8 axo align
+   ============================================================ */
+
+/* Compact reference pills (code refs panel + sheets profile panel) */
+.code-row {
+  padding: 5px 8px !important;
+  margin: 2px 0 !important;
+}
+.cr-name {
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+}
+.sp-code {
+  padding: 5px 8px !important;
+  margin: 2px 0 !important;
+}
+.sp-code-name {
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+}
+.sp-code-desc {
+  font-size: 9.5px !important;
+  line-height: 1.3 !important;
+  margin-top: 1px !important;
+}
+
+/* Inline ↗ arrow link */
+.cr-link-arrow, .sp-link-arrow {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--accent, #2563eb);
+  font-size: 10px;
+  font-weight: 500;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.cr-link-arrow:hover, .sp-link-arrow:hover {
+  text-decoration: underline;
+}
+
+/* Q_HLP (Q3 display) — apply max-width to its container divs, matches Q6 behavior */
+#centerQ .qcard-new .qhlp-row,
+#centerQ .qcard-new .info-states {
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Q8 (Q5 internal, data-q="6") — cap options grid width to match axo wrapper (760px),
+   so on wide desktop the layout doesn't push response boxes below their natural height */
+#centerQ .qcard-new:has(.opt[data-q="6"]) .options {
+  max-width: 760px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 </style>
 </head>
 <body>
@@ -3969,8 +4028,7 @@ function renderCodes(){
     arr.forEach(row=>{
       g+=`<div class="code-row">
  <div class="cr-info">
- <div class="cr-name">${row.code}${row.year?" ("+row.year+")":""}</div>
-          ${row.url?`<a class="cr-link" href="${row.url}" target="_blank">Link to website ↗</a>`:`<span style="font-size:8px;color:var(--t3)">Link pending</span>`}
+ <div class="cr-name">${row.code}${row.year?" ("+row.year+")":""}${row.url?` <a class="cr-link-arrow" href="${row.url}" target="_blank" title="Open reference">↗</a>`:""}</div>
  </div></div>`;
     });
     return g+"</div>";
@@ -4555,7 +4613,7 @@ function openSlide(item,phase){
     html+=`<div class="sp-section"><div class="sp-s-title">Applicable Codes</div><div class="sp-codes">${item.codes.map(c=>{
       const cd=CMAP[c]; if(!cd) return "";
       const sheetRow=SHEET_CODES.find(r=>r.code===c||r.code.startsWith(c));
-      return `<div class="sp-code"><div class="sp-code-name">${cd.n}</div><div class="sp-code-desc">${cd.d}</div>${sheetRow?.url?`<a class="sp-link" href="${sheetRow.url}" target="_blank">Link to website ↗</a>`:""}</div>`;
+      return `<div class="sp-code"><div class="sp-code-name">${cd.n}${sheetRow?.url?` <a class="sp-link-arrow" href="${sheetRow.url}" target="_blank" title="Open reference">↗</a>`:""}</div><div class="sp-code-desc">${cd.d}</div></div>`;
     }).join("")}</div></div>`;
   }
 
