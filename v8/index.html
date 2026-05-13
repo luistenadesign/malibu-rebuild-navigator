@@ -2767,6 +2767,28 @@ html, body { margin: 0 !important; padding-top: 0 !important; }
   margin-right: auto !important;
 }
 
+
+
+/* Round 28 — doc-link-arrow + tighter doc-row */
+.doc-link-arrow {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--accent, #2563eb);
+  font-size: 10px;
+  font-weight: 500;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.doc-link-arrow:hover { text-decoration: underline; }
+.doc-row {
+  padding: 5px 8px !important;
+  margin: 2px 0 !important;
+}
+.doc-name {
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+}
+
 </style>
 </head>
 <body>
@@ -4055,8 +4077,7 @@ function renderDocs(){
   docs.forEach(row=>{
     html+=`<div class="doc-row">
  <div class="doc-info">
- <div class="doc-name">${row.doc}${row.year?" ("+row.year+")":""}</div>
-        ${row.url?`<a class="doc-link" href="${row.url}" target="_blank">Open document ↗</a>`:`<span style="font-size:8px;color:var(--t3)">Link pending</span>`}
+ <div class="doc-name">${row.doc}${row.year?" ("+row.year+")":""}${row.url?` <a class="doc-link-arrow" href="${row.url}" target="_blank" title="Open document">↗</a>`:""}</div>
  </div></div>`;
   });
   el.innerHTML=html;
