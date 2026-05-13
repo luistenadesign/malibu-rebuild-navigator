@@ -2904,6 +2904,51 @@ a.sp-code.clickable:hover::after {
   overflow-y: visible !important;
 }
 
+
+
+/* ============================================================
+   ROUND 31 — disclaimer location switch (landing → left trail)
+   ============================================================ */
+
+/* Default state (landing): show landing disclaimer, hide trail disclaimer */
+.about-tool-bubble.in-trail { display: none; }
+.about-tool-bubble.on-landing { display: block; }
+
+/* Questionnaire active (body.in-q): swap — hide landing, show in trail */
+body.in-q .about-tool-bubble.on-landing { display: none; }
+body.in-q .about-tool-bubble.in-trail { display: block; }
+
+/* In-trail disclaimer takes the left column width (matches trail-card width). 
+   Tighter font/padding because the left column is narrower than the flowchart area */
+.left .about-tool-bubble.in-trail {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+.left .about-tool-bubble.in-trail .about-text strong {
+  font-size: 11px;
+}
+.left .about-tool-bubble.in-trail .about-icon {
+  font-size: 12px;
+}
+.left .about-tool-bubble.in-trail .about-readmore {
+  font-size: 10px;
+}
+.left .about-tool-bubble.in-trail .about-full {
+  font-size: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.left .about-tool-bubble.in-trail .about-full h4 {
+  font-size: 11.5px;
+  margin: 0 0 6px;
+}
+.left .about-tool-bubble.in-trail .about-full p {
+  margin: 0 0 8px;
+  line-height: 1.45;
+}
+
 </style>
 </head>
 <body>
@@ -2972,6 +3017,21 @@ a.sp-code.clickable:hover::after {
  </div>
  </div>
 
+ <!-- About this tool — questionnaire variant, shown when body.in-q is set -->
+ <details class="card about-tool-bubble in-trail">
+ <summary>
+ <span class="about-icon">&#9432;</span>
+ <span class="about-text"><strong>About this tool</strong> &mdash; Beta-stage informational tool by newArch Inc. Not an official City of Malibu determination. Outputs may be incomplete &mdash; verify with official records. <span class="about-readmore">Read full disclaimer &darr;</span></span>
+ </summary>
+ <div class="about-full">
+ <h4>About this Tool</h4>
+ <p>The Malibu Rebuild Navigator (the &ldquo;Tool&rdquo;) is a beta-stage informational tool provided by newArch Inc. to help homeowners and their representatives understand the typical documents, agencies, and pathways that may apply when rebuilding in Malibu after the fires. The Tool organizes publicly available information based on the answers you provide. It is not an official determination, approval, interpretation, or advice from the City of Malibu or newArch Inc., and it does not substitute for the City&rsquo;s formal plan review and permitting process. Use of the Tool does not create any entitlement to a permit, approval, or other governmental action.</p>
+ <p>The Tool and all outputs are provided &ldquo;as is&rdquo; and &ldquo;as available.&rdquo; GIS layers, parcel records, code references, and other information may be incomplete, inaccurate, or out of date. You are solely responsible for independently verifying all information with official City records, applicable codes, your design professionals, and other authoritative sources before acting on it.</p>
+ <p>The City of Malibu and newArch Inc. each reserve the right to modify, suspend, or discontinue the Tool at any time. Neither the City of Malibu nor newArch Inc. shall be liable for any loss, damage, cost, or delay arising out of or relating to use of, inability to use, or reliance on the Tool or its outputs. Use of the Tool is entirely voluntary, and you assume all risks associated with its use.</p>
+ <p class="about-updated">Last updated: May 13, 2026</p>
+ </div>
+ </details>
+
  </div>
 
  <!-- CENTER -->
@@ -3004,7 +3064,7 @@ a.sp-code.clickable:hover::after {
  <div class="lpill"><div class="ldot" style="background:#dc2626"></div>Plan Check Approvals</div>
  <div class="lpill"><div class="ldot" style="background:#18181b"></div>Milestones</div>
  </div>
-        <details class="about-tool-bubble">
+        <details class="about-tool-bubble on-landing">
           <summary>
             <span class="about-icon">&#9432;</span>
             <span class="about-text"><strong>About this tool</strong> &mdash; The Malibu Rebuild Navigator is a beta-stage informational tool provided by newArch Inc. It is not an official determination from the City of Malibu and does not substitute for the City&rsquo;s formal plan review. Outputs may be incomplete or out of date &mdash; verify with official City records before acting. <span class="about-readmore">Read full disclaimer &darr;</span></span>
@@ -4216,6 +4276,7 @@ function renderDocs(){
 // ══════════════════════════════════════════════
 function showQ(qid){
   S.cur=qid;
+  document.body.classList.add('in-q');
   if(window.innerWidth<=768) mobSwitch('q');
   const el=document.getElementById("centerQ");
 
@@ -4994,6 +5055,7 @@ function showWelcome(){
 // RESTART
 // ══════════════════════════════════════════════
 function restart(){
+  document.body.classList.remove('in-q');
   S={cur:"Q1",answers:[],tags:new Set(),bfp:false,hlp:false,address:"",apn:"",lat:null,lng:null,mapMode:"satellite",grossSqFt:0,netSqFt:0,maxTDSF:0,landslideResult:null};
 
   document.getElementById("mapWrap").innerHTML=`<div class="map-ph">Enter address above</div>`;
