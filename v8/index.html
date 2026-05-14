@@ -3373,7 +3373,7 @@ html, body {
 // ══════════════════════════════════════════════
 const CFG = {
   EJS_KEY:"PczPiPRa5GVOU13w0",
-  EJS_SVC:"service_90w55ar",
+  EJS_SVC:"service_ibs93ng",
   EJS_TPL:"template_y6pit7a",
   SHEET_URL:"https://script.google.com/macros/s/AKfycbz6EIbcHVW1T2Rsx7Tnvq4jkWTvadz5ts7IQonVzI0TqkHbKZ_Dl_sATDAiL-2cOqe0-Q/exec",
   CODE_SHEET_ID:"1UMtTiySTe6pttQP1MieXCQF9Y8xD71gFyCU48HDGIsc",
@@ -5132,6 +5132,9 @@ function sendEmail(){
   } else doSend(email);
 }
 function svgToPngDataUrl(svgEl, callback){
+  // ROUND 36: switched to JPEG @ 1x scale + quality 0.7 to fit
+  // under EmailJS 50KB template-variable limit. Includes a size-check
+  // fallback that re-encodes at lower quality if still over limit.
   try {
     const svgData = new XMLSerializer().serializeToString(svgEl);
     const svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
@@ -5141,13 +5144,22 @@ function svgToPngDataUrl(svgEl, callback){
     const h = parseInt(svgEl.getAttribute("height"))||400;
     img.onload = ()=>{
       const canvas = document.createElement("canvas");
-      canvas.width = w*2; canvas.height = h*2;
+      canvas.width = w; canvas.height = h;            // 1x (was 2x)
       const ctx = canvas.getContext("2d");
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0,0,canvas.width,canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       URL.revokeObjectURL(url);
-      callback(canvas.toDataURL("image/png"));
+      // Try JPEG @ 0.7 quality first; if still > 45KB drop to 0.5
+      let dataUrl = canvas.toDataURL("image/jpeg", 0.7);
+      if (dataUrl.length > 45000) {
+        dataUrl = canvas.toDataURL("image/jpeg", 0.5);
+      }
+      if (dataUrl.length > 45000) {
+        dataUrl = canvas.toDataURL("image/jpeg", 0.35);
+      }
+      console.log("Flowchart image size (base64):", Math.round(dataUrl.length/1024)+"KB");
+      callback(dataUrl);
     };
     img.onerror = ()=>{ URL.revokeObjectURL(url); callback(null); };
     img.src = url;
