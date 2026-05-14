@@ -3244,23 +3244,6 @@ html, body {
 
 
 
-/* ROUND 44 — Q8b mobile: stack pills vertically inside the gray
-   response box (override the global .comparison { flex-direction: row !important }
-   that's winning the cascade and pushing "New SPD" outside the box). */
-@media (max-width: 768px) {
-  #centerQ .qcard-new:has(.opt[data-q="8b"]) .opt .comparison {
-    flex-direction: column !important;
-    gap: 4px !important;
-    padding: 10px 8px !important;
-    align-items: center !important;
-  }
-  /* Arrow looks better rotated 90° when items are stacked vertically */
-  #centerQ .qcard-new:has(.opt[data-q="8b"]) .opt .comp-op {
-    transform: rotate(90deg);
-    display: inline-block;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -4004,7 +3987,7 @@ window.Q_DIAGRAMS = {
     script: "/* Q7 v2 \u2014 diagrams replaced by comparison pills. The click handler is all\n   that remains; the previous floor-plan render code (HOUSE, EXISTING_BRS,\n   renderQ7Option, etc.) is no longer needed. */\ndocument.querySelectorAll('.opt').forEach(opt => {\n  opt.addEventListener('click', () => {\n    const q = opt.dataset.q;\n    document.querySelectorAll(`.opt[data-q=\"${q}\"]`).forEach(o => {\n      o.classList.remove('selected');\n      o.setAttribute('aria-checked', 'false');\n    });\n    opt.classList.add('selected');\n    opt.setAttribute('aria-checked', 'true');\n  });\n});"
   },
   "Q8b": {
-    body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n\n  <h2>What's the plan for your shoreline protection device?</h2>\n  <p class=\"lede\">\n    If your beachfront property has an OWTS within the FEMA flood zone, it needs to be protected against wave action by a shoreline protection device (SPD). If you already have an SPD and want to keep it, a structural inspection demonstrating compliance with code is required.\n  </p>\n\n  <div class=\"options-label\">How is the SPD changing?</div>\n  <div class=\"options\" style=\"--cols: 2;\">\n    <button class=\"opt viable\" data-q=\"8b\" data-opt=\"1\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing SPD</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Keep existing SPD</span>\n          <span class=\"opt-desc\">Structural inspection demonstrating code compliance</span>\n          <span class=\"opt-tag fast\">PV fast-track continues \u00b7 inspection report required</span>\n        </span>\n      </div>\n    </button>\n\n    <button class=\"opt viable\" data-q=\"8b\" data-opt=\"2\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing SPD</span>\n        <span class=\"comp-op\">\u2192</span>\n        <span class=\"comp-pill\">New SPD</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Replace or build new SPD</span>\n          <span class=\"opt-desc\">New SPD designed to current code</span>\n          <span class=\"opt-tag warn\">PV continues \u00b7 RDP and additional wave action report required</span>\n        </span>\n      </div>\n    </button>\n  </div>\n</div>",
+    body: "<div class=\"qcard-new\">\n  <div class=\"card-meta\" id=\"card-meta-slot\"></div>\n\n  <h2>What's the plan for your shoreline protection device?</h2>\n  <p class=\"lede\">\n    If your beachfront property has an OWTS within the FEMA flood zone, it needs to be protected against wave action by a shoreline protection device (SPD). If you already have an SPD and want to keep it, a structural inspection demonstrating compliance with code is required.\n  </p>\n\n  <div class=\"options-label\">How is the SPD changing?</div>\n  <div class=\"options\" style=\"--cols: 2;\">\n    <button class=\"opt viable\" data-q=\"8b\" data-opt=\"1\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">Existing SPD</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Keep existing SPD</span>\n          <span class=\"opt-desc\">Structural inspection demonstrating code compliance</span>\n          <span class=\"opt-tag fast\">PV fast-track continues \u00b7 inspection report required</span>\n        </span>\n      </div>\n    </button>\n\n    <button class=\"opt viable\" data-q=\"8b\" data-opt=\"2\" role=\"radio\" aria-checked=\"false\">\n      <div class=\"comparison\">\n        <span class=\"comp-pill\">New SPD</span>\n      </div>\n      <div class=\"opt-row\">\n        <span class=\"opt-radio\" aria-hidden=\"true\"></span>\n        <span class=\"opt-text\">\n          <span class=\"opt-label\">Replace or build new SPD</span>\n          <span class=\"opt-desc\">New SPD designed to current code</span>\n          <span class=\"opt-tag warn\">PV continues \u00b7 RDP and additional wave action report required</span>\n        </span>\n      </div>\n    </button>\n  </div>\n</div>",
     script: "/* Q7 v2 \u2014 diagrams replaced by comparison pills. The click handler is all\n   that remains; the previous floor-plan render code (HOUSE, EXISTING_BRS,\n   renderQ7Option, etc.) is no longer needed. */\ndocument.querySelectorAll('.opt').forEach(opt => {\n  opt.addEventListener('click', () => {\n    const q = opt.dataset.q;\n    document.querySelectorAll(`.opt[data-q=\"${q}\"]`).forEach(o => {\n      o.classList.remove('selected');\n      o.setAttribute('aria-checked', 'false');\n    });\n    opt.classList.add('selected');\n    opt.setAttribute('aria-checked', 'true');\n  });\n});"
   },
   "Q9": {
