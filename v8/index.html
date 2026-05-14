@@ -81,8 +81,9 @@ header{
 }
 .logo{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .logo-mark{
-  width:32px;height:32px;border-radius:50%;
-  object-fit:cover;flex-shrink:0;display:block;
+  height:24px;width:auto;border-radius:4px;
+  flex-shrink:0;display:block;
+  object-fit:contain;
 }
 .logo-text{font-size:15px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;}
 .logo-text strong{font-weight:800;letter-spacing:.3px;}
@@ -219,10 +220,10 @@ header{
 }
 .tr-row:hover{background:var(--orange-l);}
 .tr-id{font-size:8px;font-weight:700;color:var(--t3);width:32px;flex-shrink:0;font-family:"SF Mono",Menlo,Monaco,"Courier New",monospace;}
-.tr-q{font-size:9px;color:var(--t2);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tr-a{font-size:9px;font-weight:700;color:var(--orange);max-width:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
+.tr-q{font-size:9px;color:var(--t2);flex:0 0 auto;width:78px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tr-a{font-size:9px;font-weight:700;color:var(--text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left;}
 .tr-e{font-size:8px;color:var(--t3);opacity:0;transition:opacity .1s;}
-.tr-row:hover .tr-e{opacity:1;color:var(--orange);}
+.tr-row:hover .tr-e{opacity:1;color:var(--t2);}
 
 /* ── CENTER ── */
 .center{
@@ -3164,6 +3165,61 @@ html, body {
   }
 }
 
+
+
+/* ============================================================
+   ROUND 38 — address autocomplete dropdown
+   ============================================================ */
+.qin-row { position: relative; }
+.addr-suggest {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: none;
+}
+.addr-suggest.open { display: block; }
+.addr-suggest-item {
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  border-bottom: 1px solid #f4f4f0;
+  transition: background 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.addr-suggest-item:hover,
+.addr-suggest-item.highlighted {
+  background: rgba(37, 99, 235, 0.06);
+}
+.addr-suggest-item:last-child { border-bottom: none; }
+.addr-suggest-icon {
+  color: var(--t3);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.addr-suggest-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.addr-suggest-empty {
+  padding: 12px 14px;
+  font-size: 11px;
+  color: var(--t3);
+  font-style: italic;
+}
+
 </style>
 </head>
 <body>
@@ -3171,7 +3227,7 @@ html, body {
 
 <header>
  <div class="logo">
- <img class="logo-mark" src="LTD_200103_Logo - Favicon.png" alt="Malibu Rebuild Navigator"/>
+ <img class="logo-mark" src="newArch_logo_white.png" alt="newArch"/>
  <span class="logo-text"><strong>MALIBU</strong> rebuild navigator</span>
  </div>
  <div class="hdiv"></div>
@@ -4106,6 +4162,7 @@ const QS={
   Q8b:{id:"Q8b",text:"What's the plan for your shoreline protection device?",
     type:"choice",
     options:["Keep existing SPD","Replace or build new SPD"],
+    skipIf:()=>!S.bfp,
     next:(v)=>{ if(v==="Replace or build new SPD") tag("SPD"); return "Q9"; }},
 
   // Foundation — 2 options
@@ -4712,6 +4769,7 @@ function showQ(qid){
     inner+=`<div class="qin-row">
  <input class="qin" id="qIn" type="text" value="${presetAddr}" placeholder="${q.placeholder||''}" autocomplete="off"/>
  <button class="cbtn" id="addrLookupBtn" onclick="submitAddress()">Look Up →</button>
+ <div class="addr-suggest" id="addrSuggest"></div>
  </div>
  <div id="addrFeedback" style="margin-top:8px;font-size:10px;color:var(--t2);padding:6px 8px;border-radius:7px;display:none;background:var(--bg);border:1px solid var(--border);line-height:1.5;"></div>
  <button id="addrSkipBtn" style="display:none;margin-top:6px;padding:5px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:9px;color:var(--t2);cursor:pointer;" onclick="skipAddressToNext()">Skip geocoding → continue with address as entered</button>`;
@@ -4849,6 +4907,92 @@ function showQ(qid){
     if(q.type==="address") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitAddress();});
     else if(q.type==="text") inp.addEventListener("keydown",e=>{if(e.key==="Enter")submitText();});
   }
+  // ROUND 38: Address autocomplete from PARCEL_DATA
+  if(q.type==="address" && inp){
+    let suggestEl = document.getElementById("addrSuggest");
+    let highlightedIdx = -1;
+    let currentMatches = [];
+
+    const renderSuggestions = (matches) => {
+      currentMatches = matches;
+      highlightedIdx = -1;
+      if(!matches.length){
+        suggestEl.innerHTML = '<div class="addr-suggest-empty">No matches in Malibu parcels</div>';
+        suggestEl.classList.add("open");
+        return;
+      }
+      suggestEl.innerHTML = matches.map((p,i)=>
+        '<div class="addr-suggest-item" data-i="'+i+'">'+
+        '  <span class="addr-suggest-icon">⌖</span>'+
+        '  <span class="addr-suggest-text">'+p.fullAddress+'</span>'+
+        '</div>'
+      ).join("");
+      suggestEl.classList.add("open");
+      suggestEl.querySelectorAll('.addr-suggest-item').forEach(el=>{
+        el.addEventListener('click', ()=>{
+          const idx = parseInt(el.dataset.i, 10);
+          if(currentMatches[idx]){
+            inp.value = currentMatches[idx].fullAddress;
+            suggestEl.classList.remove("open");
+            inp.focus();
+          }
+        });
+      });
+    };
+
+    let debounceT;
+    inp.addEventListener("input", ()=>{
+      clearTimeout(debounceT);
+      debounceT = setTimeout(()=>{
+        const raw = (inp.value||"").trim().toUpperCase();
+        if(raw.length < 2){ suggestEl.classList.remove("open"); return; }
+        if(!PARCEL_DATA.length){ return; }
+        // Match: address starts with input (preferred), then contains input
+        const startsWith = [];
+        const contains = [];
+        for(const p of PARCEL_DATA){
+          if(!p.fullAddress) continue;
+          if(p.fullAddress.startsWith(raw)) startsWith.push(p);
+          else if(p.fullAddress.includes(raw)) contains.push(p);
+          if(startsWith.length >= 8) break;
+        }
+        const matches = startsWith.concat(contains).slice(0, 8);
+        renderSuggestions(matches);
+      }, 120);
+    });
+
+    // Keyboard navigation
+    inp.addEventListener("keydown", (e)=>{
+      if(!suggestEl.classList.contains("open")) return;
+      const items = suggestEl.querySelectorAll('.addr-suggest-item');
+      if(e.key === "ArrowDown"){
+        e.preventDefault();
+        highlightedIdx = Math.min(highlightedIdx+1, items.length-1);
+        items.forEach((el,i)=>el.classList.toggle("highlighted", i===highlightedIdx));
+      } else if(e.key === "ArrowUp"){
+        e.preventDefault();
+        highlightedIdx = Math.max(highlightedIdx-1, 0);
+        items.forEach((el,i)=>el.classList.toggle("highlighted", i===highlightedIdx));
+      } else if(e.key === "Enter" && highlightedIdx >= 0){
+        e.preventDefault();
+        if(currentMatches[highlightedIdx]){
+          inp.value = currentMatches[highlightedIdx].fullAddress;
+          suggestEl.classList.remove("open");
+        }
+      } else if(e.key === "Escape"){
+        suggestEl.classList.remove("open");
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (e)=>{
+      if(e.target !== inp && !suggestEl.contains(e.target)){
+        suggestEl.classList.remove("open");
+      }
+    }, { once: false });
+  }
+
+
 
   // Round 5: populate card-meta + question-specific slots (runs for both diagram and non-diagram paths)
   (function postRender(){
@@ -4856,13 +5000,16 @@ function showQ(qid){
     if(metaSlot) {
       const pos = getQPosition(qid);
       if(pos.idx >= 0) {
+        const seqAnsCount = S.answers.length;
         const dashes = pos.applicable.map((_, i) => {
-          if(i < pos.idx) return '<span class="done"></span>';
-          if(i === pos.idx) return '<span class="current"></span>';
+          if(i < seqAnsCount) return '<span class="done"></span>';
+          if(i === seqAnsCount) return '<span class="current"></span>';
           return '<span></span>';
         }).join('');
+        const seqIdx = S.answers.length;  // sequential index (matches trail numbering)
+        const seqTotal = pos.total;        // applicable total (Q8b filtered out for inland)
         metaSlot.innerHTML =
-          '<span>Question ' + (pos.idx + 1) + ' of ' + pos.total + '</span>' +
+          '<span>Question ' + (seqIdx + 1) + ' of ' + seqTotal + '</span>' +
           '<span class="card-meta-progress" aria-hidden="true">' + dashes + '</span>';
       }
     }
