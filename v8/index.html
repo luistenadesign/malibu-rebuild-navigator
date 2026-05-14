@@ -3223,22 +3223,23 @@ html, body {
 
 
 
-/* ROUND 42 — comparison-pill questions: single column on mobile so the
-   two-pill comparison (Existing → New) has vertical room to render */
+/* ROUND 43 — Q8b only: keep 2-col side-by-side layout, but allow the
+   option to grow vertically so the two stacked pills (Existing / New) fit.
+   Other comparison-pill questions stay at their original aspect-ratio. */
 @media (max-width: 768px) {
-  #centerQ .qcard-new:has(.opt[data-q="7"]) .options,
-  #centerQ .qcard-new:has(.opt[data-q="8"]) .options,
-  #centerQ .qcard-new:has(.opt[data-q="8b"]) .options,
-  #centerQ .qcard-new:has(.opt[data-q="9"]) .options {
-    grid-template-columns: 1fr !important;
-  }
-  #centerQ .qcard-new:has(.opt[data-q="7"]) .options .opt,
-  #centerQ .qcard-new:has(.opt[data-q="8"]) .options .opt,
-  #centerQ .qcard-new:has(.opt[data-q="8b"]) .options .opt,
-  #centerQ .qcard-new:has(.opt[data-q="9"]) .options .opt {
+  #centerQ .qcard-new:has(.opt[data-q="8b"]) .options .opt {
     aspect-ratio: auto !important;
-    min-height: 110px;
+    min-height: 138px;
   }
+}
+
+
+
+/* ROUND 43 — Q11 (slope) desktop: force grid items to equal height
+   even when content length varies */
+#centerQ .qcard-new:has(.opt[data-q="11"]) .options {
+  align-items: stretch !important;
+  grid-auto-rows: 1fr !important;
 }
 
 </style>
@@ -4312,8 +4313,11 @@ function renderHeader(){
 function renderTrail(){
   const el=document.getElementById("trail");
   if(!S.answers.length){el.innerHTML='<div class="tr-empty">Answers appear here as you go</div>';return;}
+  // ROUND 43: filter out auto-skip entries from the trail and renumber sequentially
+  let trailNum = 0;
   el.innerHTML=S.answers.map((a,i)=>{
-    // ROUND 37: sequential numbering (no gaps) + short labels via TRAIL_SHORT
+    if (String(a.answer||"").endsWith("(auto)")) return "";  // skip auto entries
+    trailNum++;
     const short = (typeof TRAIL_SHORT!=="undefined" && TRAIL_SHORT[a.qid]) || null;
     const qShort = short && short.q ? short.q : a.qtext;
     let aShort;
@@ -4321,12 +4325,12 @@ function renderTrail(){
     catch(e){ aShort = a.answer; }
     return `
  <div class="tr-row" onclick="jumpTo(${i})">
- <span class="tr-id">Q${i+1}</span>
+ <span class="tr-id">Q${trailNum}</span>
  <span class="tr-q">${qShort}</span>
  <span class="tr-a">${aShort}</span>
  <span class="tr-e"></span>
  </div>`;
-  }).join("");
+  }).filter(x=>x).join("");
   el.scrollTop=el.scrollHeight;
 }
 
@@ -5024,16 +5028,17 @@ function showQ(qid){
     if(metaSlot) {
       const pos = getQPosition(qid);
       if(pos.idx >= 0) {
-        const seqAnsCount = S.answers.length;
+        const seqAnsCount = S.answers.filter(a => !String(a.answer||"").endsWith("(auto)")).length;
         const dashes = pos.applicable.map((_, i) => {
           if(i < seqAnsCount) return '<span class="done"></span>';
           if(i === seqAnsCount) return '<span class="current"></span>';
           return '<span></span>';
         }).join('');
-        const seqIdx = S.answers.length;  // sequential index (matches trail numbering)
-        const seqTotal = pos.total;        // applicable total (Q8b filtered out for inland)
+        // ROUND 43: filter out auto-skip entries so numerator matches denominator
+        const realAnsCount = S.answers.filter(a => !String(a.answer||"").endsWith("(auto)")).length;
+        const seqTotal = pos.total;
         metaSlot.innerHTML =
-          '<span>Question ' + (seqIdx + 1) + ' of ' + seqTotal + '</span>' +
+          '<span>Question ' + (realAnsCount + 1) + ' of ' + seqTotal + '</span>' +
           '<span class="card-meta-progress" aria-hidden="true">' + dashes + '</span>';
       }
     }
