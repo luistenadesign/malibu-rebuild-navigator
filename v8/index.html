@@ -71,7 +71,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);fon
 button,input,select,textarea{font-family:inherit;}
 
 /* ── APP ── */
-.app{display:grid;grid-template-rows:52px 1fr;height:100vh;}
+.app{display:grid;grid-template-rows:52px 1fr 40px;height:100vh;}
 
 /* ── HEADER ── */
 header{
@@ -2949,6 +2949,149 @@ body.in-q .about-tool-bubble.in-trail { display: block; }
   line-height: 1.45;
 }
 
+
+
+/* ============================================================
+   ROUND 32 — explicit collapse behavior for disclaimer
+   ============================================================ */
+
+/* Force long version hidden by default — don't rely on details/summary UA defaults
+   which can fail when summary has display:flex layout */
+.about-tool-bubble .about-full {
+  display: none;
+}
+.about-tool-bubble[open] .about-full {
+  display: block;
+}
+
+/* Toggle link text — show/hide variants based on details [open] state */
+.about-tool-bubble .rm-hide { display: none; }
+.about-tool-bubble[open] .rm-show { display: none; }
+.about-tool-bubble[open] .rm-hide { display: inline; }
+
+
+
+/* ============================================================
+   ROUND 33 — site footer + policy modal
+   ============================================================ */
+
+.site-footer {
+  background: #18181b;
+  color: #d4d4d8;
+  border-top: 1px solid #27272a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 11px;
+  height: 40px;
+  overflow: hidden;
+}
+.ft-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.2px;
+}
+.ft-logo {
+  height: 22px;
+  width: auto;
+  vertical-align: middle;
+  margin: 0 3px -1px;
+  display: inline-block;
+}
+.ft-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ft-links a {
+  color: #d4d4d8;
+  text-decoration: none;
+  padding: 4px 6px;
+  transition: color 0.15s;
+}
+.ft-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+.ft-sep {
+  color: #52525b;
+  font-size: 10px;
+}
+
+/* Hide footer on mobile — mob-tabs occupies that screen real estate */
+@media (max-width: 768px) {
+  .app { grid-template-rows: 52px 1fr !important; }
+  .site-footer { display: none !important; }
+}
+
+/* ── POLICY MODAL ── */
+.policy-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.policy-modal.open {
+  display: flex;
+}
+.policy-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px 32px 22px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+.policy-card h2 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  padding-right: 28px;
+}
+.policy-card p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--t2);
+}
+.policy-card a {
+  color: var(--text);
+  text-decoration: underline;
+}
+.policy-updated {
+  font-style: italic;
+  color: var(--t3) !important;
+  font-size: 11px !important;
+  margin-top: 16px !important;
+}
+.policy-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: var(--t3);
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.policy-close:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
 </style>
 </head>
 <body>
@@ -3021,7 +3164,7 @@ body.in-q .about-tool-bubble.in-trail { display: block; }
  <details class="card about-tool-bubble in-trail">
  <summary>
  <span class="about-icon">&#9432;</span>
- <span class="about-text"><strong>About this tool</strong> &mdash; Beta-stage informational tool by newArch Inc. Not an official City of Malibu determination. Outputs may be incomplete &mdash; verify with official records. <span class="about-readmore">Read full disclaimer &darr;</span></span>
+ <span class="about-text"><strong>About this tool</strong> &mdash; Beta-stage informational tool by newArch Inc. Not an official City of Malibu determination. Outputs may be incomplete &mdash; verify with official records. <span class="about-readmore"><span class="rm-show">Read full disclaimer &darr;</span><span class="rm-hide">Hide full disclaimer &uarr;</span></span></span>
  </summary>
  <div class="about-full">
  <h4>About this Tool</h4>
@@ -3067,7 +3210,7 @@ body.in-q .about-tool-bubble.in-trail { display: block; }
         <details class="about-tool-bubble on-landing">
           <summary>
             <span class="about-icon">&#9432;</span>
-            <span class="about-text"><strong>About this tool</strong> &mdash; The Malibu Rebuild Navigator is a beta-stage informational tool provided by newArch Inc. It is not an official determination from the City of Malibu and does not substitute for the City&rsquo;s formal plan review. Outputs may be incomplete or out of date &mdash; verify with official City records before acting. <span class="about-readmore">Read full disclaimer &darr;</span></span>
+            <span class="about-text"><strong>About this tool</strong> &mdash; The Malibu Rebuild Navigator is a beta-stage informational tool provided by newArch Inc. It is not an official determination from the City of Malibu and does not substitute for the City&rsquo;s formal plan review. Outputs may be incomplete or out of date &mdash; verify with official City records before acting. <span class="about-readmore"><span class="rm-show">Read full disclaimer &darr;</span><span class="rm-hide">Hide full disclaimer &uarr;</span></span></span>
           </summary>
           <div class="about-full">
             <h4>About this Tool</h4>
@@ -3100,6 +3243,31 @@ body.in-q .about-tool-bubble.in-trail { display: block; }
  </div>
 
 </div>
+
+<!-- ROUND 33: SITE FOOTER (desktop only) -->
+<footer class="site-footer">
+  <div class="ft-left">
+    Powered by
+    <img class="ft-logo" src="newArch_logo_white.png" alt="newArch"/>
+    &copy; 2026
+  </div>
+  <div class="ft-links">
+    <a href="#" onclick="showPolicy(); return false;">Policy</a>
+    <span class="ft-sep">|</span>
+    <a href="mailto:info@newarch.com">Contact</a>
+  </div>
+</footer>
+
+<!-- POLICY MODAL -->
+<div class="policy-modal" id="policyModal" onclick="closePolicy(event)">
+  <div class="policy-card" onclick="event.stopPropagation()">
+    <button class="policy-close" onclick="closePolicy()" aria-label="Close">&times;</button>
+    <h2>Privacy Policy</h2>
+    <p>A full privacy policy is being prepared. In the meantime: the Malibu Rebuild Navigator collects the property addresses you enter and, if you choose to submit one, your email address &mdash; both used solely to provide your results and stored in a private database managed by newArch Inc. We do not sell or share this information. For privacy questions or to request deletion of your data, contact <a href="mailto:info@newarch.com">info@newarch.com</a>.</p>
+    <p class="policy-updated">Last updated: May 13, 2026</p>
+  </div>
+</div>
+
 </div>
 
 <!-- MOBILE TAB BAR (hidden on desktop via CSS) -->
@@ -4274,9 +4442,14 @@ function renderDocs(){
 // ══════════════════════════════════════════════
 // SHOW QUESTION
 // ══════════════════════════════════════════════
+function collapseDisclaimers(){
+  document.querySelectorAll('.about-tool-bubble').forEach(d => { d.open = false; });
+}
+
 function showQ(qid){
   S.cur=qid;
   document.body.classList.add('in-q');
+  collapseDisclaimers();
   if(window.innerWidth<=768) mobSwitch('q');
   const el=document.getElementById("centerQ");
 
@@ -5056,6 +5229,7 @@ function showWelcome(){
 // ══════════════════════════════════════════════
 function restart(){
   document.body.classList.remove('in-q');
+  collapseDisclaimers();
   S={cur:"Q1",answers:[],tags:new Set(),bfp:false,hlp:false,address:"",apn:"",lat:null,lng:null,mapMode:"satellite",grossSqFt:0,netSqFt:0,maxTDSF:0,landslideResult:null};
 
   document.getElementById("mapWrap").innerHTML=`<div class="map-ph">Enter address above</div>`;
@@ -5066,6 +5240,22 @@ function restart(){
   const sub=document.getElementById("chk-hlp-sub"); if(sub) sub.textContent="Per CGS Landslide map";
   renderTrail();renderHeader();renderFlow();renderRight();showWelcome();
 }
+
+
+// ROUND 33 — policy modal
+function showPolicy(){
+  document.getElementById('policyModal').classList.add('open');
+}
+function closePolicy(event){
+  if(event && event.target && event.target.closest('.policy-card') && !event.target.classList.contains('policy-close')) return;
+  document.getElementById('policyModal').classList.remove('open');
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    var m = document.getElementById('policyModal');
+    if(m && m.classList.contains('open')) m.classList.remove('open');
+  }
+});
 
 // ── INIT ──
 fetchSheetCodes();
