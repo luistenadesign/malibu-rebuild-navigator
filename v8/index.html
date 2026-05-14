@@ -81,9 +81,8 @@ header{
 }
 .logo{display:flex;align-items:center;gap:8px;flex-shrink:0;}
 .logo-mark{
-  height:24px;width:auto;border-radius:4px;
-  flex-shrink:0;display:block;
-  object-fit:contain;
+  width:32px;height:32px;border-radius:50%;
+  object-fit:cover;flex-shrink:0;display:block;
 }
 .logo-text{font-size:15px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;}
 .logo-text strong{font-weight:800;letter-spacing:.3px;}
@@ -3175,49 +3174,51 @@ html, body {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  right: 0;
+  right: 100px;  /* leave room for the Look Up button on the right */
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  max-height: 240px;
+  border-radius: 8px;
+  max-height: 200px;
   overflow-y: auto;
   z-index: 50;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   display: none;
 }
 .addr-suggest.open { display: block; }
 .addr-suggest-item {
-  padding: 9px 14px;
-  font-size: 12px;
+  padding: 5px 12px;
+  font-size: 11px;
   color: var(--text);
   cursor: pointer;
   border-bottom: 1px solid #f4f4f0;
   transition: background 0.1s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
 }
 .addr-suggest-item:hover,
 .addr-suggest-item.highlighted {
   background: rgba(37, 99, 235, 0.06);
 }
 .addr-suggest-item:last-child { border-bottom: none; }
-.addr-suggest-icon {
-  color: var(--t3);
-  font-size: 11px;
-  flex-shrink: 0;
-}
-.addr-suggest-text {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .addr-suggest-empty {
   padding: 12px 14px;
   font-size: 11px;
   color: var(--t3);
   font-style: italic;
+}
+
+
+
+/* ROUND 39 — landing title: single line on desktop, wrap on mobile */
+@media (max-width: 768px) {
+  .welcome-title {
+    white-space: normal !important;
+    font-size: 24px !important;
+    letter-spacing: -.4px !important;
+  }
 }
 
 </style>
@@ -3227,7 +3228,7 @@ html, body {
 
 <header>
  <div class="logo">
- <img class="logo-mark" src="newArch_logo_white.png" alt="newArch"/>
+ <img class="logo-mark" src="newArch_logo_circle.png" alt="newArch"/>
  <span class="logo-text"><strong>MALIBU</strong> rebuild navigator</span>
  </div>
  <div class="hdiv"></div>
@@ -3312,7 +3313,7 @@ html, body {
  <div class="card q-card" id="centerQ">
  <div id="welcomeInner">
  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--t3);margin-bottom:16px;text-align:center;">Malibu Rebuild Navigator</div>
- <div style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;">Find your rebuild<br>permitting path.</div>
+ <div class="welcome-title" style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;white-space:nowrap;">Find your rebuild permitting path.</div>
  <div style="font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:22px;text-align:center;">Answer a short series of questions about your property and project scope. You'll receive a personalized flowchart showing your required permits, documents, code references, and professionals — before you hire anyone.</div>
  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;">
  <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">~5 minutes</div>
@@ -4658,7 +4659,7 @@ function showQ(qid){
  <div class="term-msg">${t.msg}</div>
       ${t.isEnd?`
  <div class="email-row">
- <input class="email-in" id="eIn" type="email" placeholder="your@email.com"/>
+ <input class="email-in" id="eIn" type="email" placeholder="your@email.com" onkeydown="if(event.key==='Enter'){event.preventDefault();sendEmail();}"/>
  <button class="sbtn" onclick="sendEmail()">Send summary →</button>
  </div>
  <div class="sok" id="sok"></div>`:""}
@@ -4922,10 +4923,7 @@ function showQ(qid){
         return;
       }
       suggestEl.innerHTML = matches.map((p,i)=>
-        '<div class="addr-suggest-item" data-i="'+i+'">'+
-        '  <span class="addr-suggest-icon">⌖</span>'+
-        '  <span class="addr-suggest-text">'+p.fullAddress+'</span>'+
-        '</div>'
+        '<div class="addr-suggest-item" data-i="'+i+'">'+p.fullAddress+'</div>'
       ).join("");
       suggestEl.classList.add("open");
       suggestEl.querySelectorAll('.addr-suggest-item').forEach(el=>{
@@ -5526,7 +5524,7 @@ function showWelcome(){
   document.getElementById("centerQ").innerHTML=`
  <div>
  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--t3);margin-bottom:16px;text-align:center;">Malibu Rebuild Navigator</div>
- <div style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;">Find your rebuild<br>permitting path.</div>
+ <div class="welcome-title" style="font-size:32px;font-weight:800;letter-spacing:-.8px;line-height:1.15;color:var(--text);margin-bottom:14px;text-align:center;white-space:nowrap;">Find your rebuild permitting path.</div>
  <div style="font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:22px;text-align:center;">Answer a short series of questions about your property and project scope. You'll receive a personalized flowchart showing your required permits, documents, code references, and professionals — before you hire anyone.</div>
  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;justify-content:center;">
  <div style="padding:6px 12px;border-radius:20px;background:var(--bg);border:1px solid var(--border);font-size:11px;color:var(--t2);">~5 minutes</div>
