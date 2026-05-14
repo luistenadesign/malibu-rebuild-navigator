@@ -3242,6 +3242,25 @@ html, body {
   grid-auto-rows: 1fr !important;
 }
 
+
+
+/* ROUND 44 — Q8b mobile: stack pills vertically inside the gray
+   response box (override the global .comparison { flex-direction: row !important }
+   that's winning the cascade and pushing "New SPD" outside the box). */
+@media (max-width: 768px) {
+  #centerQ .qcard-new:has(.opt[data-q="8b"]) .opt .comparison {
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding: 10px 8px !important;
+    align-items: center !important;
+  }
+  /* Arrow looks better rotated 90° when items are stacked vertically */
+  #centerQ .qcard-new:has(.opt[data-q="8b"]) .opt .comp-op {
+    transform: rotate(90deg);
+    display: inline-block;
+  }
+}
+
 </style>
 </head>
 <body>
