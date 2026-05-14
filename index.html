@@ -3245,6 +3245,33 @@ html, body {
 
 
 
+
+
+/* ============================================================
+   ROUND 47 — pill word-break + centerQ scroll for tall questions
+   ============================================================ */
+
+/* Q10 (sitework, 3-col) pills: never break mid-word at any width.
+   "+grading" and "+walls" must stay on one line whether the viewport
+   is mobile, intermediate laptop, or full desktop. */
+#centerQ .qcard-new:has(.opt[data-q="10"]) .comp-pill {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+/* Desktop: let centerQ scroll when content (e.g. Q7 TDSF calculator
+   plus diagrams plus response boxes) exceeds the viewport height.
+   Overrides the round-29 rule that forced overflow:visible everywhere.
+   Mobile (< 769px) keeps page-level scrolling as before. */
+@media (min-width: 769px) {
+  #centerQ {
+    max-height: calc(100vh - 110px) !important;
+    overflow-y: auto !important;
+  }
+}
+
 </style>
 </head>
 <body>
