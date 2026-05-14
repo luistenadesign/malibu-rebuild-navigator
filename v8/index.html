@@ -3933,6 +3933,64 @@ window.Q_DIAGRAMS = {
 };
 
 const Q_NUM={"Q1":"Q1","Q_BFP_CONFIRM":"Q2","Q_HLP":"Q3","Q2":"Q4","Q3":"Q5","Q4":"Q6","Q4a":"Q7","Q5":"Q8","Q7":"Q9","Q8":"Q10","Q8b":"Q11","Q9":"Q12","Q10":"Q13","Q11":"Q14","Q12":"Q15","Q14":"Q16"};
+const TRAIL_SHORT = {
+  Q1:{q:"Address",a:v=>(v||"").split(",")[0]||v||""},
+  Q_BFP_CONFIRM:{q:"Beachfront?",a:v=>v.startsWith("Yes")?"Yes":"No — inland"},
+  Q_HLP:{q:"Landslide zone?",a:v=>/Yes/i.test(v)?"Yes — mapped":"No"},
+  Q2:{q:"Ownership",a:v=>v.startsWith("Original")?"Original":"New owner"},
+  Q3:{q:"Rebuild size",a:v=>{
+    if(v.startsWith("Like"))return "Like-for-like";
+    if(v.startsWith("Up to 10%"))return "+10% larger";
+    if(v.startsWith("More than"))return "+>10% larger";
+    return v;
+  }},
+  Q4:{q:"Footprint",a:v=>{
+    if(v==="Same area, same footprint")return "Same area";
+    if(v==="Same area, shifted footprint")return "Same area, shifted";
+    if(v==="+10% area, same footprint")return "+10%, same";
+    if(v==="+10% area, shifted footprint")return "+10%, shifted";
+    return v;
+  }},
+  Q4a:{q:"Max TDSF",a:v=>v.startsWith("Yes")?"Within max":"Exceeds max"},
+  Q5:{q:"Height envelope",a:v=>{
+    if(v.startsWith("No"))return "No change";
+    if(v.indexOf("under 18")>-1)return "+10% under 18ft";
+    if(v.indexOf("above 18")>-1)return "+10% above 18ft";
+    if(v.startsWith("More than"))return "+>10% height";
+    return v;
+  }},
+  Q7:{q:"Bedrooms/baths?",a:v=>v.startsWith("Yes")?"Yes — adding":"No change"},
+  Q8:{q:"Septic",a:v=>v.startsWith("Keep")?"Keep existing":"Replace"},
+  Q8b:{q:"Shoreline device",a:v=>v.startsWith("Keep")?"Keep existing":"Replace/new"},
+  Q9:{q:"Foundation",a:v=>v.startsWith("Reuse")?"Reuse existing":"Pour new"},
+  Q10:{q:"Site work",a:v=>{
+    if(v.startsWith("No"))return "None";
+    if(v.startsWith("Grading"))return "Grading/driveway";
+    if(v.startsWith("New retaining"))return "New retaining";
+    return v;
+  }},
+  Q11:{q:"Slopes?",a:v=>{
+    if(v==="Flat property, no nearby slopes")return "Flat, no slopes";
+    if(v==="Flat property, adjacent to slope")return "Flat, adj. slope";
+    if(v==="On a slope or hillside")return "On slope";
+    return v;
+  }},
+  Q12:{q:"Fire water",a:v=>{
+    if(v.startsWith("Parcel meets"))return "Meets flow req.";
+    if(v.startsWith("Existing pool"))return "Existing pool";
+    if(v.startsWith("New pool"))return "New pool";
+    if(v.startsWith("New water tank"))return "New tank";
+    return v;
+  }},
+  Q14:{q:"ADU?",a:v=>{
+    if(v.startsWith("No"))return "No ADU";
+    if(v.indexOf("attached")>-1&&v.indexOf("Junior")<0)return "Attached ADU";
+    if(v.indexOf("detached")>-1)return "Detached ADU";
+    if(v.indexOf("Junior")>-1||v.indexOf("JADU")>-1)return "JADU";
+    return v;
+  }}
+};
+
 const QS={
   Q1:{id:"Q1",text:"What is the property address?",
     type:"address",placeholder:"e.g. 23901 Malibu Road, Malibu CA 90265",
@@ -4173,13 +4231,21 @@ function renderHeader(){
 function renderTrail(){
   const el=document.getElementById("trail");
   if(!S.answers.length){el.innerHTML='<div class="tr-empty">Answers appear here as you go</div>';return;}
-  el.innerHTML=S.answers.map((a,i)=>`
+  el.innerHTML=S.answers.map((a,i)=>{
+    // ROUND 37: sequential numbering (no gaps) + short labels via TRAIL_SHORT
+    const short = (typeof TRAIL_SHORT!=="undefined" && TRAIL_SHORT[a.qid]) || null;
+    const qShort = short && short.q ? short.q : a.qtext;
+    let aShort;
+    try { aShort = short && short.a ? short.a(a.answer) : a.answer; }
+    catch(e){ aShort = a.answer; }
+    return `
  <div class="tr-row" onclick="jumpTo(${i})">
- <span class="tr-id">${Q_NUM[a.qid]||a.qid}</span>
- <span class="tr-q">${a.qtext}</span>
- <span class="tr-a">${a.answer}</span>
+ <span class="tr-id">Q${i+1}</span>
+ <span class="tr-q">${qShort}</span>
+ <span class="tr-a">${aShort}</span>
  <span class="tr-e"></span>
- </div>`).join("");
+ </div>`;
+  }).join("");
   el.scrollTop=el.scrollHeight;
 }
 
