@@ -3221,6 +3221,26 @@ html, body {
   }
 }
 
+
+
+/* ROUND 42 — comparison-pill questions: single column on mobile so the
+   two-pill comparison (Existing → New) has vertical room to render */
+@media (max-width: 768px) {
+  #centerQ .qcard-new:has(.opt[data-q="7"]) .options,
+  #centerQ .qcard-new:has(.opt[data-q="8"]) .options,
+  #centerQ .qcard-new:has(.opt[data-q="8b"]) .options,
+  #centerQ .qcard-new:has(.opt[data-q="9"]) .options {
+    grid-template-columns: 1fr !important;
+  }
+  #centerQ .qcard-new:has(.opt[data-q="7"]) .options .opt,
+  #centerQ .qcard-new:has(.opt[data-q="8"]) .options .opt,
+  #centerQ .qcard-new:has(.opt[data-q="8b"]) .options .opt,
+  #centerQ .qcard-new:has(.opt[data-q="9"]) .options .opt {
+    aspect-ratio: auto !important;
+    min-height: 110px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4650,6 +4670,9 @@ function showQ(qid){
   S.cur=qid;
   document.body.classList.add('in-q');
   collapseDisclaimers();
+  // ROUND 42: scroll to top on each new question so users don't land
+  // mid-page after answering a long previous question (mobile)
+  try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch(e) { window.scrollTo(0, 0); }
   if(window.innerWidth<=768) mobSwitch('q');
   const el=document.getElementById("centerQ");
 
