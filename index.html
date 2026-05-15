@@ -3302,6 +3302,24 @@ html, body {
   }
 }
 
+
+
+/* ROUND 50 — desktop: footer fixed at viewport bottom, page scrolls behind it.
+   Adding 40px bottom padding to .app so scroll content never hides under the
+   footer at the end of the page. */
+@media (min-width: 769px) {
+  .site-footer {
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+  }
+  .app {
+    padding-bottom: 40px;
+  }
+}
+
 </style>
 </head>
 <body>
