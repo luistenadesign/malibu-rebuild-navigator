@@ -3443,6 +3443,48 @@ html, body {
   }
 }
 
+
+
+/* ROUND 55 — kill redundant header progress + harden center column width */
+
+/* Hide the 0/13 progress bar in the header (redundant with "Question N of M"
+   shown inside the question card; the two were using different denominators
+   and confusing the read) */
+.prog-wrap {
+  display: none !important;
+}
+
+/* Belt-and-suspenders width containment for the center column on desktop.
+   Q14 (ADU) was still pushing the layout sideways despite round 52's
+   minmax(0, 1fr) — some inner SVG or grid-cell was managing to override.
+   Force every direct child of .center, plus every .options grid and SVG
+   inside it, to respect the column width. */
+@media (min-width: 769px) {
+  .center {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  .center > * {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  #centerQ .options {
+    grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr)) !important;
+  }
+  #centerQ .opt {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #centerQ .opt svg,
+  #centerQ .opt-svg-wrap svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+  }
+}
+
 </style>
 </head>
 <body>
