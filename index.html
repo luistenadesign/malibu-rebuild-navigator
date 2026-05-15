@@ -3422,6 +3422,27 @@ html, body {
   cursor: zoom-in !important;
 }
 
+
+
+/* ROUND 54 — final-page (END state) width fixes
+   .term renders the result card; it lacked the max-width that .qcard-new has,
+   so it was stretching to whatever space and pushing the right column off.
+   #flowSvg was only being made responsive on mobile — on desktop it kept its
+   explicit width attribute, which expanded past the center column on the END
+   page (where the right column is fully present alongside it). */
+.term {
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+@media (min-width: 769px) {
+  #flowSvg {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+}
+
 </style>
 </head>
 <body>
