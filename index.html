@@ -3247,13 +3247,11 @@ html, body {
 
 
 
-/* ============================================================
-   ROUND 47 — pill word-break + centerQ scroll for tall questions
-   ============================================================ */
 
-/* Q10 (sitework, 3-col) pills: never break mid-word at any width.
-   "+grading" and "+walls" must stay on one line whether the viewport
-   is mobile, intermediate laptop, or full desktop. */
+
+
+/* Q10 (sitework) "+grading" / "+walls" pills — never break mid-word at
+   any viewport width. */
 #centerQ .qcard-new:has(.opt[data-q="10"]) .comp-pill {
   white-space: nowrap !important;
   word-break: keep-all !important;
@@ -3261,14 +3259,46 @@ html, body {
   hyphens: none !important;
 }
 
-/* Desktop: let centerQ scroll when content (e.g. Q7 TDSF calculator
-   plus diagrams plus response boxes) exceeds the viewport height.
-   Overrides the round-29 rule that forced overflow:visible everywhere.
-   Mobile (< 769px) keeps page-level scrolling as before. */
+
+/* ============================================================
+   ROUND 49 — desktop: page scrolls, not internal boxes
+   ============================================================
+   The original layout locked body/cols/center to viewport height with
+   overflow:hidden, which clipped tall content (TDSF calculator etc).
+   This unlocks them so the page scrolls naturally — the white boxes
+   stay their natural size, and you scroll the whole page to see the
+   flowchart below.
+*/
 @media (min-width: 769px) {
-  #centerQ {
-    max-height: calc(100vh - 110px) !important;
-    overflow-y: auto !important;
+  html, body {
+    overflow: visible !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 100vh;
+  }
+  .app {
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+  }
+  .cols {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .center {
+    overflow: visible !important;
+  }
+  /* Sidebars stick to top of the column row instead of stretching with
+     a tall center column (avoids huge empty space below the map/trail) */
+  .left, .right {
+    align-self: start;
+  }
+  /* Header stays visible at top while scrolling */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
   }
 }
 
