@@ -3003,6 +3003,15 @@ body.in-q .about-tool-bubble.in-trail { display: block; }
   margin: 0 3px -1px;
   display: inline-block;
 }
+.ft-logo-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  transition: opacity 0.15s;
+}
+.ft-logo-link:hover {
+  opacity: 0.8;
+}
 .ft-links {
   display: flex;
   align-items: center;
@@ -3642,7 +3651,7 @@ html, body {
   <div class="ft-spacer"></div>
   <div class="ft-left">
     Powered by
-    <img class="ft-logo" src="newArch_logo_white.png" alt="newArch"/>
+    <a class="ft-logo-link" href="https://www.newarch.com" target="_blank" rel="noopener" aria-label="newArch website"><img class="ft-logo" src="newArch_logo_white.png?v=261107" alt="newArch"/></a>
     &copy; 2026
   </div>
   <div class="ft-links">
